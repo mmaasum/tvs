@@ -22,7 +22,6 @@
             "tsConfig": "apps/renovation/tsconfig.app.json",
             "aot": true,
             "assets": [
-              "apps/renovation/src/favicon.ico",
               "apps/renovation/src/assets"
             ],
             "styles": ["apps/renovation/src/styles.scss"],
