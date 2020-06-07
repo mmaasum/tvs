@@ -1,0 +1,50 @@
+/**************** banner part css start ****************/
+.banner_part{
+    height: 800px;
+    position: relative;
+    overflow: hidden;
+    // background-image: url(../img/banner_img.png);
+    background-image: url(../../../../assets/images/banner_img.png);
+    background-repeat: no-repeat;
+    background-size: content;
+    background-position:  right top;
+
+    
+    .banner_text{
+        display: table;
+        width: 100%;
+        height: 800px;
+        .banner_text_iner{
+            display: table-cell;
+            vertical-align: middle;
+            
+
+        }
+       
+        h5{
+            font-size: 14px;
+            text-transform: uppercase;
+            font-weight: 500;
+            color: #556172;
+            margin-bottom: 14px;
+        }
+        h1{
+            font-size: 65px;
+            text-transform: capitalize;
+            font-weight: 700;
+            margin-bottom: 27px;
+            line-height: 75px;
+            
+        }
+        
+        p{
+            font-size: 15px;
+            line-height: 1.8;
+        }
+        .btn_1{
+            margin-top: 44px;
+        }
+    }
+}
+  
+/**************** hero part css end ****************/

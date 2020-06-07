@@ -1,0 +1,155 @@
+{
+  "version": 1,
+  "projects": {
+    "renovation": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/renovation",
+      "sourceRoot": "apps/renovation/src",
+      "prefix": "tvs",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/renovation",
+            "index": "apps/renovation/src/index.html",
+            "main": "apps/renovation/src/main.ts",
+            "polyfills": "apps/renovation/src/polyfills.ts",
+            "tsConfig": "apps/renovation/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/renovation/src/favicon.ico",
+              "apps/renovation/src/assets"
+            ],
+            "styles": ["apps/renovation/src/styles.scss"],
+            "scripts": [
+              "apps/renovation/src/assets/js/jquery-1.12.0.min.js",
+              "apps/renovation/src/assets/js/bootstrap.min.js",
+              "apps/renovation/src/assets/vendors/animate/wow.min.js",
+              "apps/renovation/src/assets/vendors/camera-slider/jquery.easing.1.3.js",
+              "apps/renovation/src/assets/vendors/camera-slider/camera.min.js",
+              "apps/renovation/src/assets/vendors/isotope/imagesloaded.pkgd.min.js",
+              "apps/renovation/src/assets/vendors/isotope/isotope.pkgd.min.js",
+              "apps/renovation/src/assets/vendors/Counter-Up/jquery.counterup.min.js",
+              "apps/renovation/src/assets/vendors/Counter-Up/waypoints.min.js",
+              "apps/renovation/src/assets/vendors/owl_carousel/owl.carousel.min.js",
+              "apps/renovation/src/assets/vendors/stellar/jquery.stellar.js",
+              "apps/renovation/src/assets/js/theme.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/renovation/src/environments/environment.ts",
+                  "with": "apps/renovation/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "renovation:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "renovation:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "renovation:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/renovation/tsconfig.app.json",
+              "apps/renovation/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/renovation/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/renovation/jest.config.js",
+            "tsConfig": "apps/renovation/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "apps/renovation/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "renovation-e2e": {
+      "root": "apps/renovation-e2e",
+      "sourceRoot": "apps/renovation-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/renovation-e2e/cypress.json",
+            "tsConfig": "apps/renovation-e2e/tsconfig.e2e.json",
+            "devServerTarget": "renovation:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "renovation:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/renovation-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/renovation-e2e/**"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular",
+    "analytics": false
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "renovation"
+}
