@@ -1,0 +1,126 @@
+<style>
+        .mat-dialog-actions{
+            justify-content: flex-end;
+            margin-bottom: 0px; 
+        }
+        .signup{
+            color: #2196f3;
+            
+        }
+        .signup:hover{
+            cursor: pointer;
+            color: #2196f3;
+        }
+</style>
+
+<div class="container" style="font-size: 1rem;">
+    <div class="card">
+        <!-- <div class="card-header" style="text-align: center;">
+          Draw Your Home
+        </div> -->
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="card">
+                        <!-- <div class="card-header">
+                          Featured
+                        </div> -->
+                        <div class="card-body">
+                            <mat-dialog-content [formGroup]="form">
+                                <mat-form-field>
+                                    <mat-select placeholder="Type"
+                                        formControlName="category">
+                                        <mat-option value="Wall">
+                                            Wall</mat-option>
+                                        <mat-option value="Extension">
+                                            Extension</mat-option>
+                                        <mat-option value="NewDevelopment">
+                                            New Development</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <input matInput
+                                            placeholder="Height (in meter)"
+                                           formControlName="Height">
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <input matInput
+                                            placeholder="Width (in meter)"
+                                           formControlName="Width">
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <mat-select placeholder="Material Use"
+                                        formControlName="Material">
+                                        <mat-option value="Brick">
+                                            Brick</mat-option>
+                                        <mat-option value="Wood">
+                                            Wood</mat-option>
+                                        <mat-option value="Glass">
+                                            Glass</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            
+                                <mat-form-field>
+                                    <input matInput [matDatepicker]="myDatepicker"
+                                    formControlName="releasedAt">
+                                    <mat-datepicker-toggle matSuffix
+                                                           [for]="myDatepicker">
+                                    </mat-datepicker-toggle>
+                                    <mat-datepicker #myDatepicker></mat-datepicker>
+                                </mat-form-field>
+                            
+                                <!-- <mat-form-field>
+                                    <textarea matInput placeholder="Description"
+                                        formControlName="longDescription">
+                                    </textarea>
+                                </mat-form-field> -->
+                                <label name="Approximate">Approximate Cost : 550 £</label>
+                                <!-- <mat-form-field>
+                                    <label formControlName="Approximate">Approximate Cost</label>
+                                </mat-form-field> -->
+                            </mat-dialog-content>
+                            
+                
+                            <mat-dialog-actions>
+                                <button mat-raised-button color="accent"
+                                        (click)="close()">
+                                        <mat-icon aria-hidden="false" aria-label="Example home icon">close</mat-icon>
+                                </button>
+                                <button mat-raised-button color="primary"
+                                        (click)="save()">
+                                        <mat-icon aria-hidden="false" aria-label="Example home icon">save</mat-icon>
+                                </button>
+                            </mat-dialog-actions>
+                        </div>
+                      </div>
+
+
+                    
+                </div>
+                <div class="col-md-7">
+                    <div class="card" style="height: 90%; width: 90%;">
+                        <!-- <div class="card-header">
+                            View
+                        </div> -->
+                        <img class="card-img-top"
+                        src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/bologna-1.jpg" alt="Bologna">
+                        <div class="card-body">
+                          <a href="#" class="card-link">
+                              Brick 10000 pc ($ .5 - $ 1 per pc )          Brick Layer ($100 ~ $150 per day)
+
+                          </a>
+                          
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer" style="text-align: right; padding-right: 55px;">
+            Not a member? 
+            <a class="signup">Sign Up</a>
+          </div>
+      </div>
+
+
+</div>
+

@@ -24,7 +24,10 @@
             "assets": [
               "apps/renovation/src/assets"
             ],
-            "styles": ["apps/renovation/src/styles.scss"],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "apps/renovation/src/styles.scss"
+            ],
             "scripts": [
               "apps/renovation/src/assets/js/jquery-1.12.0.min.js",
               "apps/renovation/src/assets/js/bootstrap.min.js",
@@ -95,7 +98,10 @@
               "apps/renovation/tsconfig.app.json",
               "apps/renovation/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/renovation/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/renovation/**"
+            ]
           }
         },
         "test": {
@@ -130,8 +136,13 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/renovation-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/renovation-e2e/**"]
+            "tsConfig": [
+              "apps/renovation-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/renovation-e2e/**"
+            ]
           }
         }
       }

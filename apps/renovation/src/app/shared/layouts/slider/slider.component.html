@@ -23,6 +23,9 @@
               data-aos="fade-up" data-aos-delay="200">
               <h1 style="padding-top: 100px;">Looking for a local Tradesman?</h1>
               <h2>Search from over 15,000 recommended, vetted and monitored Trades</h2>
+              <!-- <div>
+                  <tvs-front-blocks></tvs-front-blocks>
+              </div> -->
               <div class="d-lg-flex">
                   <a href="#about" class="btn-get-started scrollto">Post a job</a>
                   <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="venobox btn-watch-video"
@@ -52,8 +55,6 @@
                         <a style="width:170px;float: right;margin-top: auto;" href="#" class="btn btn-info">Read Insider Tips</a>
                     </div>
                 </div>
-
-                
             </div>
             <div class="col-md-6">
                 <div class="card bg-dark text-white noborder smallcardheight">
@@ -81,7 +82,12 @@
                     src="../../../../assets/images/draw3.jpg" alt="Card image cap">
                     <div class="card-img-overlay d-flex flex-column" style="width:220px;float: right;margin-top: auto;">
                         <p class="card-text">Last updated 3 mins ago</p>
-                      <a href="#" class="btn btn-success">Draw Your Home</a>
+                      <a class="btn btn-success">
+                          <tvs-draw-home [master]="master"></tvs-draw-home>
+                      </a>
+                      <!-- <a class="btn btn-success"><tvs-draw-home></tvs-draw-home></a> -->
+                      
+                      
                     </div>
                   </div>
             </div>
