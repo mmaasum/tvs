@@ -1,15 +1,139 @@
-<mat-card class="example-card">
-    <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>Shiba Inu</mat-card-title>
-      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-    <mat-card-content>
-     
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-button>LIKE</button>
-      <button mat-button>SHARE</button>
-    </mat-card-actions>
-  </mat-card>
+<style>
+  .iconcolor{
+    color:#7e7e7e;
+  }
+</style>
+<div class="container-fluid">
+  <div class="row" style="margin-top: 45px;">
+
+    <div class="col-lg-3 d-flex flex-column justify-content-center" 
+      data-aos="fade-up" 
+      data-aos-delay="200">
+      <mat-card class="example-card" style="padding:0px;">
+        <img style="margin:0" 
+        mat-card-image src="../../../../assets/img/draw-home.jpg"
+          alt="Photo of a Shiba Inu">
+        <mat-card-content style="padding:16px;">
+          <mat-card-title>Design and Planning</mat-card-title>
+          <mat-card-subtitle>
+            We will give you a renovated design Experiment with both 2D...
+          </mat-card-subtitle>
+        </mat-card-content>
+        <mat-divider></mat-divider>
+        <!-- style="padding:16px;float: right;" -->
+        <mat-card-actions style="padding: 0px;" layout="row" layout-align="end center">
+          <div>
+            <button style="float: left;padding: 14px;margin-left: 10px; color: #a3a3f7;" mat-button>
+              <tvs-draw-home [master]="master"></tvs-draw-home>
+              <!-- Draw Now -->
+            </button>
+          </div>
+          <div style="padding:16px;float: right;" >
+            <button class="mat-icon-button" aria-label="Favorite">
+              <mat-icon class="iconcolor" aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+            </button>
+            <button class="mat-icon-button" aria-label="Settings">
+              <mat-icon class="iconcolor" aria-hidden="false" aria-label="Example home icon">menu</mat-icon>
+            </button>
+            <button class="mat-icon-button" aria-label="Share">
+              <mat-icon class="iconcolor" aria-hidden="false" aria-label="Example home icon">share</mat-icon>
+            </button>
+          </div>
+        </mat-card-actions>
+  
+  
+       
+      </mat-card>
+    </div>
+  
+
+    <div class="col-lg-3 d-flex flex-column justify-content-center" 
+      data-aos="fade-up" 
+      data-aos-delay="200">
+      <mat-card class="example-card" style="padding:0px;">
+        <img style="margin:0" 
+        mat-card-image src="../../../../assets/img/trademan.jpg"
+          alt="Photo of a Shiba Inu">
+        <mat-card-content style="padding:16px;">
+          <mat-card-title>Deliver better projects</mat-card-title>
+          <mat-card-subtitle>Unlimited downloads, from $16.50/month</mat-card-subtitle>
+        </mat-card-content>
+        <mat-divider></mat-divider>
+        <mat-card-actions style="padding:16px;float: right;" layout="row" layout-align="end center">
+          <button class="mat-icon-button" aria-label="Favorite">
+            <mat-icon class="iconcolor" aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+          </button>
+          <button class="mat-icon-button" aria-label="Settings">
+            <mat-icon class="iconcolor" aria-hidden="false" aria-label="Example home icon">menu</mat-icon>
+          </button>
+          <button class="mat-icon-button" aria-label="Share">
+            <mat-icon class="iconcolor" aria-hidden="false" aria-label="Example home icon">share</mat-icon>
+          </button>
+        </mat-card-actions>
+  
+  
+       
+      </mat-card>
+    </div>
+
+    <div class="col-lg-3 d-flex flex-column justify-content-center" 
+      data-aos="fade-up" 
+      data-aos-delay="200">
+      <mat-card class="example-card" style="padding:0px;">
+        <img style="margin:0" 
+        mat-card-image src="../../../../assets/img/feedback.jpg"
+          alt="Photo of a Shiba Inu">
+        <mat-card-content style="padding:16px;">
+          <mat-card-title>Deliver better projects</mat-card-title>
+          <mat-card-subtitle>Unlimited downloads, from $16.50/month</mat-card-subtitle>
+        </mat-card-content>
+        <mat-divider></mat-divider>
+        <mat-card-actions style="padding:16px;float: right;" layout="row" layout-align="end center">
+          <button class="mat-icon-button" aria-label="Favorite">
+            <mat-icon class="iconcolor" aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+          </button>
+          <button class="mat-icon-button" aria-label="Settings">
+            <mat-icon class="iconcolor" aria-hidden="false" aria-label="Example home icon">menu</mat-icon>
+          </button>
+          <button class="mat-icon-button" aria-label="Share">
+            <mat-icon class="iconcolor" aria-hidden="false" aria-label="Example home icon">share</mat-icon>
+          </button>
+        </mat-card-actions>
+  
+  
+       
+      </mat-card>
+    </div>
+
+    <div class="col-lg-3 d-flex flex-column justify-content-center" 
+      data-aos="fade-up" 
+      data-aos-delay="200">
+      <mat-card class="example-card" style="padding:0px;">
+        <img style="margin:0" 
+        mat-card-image src="../../../../assets/img/why-us2.png"
+          alt="Photo of a Shiba Inu">
+        <mat-card-content style="padding:16px;">
+          <mat-card-title>Deliver better projects</mat-card-title>
+          <mat-card-subtitle>Unlimited downloads, from $16.50/month</mat-card-subtitle>
+        </mat-card-content>
+        <mat-divider></mat-divider>
+        <mat-card-actions style="padding:16px;float: right;" layout="row" layout-align="end center">
+          <button class="mat-icon-button" aria-label="Favorite">
+            <mat-icon class="iconcolor" aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+          </button>
+          <button class="mat-icon-button" aria-label="Settings">
+            <mat-icon class="iconcolor" aria-hidden="false" aria-label="Example home icon">menu</mat-icon>
+          </button>
+          <button class="mat-icon-button" aria-label="Share">
+            <mat-icon class="iconcolor" aria-hidden="false" aria-label="Example home icon">share</mat-icon>
+          </button>
+	<button style="display:none;" mat-button></button>
+        </mat-card-actions>
+  
+  
+       
+      </mat-card>
+    </div>
+
+  </div>
+</div>
