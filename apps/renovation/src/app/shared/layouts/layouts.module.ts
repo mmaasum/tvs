@@ -51,9 +51,13 @@ import { HomeComponent } from './home/home.component';
 import { Routes, RouterModule } from '@angular/router';
 
 const appRoutes: Routes = [
+  // {
+  //   path        : '', 
+  //   component   : HomeComponent
+  // },
   {
     path        : 'test', 
-    loadChildren: () => import('../../main/microservices/components/find-tradesmen.module').then(m => m.FindTradesmenModule)
+    loadChildren: () => import('../../main/microservices/microservices.module').then(m => m.MicroservicesModule)
   }
 ];
 

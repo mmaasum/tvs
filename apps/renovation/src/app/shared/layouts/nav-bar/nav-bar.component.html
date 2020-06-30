@@ -1,21 +1,27 @@
 
 
+<section id="navbar" style="padding:0px">
     <header  id="header" class="fixed-top ">
         <div class="container d-flex align-items-center">
             <h1 class="logo mr-auto">
-                <a href="index.html">
+                <a (click)="homePage()" routerLink="/">
                     <img src="../../../../assets/images/logo.png" class="img-fluid animated" alt="">
                 </a>
             </h1>
             <nav class="nav-menu d-none d-lg-block">
                 <ul>
-                    <li class="active"><a href="index.html">Advice Center</a></li>
+                    <li class="active"><a (click)="homePage2()"  routerLink="/advice-center">Advice Center</a></li>
                     <li><a class="chaildnev"><tvs-draw-home [master]="master"></tvs-draw-home></a></li>
-                    <li><a routerLink="/find-tradesmen">Search Tradesman</a></li>
+                    <li><a (click)="homePage2()" routerLink="/find-tradesmen">Search Tradesman</a></li>
                     <li><a href="#portfolio">Join with us</a></li>
                 </ul>
             </nav>
-            <a href="#about" class="get-started-btn scrollto">Post a job</a>
+            <!-- <a href="#about" class="get-started-btn scrollto">Post a job</a> -->
+            <a href="#about" class="get-started-btn scrollto">Sign Up</a>
         </div>
     </header>
+</section>
+
+<tvs-slider *ngIf="isDisplay"></tvs-slider>
+
 <router-outlet></router-outlet>

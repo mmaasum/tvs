@@ -7,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FindTradesmenComponent implements OnInit {
 
+  isDisplay: boolean;
   constructor() { console.log('masum');}
 
   ngOnInit(): void {
+    this.isDisplay = false;
     console.log('masum');
   }
+
 
 }
