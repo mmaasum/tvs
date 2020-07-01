@@ -1,21 +1,118 @@
 <!-- <p style="margin-top:20px;padding-top:50px;height: 100px;border: 1px solid black;background-color: gray;">Find tradesmen works!</p> -->
 
+
 <style>
-    
-    #divbody {
-    background: linear-gradient(to right, #c04848, #480048);
-    min-height: 100vh
+    .customshadaw{
+        list-style-type: none; 
+        margin: 30px; 
+        box-shadow: 0 0rem 1rem rgba(0, 0, 0, .2) !important;
     }
-
-.text-gray {
-    color: #aaa
+.sectionpedding{
+    padding: 0px 0px;
 }
 
-img {
-    height: 170px;
-    width: 140px
+.vertical { 
+            border-left: 6px solid black; 
+            height: 200px; 
+            position:absolute; 
+            left: 50%; 
+        } 
+
+.lastbox{
+    border-left: 1px solid hsl(0, 0%, 90%);
+    margin: 16px 0;
 }
 
+.tags{
+    padding: 0;
+    font-size: 12px;
+    color: hsl(0, 0%, 60%);
+    border-radius: 4px;
+    background-color: hsl(0, 0%, 100%);
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+}
+.middleheaderbox{
+    font-family: -apple-system, BlinkMacSystemFont, segoe ui, avenir next, avenir, helvetica neue, helvetica, ubuntu, roboto, noto, arial, sans-serif;
+    -webkit-font-smoothing: subpixel-antialiased;
+    text-decoration: underline;
+    color: hsl(0, 0%, 70%);
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    color: hsl(0, 0%, 30%);
+    font-size: 14px;
+    vertical-align: bottom;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: bold;
+    line-height: 1.3;
+}
+.middlesubtitle{
+    color: hsl(0, 0%, 60%);
+    height: 18px;
+    font-size: 12px;
+    line-height: 18px;
+    max-height: 18px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.middlesubtitletext{
+    font-family: -apple-system, BlinkMacSystemFont, segoe ui, avenir next, avenir, helvetica neue, helvetica, ubuntu, roboto, noto, arial, sans-serif;
+    -webkit-font-smoothing: subpixel-antialiased;
+    text-decoration: underline;
+    color: hsl(0, 0%, 70%);
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    color: hsl(0, 0%, 60%);
+    font-weight: 500;
+}
+.middleheaderbox:hover{
+    text-decoration: underline;
+}
+.middleheaderbox::after{
+    content: '';
+    height: 1px;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 100%;
+    transform: translateY(1px);
+    transition: 0.15s all cubic-bezier(0.39, 0.575, 0.565, 1);
+    transition-property: opacity, transform;
+    width: 100%;
+}
+/* .middlesubtitletext:hover::after, .middlesubtitletext:focus::after{
+    opacity: 1;
+    transition-delay: 0.2s;
+    transition-duration: 0.15s;
+    transform: translateY(-3px) translateZ(0);
+} */
+
+.middlesubtitletext::after{
+    background-color: hsl(0, 0%, 60%);
+}
+
+.middledetail{
+    margin-bottom: 4px;
+    list-style-type: initial;
+    font-size: 14px;
+    font-weight: 400;
+    position: relative;
+}
+
+.checked {
+  color: orange;
+}
 </style>
 
 <div id="divbody" class="container-fluid py-5">
@@ -25,9 +122,175 @@ img {
         </div>
     </div>
     <div class="row">
+        <div class="col-lg-3 mx-auto">
+            <ul class="list-group shadow" style="list-style-type: none;">
+                <li>
+                   Masum
+                </li>
+            </ul>
+        </div>
+        <div class="col-lg-9 mx-auto">
+            <ul class="list-group shadow customshadaw">
+                <li>
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="row">
+                                <div class="col-md-6" style="padding-right: 0px;">
+                                    <div class="row" style="padding:16px;padding-right: 0px;padding-bottom: 0px;">
+                                        <div class="col-md-12" style="padding-right: 0px;">
+                                            <section class="sectionpedding">
+                                                <img src="../../../../../assets/images/tradesmen/achievments_bg.jpg">
+                                            </section>
+                                        </div>
+                                        <div class="col-md-12" style="margin-top: 16px;">
+                                            <span class="tags">
+                                                Tags: angular, admin, dashboar.. See all tags
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="row" style="padding:16px">
+                                        <div class="col-md-12">
+                                            <!-- <span class="tags">
+                                                                            Tags: angular, admin, dashboar.. See all tags
+                                                                        </span> -->
+                                            <div class="_25ygu" style="line-height: 1.3;">
+                                                <h3 class="_2WWZB" style="max-height: 40px; max-width: 100%;margin-bottom: 0px;">
+                                                    <a href="https://themeforest.net/item/fuse-angularjs-material-design-admin-template/12931855"
+                                                        class="middleheaderbox" tabindex="0">
+                                                        Fuse - Angular 9+ Material Design Admin Template
+                                                    </a>
+                                                </h3>
+                                                <div class="middlesubtitle">
+                                                    <i> by </i>
+                                                    <a class="middlesubtitletext" href="https://themeforest.net/user/srcn">srcn</a>
+                                                    <span> in </span>
+                                                    <a class="middlesubtitletext" href="/category/site-templates/admin-templates">Admin
+                                                        Templates</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12" style="padding-top: 16px;">
+                                            <ul style="color: hsl(0, 0%, 40%);margin-left: 16px;">
+                                                <li class="middledetail">Angular Material library</li>
+                                                <li class="middledetail">Built-in ready to use applications</li>
+                                                <li class="middledetail">Configurable layouts</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 lastbox">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button class="btn pull-right"
+                                        style="border: 0px; background-color: transparent;border-left: 1px solid hsl(0, 0%, 90%);">
+                                        <mat-icon style="color: hsl(0, 0%, 60%);">share</mat-icon>
+                                    </button>
+                                    <button class="btn pull-right" style="border: 0px; background-color: transparent">
+                                        <mat-icon style="color: hsl(0, 0%, 60%);">home</mat-icon>
+                                    </button>
+                
+                                </div>
+                                <div class="col-md-12 text-center" style="padding-top: 25px;">
+                                    <span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star" style="color: hsl(0, 4%, 47%);"></span>
+                                        <span style="color: hsl(0, 0%, 60%);font-size: 12px;"> (193 reviews)</span>
+                
+                                    </span>
+                                </div>
+                                <div class="col-md-12 text-center">
+                                    <span>
+                                        <span style="color: hsl(0, 0%, 60%);font-size: 12px;">15.3K Sales</span>
+                                    </span>
+                                </div>
+                                <div class="col-md-12 text-center">
+                                    <span>
+                                        <span style="color: hsl(0, 0%, 60%);font-size: 12px;">Last updated:</span>
+                                    </span>
+                                    <span style="color: hsl(0, 0%, 60%);font-size: 12px;">7 Feb 20</span>
+                                </div>
+                
+                                <div class="col-md-12 text-center"
+                                    style="display: flex; flex-direction: column; justify-content: flex-end;">
+                                    <a mat-button href="https://www.google.com/" target="_blank">Detail</a>
+                                </div>
+                            </div>
+                
+                        </div>
+                    </div>
+                    <div class="row" style="border-top: 1px solid hsl(0, 0%, 90%);margin-left: 0px;margin-right: 0px;">
+                        <div class="col-md-12" style="height: 27px;background-color: #f7f7f7;">
+                        <div class="row" style="font-size:16px; color:hsl(0, 0%, 60%);padding-top: 3px;">
+                            <div class="col-md-3">
+                                <span style="color: orange;padding-right: 10px; padding-left: 35px;"><i class="fa fa-phone"></i></span>
+                                <span style="font-size: 12px;">02457496</span>
+                            </div>
+                            <div class="col-md-3">
+                                <span style="padding: 10px;color: orange;padding: 15px;"><i class="fa fa-mobile-phone"></i></span>
+                                <span style="font-size: 12px;">+8801914658574</span>
+                            </div>
+                            <div class="col-md-3">
+                                <span style="color: orange;"><i class="fa fa-comment"></i></span>
+                                <input style="background-color: #f7f7f7; font-size: 12px; color: hsl(0, 0%, 60%); border: 1px solid hsl(0, 0%, 90%); height: 21px; width: 160px;" type="text" placeholder="SMS">
+                                <!-- <span style="font-size: 12px;">SMS</span> -->
+                            </div>
+                            <div class="col-md-3">
+                                <span style="color: orange;padding: 15px;"><i class="fa fa-envelope"></i></span>
+                                <span style="font-size: 12px;">Email</span>
+                            </div>
+                        </div>
+                            <!-- <span style="font-size:12px; color:hsl(0, 0%, 60%); float: right; padding-top: 5px; margin-right: 60px;">
+                                <span>Tel:02457496</span>
+                                <span>Mob: 8801914658574</span>
+                                
+
+                                
+                            </span> -->
+
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ul class="list-group shadow customshadaw">
+                <li>
+                   <div class="row">
+                       <div class="col-md-9">
+                           <div class="row">
+                               <div class="col-md-6">
+                                   <section class="sectionpedding">
+                                       <span>Image Section</span>
+                                   </section>
+                               </div>
+                               <div class="col-md-6">
+                                <section>
+                                    <span>Description Section</span>
+                                </section>
+
+                               </div>
+                           </div>
+                       </div>
+                       <div class="col-md-3">
+                        <section>
+                            <span>Rating Section</span>
+                        </section>
+                       </div>
+                   </div>
+                </li>
+            </ul>
+        </div>
+    </div><br><br>
+    <div class="row">
         <div class="col-lg-8 mx-auto">
             <!-- List group-->
             <ul class="list-group shadow">
+                
                 <!-- list group item-->
                 <li class="list-group-item">
                     <!-- Custom content-->
@@ -68,46 +331,7 @@ img {
                         </div><img src="https://i.imgur.com/KFojDGa.jpg" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
                     </div> <!-- End -->
                 </li> <!-- End -->
-                <!-- list group item -->
-                <li class="list-group-item">
-                    <!-- Custom content-->
-                    <div class="media align-items-lg-center flex-column flex-lg-row p-3">
-                        <div class="media-body order-2 order-lg-1">
-                            <h5 class="mt-0 font-weight-bold mb-2">Apple iPhone XS Max (Gold, 64 GB)</h5>
-                            <p class="font-italic text-muted mb-0 small">64 GB ROM | 16.51 cm (6.5 inch) Super Retina HD Display 12MP + 12MP | 7MP Front Camera A12 Bionic Chip Processor</p>
-                            <div class="d-flex align-items-center justify-content-between mt-1">
-                                <h6 class="font-weight-bold my-2">₹1,09,900</h6>
-                                <ul class="list-inline small">
-                                    <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                                    <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                                    <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                                    <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                                    <li class="list-inline-item m-0"><i class="fa fa-star-o text-gray"></i></li>
-                                </ul>
-                            </div>
-                        </div><img src="https://i.imgur.com/KFojDGa.jpg" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
-                    </div> <!-- End -->
-                </li> <!-- End -->
-                <!-- list group item -->
-                <li class="list-group-item">
-                    <!-- Custom content-->
-                    <div class="media align-items-lg-center flex-column flex-lg-row p-3">
-                        <div class="media-body order-2 order-lg-1">
-                            <h5 class="mt-0 font-weight-bold mb-2">OnePlus 7 Pro (Almond, 256 GB)</h5>
-                            <p class="font-italic text-muted mb-0 small">Rear Camera|48MP (Primary)+ 8MP (Tele-photo)+16MP (ultrawide)| Front Camera|16 MP POP-UP Camera|8GB RAM|Android pie</p>
-                            <div class="d-flex align-items-center justify-content-between mt-1">
-                                <h6 class="font-weight-bold my-2">₹ 52,999</h6>
-                                <ul class="list-inline small">
-                                    <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                                    <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                                    <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                                    <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                                    <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                                </ul>
-                            </div>
-                        </div><img src="https://i.imgur.com/6IUbEME.jpg" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
-                    </div> <!-- End -->
-                </li> <!-- End -->
+
             </ul> <!-- End -->
         </div>
     </div>
