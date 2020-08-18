@@ -23,6 +23,9 @@ import { AuthorComponent } from './components/author/author.component';
 import { RegistrationComponent } from './login/registration/registration.component';
 import { LoginRegistrationService } from './services/login-registration.service';
 import { ModalModule } from './login/user-login';
+// import { ModalSignupModule } from './login/registration';
+
+// import { ModalSignupService } from './login/registration';
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 
 

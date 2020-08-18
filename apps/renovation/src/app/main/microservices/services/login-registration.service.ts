@@ -20,6 +20,7 @@ export class LoginRegistrationService implements  OnInit
     ngOnInit(): void {
         
     }
+    
     saveUser(): Observable<any>
     {
         

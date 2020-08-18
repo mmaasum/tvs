@@ -20,12 +20,19 @@
                 </ul>
             </nav>
             <!-- <a href="#about" class="get-started-btn scrollto">Post a job</a> -->
-            <a routerLink="/registration" class="get-started-btn scrollto">Sign Up</a>
+            <span *ngIf="wellcomeMessage !== 'hide'" 
+                    style="padding-left: 10px;" 
+                    class="chaildnev">
+                    <i style="padding-right: 6px;" class="fa fa-plug"></i>Wellcome!
+            </span>
+            <a *ngIf="wellcomeMessage === 'hide'" 
+                    (click)="openSignupModal('custom-modal-1')"
+                     class="get-started-btn scrollto">Sign Up</a>
         </div>
     </header>
 </section>
 
-<tvs-jw-modal id="custom-modal-1">
+<tvs-jw-modal id="custom-modal-1" style="height: 200px;">
    
     <button (click)="closeModal('custom-modal-1');">Close</button>
 </tvs-jw-modal>

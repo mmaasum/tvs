@@ -75,6 +75,12 @@ export class FindTradesmenComponent implements OnInit {
   }
 
   getSearchItemcategoryList(): void{
+    console.log(this.selectedItemCategoryId);
+    if(!this.selectedItemCategoryId)
+    {
+      alert('Please enter a valid category name')
+      return;
+    }
     this.tradesmanService.getSearchItemcategoryList(this.selectedItemCategoryId, this.postcode)
     .subscribe(
       response => {

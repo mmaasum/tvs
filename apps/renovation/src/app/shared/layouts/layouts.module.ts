@@ -50,6 +50,7 @@ import {MatTreeModule} from '@angular/material/tree';
 import { HomeComponent } from './home/home.component';
 import { Routes, RouterModule } from '@angular/router';
 import { ModalModule } from '../../main/microservices/login/user-login/modal.module';
+// import { ModalSignupModule } from '../../main/microservices/login/registration/modal.module';
 
 const appRoutes: Routes = [
   // {

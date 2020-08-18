@@ -13,53 +13,56 @@ import { UserModel } from '../../../model/user.model';
 export class ModalComponent implements OnInit, OnDestroy {
     @Input() id: string;
     private element: any;
-
+    ppp
     userName;
     user: any;
     postUserForm: FormGroup;
 
-    constructor(private modalService: ModalService, private el: ElementRef,
-        private _formBuilder: FormBuilder) {
-        this.element = el.nativeElement;
-    }
+    constructor(private modalService: ModalService, 
+                private el: ElementRef,
+                private _formBuilder: FormBuilder) 
+                {
+                    this.element = el.nativeElement;
+                }
 
+    
     login(): void{
-        // this.loginRegistrationService.changeMessage("Log Out")
+        console.log(this.modalService);
+        this.modalService.changeMessage("Log Out")
     
-        // const data = this.postUserForm.getRawValue();
-    
-        // this.loginRegistrationService.getUserByEmailId(data)
-        // .subscribe(
-        //   response => {
-        //     this.loginRegistrationService =  response;
-    
-        //     localStorage.setItem('logedinUser', JSON.stringify(response));
-    
-        //      console.log(this.loginRegistrationService);
-        //   },
-        //   error => {
-        //     console.log(error);
-        //   }
-        // );
-        
+        this.modalService.wellcomeMessage('show')
+
+        this.ppp = this.modalService.getUserByEmailId(this.user)
+        .subscribe(
+          response => {
+            // this.modalService =  response;
+            localStorage.setItem('logedinUser', JSON.stringify(response));
+            // this.userName = JSON.stringify(response);
+
+            // this.ppp = response;
+            //  console.log(this.userName);
+          },
+          error => {
+            console.log(error);
+          }
+        );
+
+        // this.userName = JSON.parse(localStorage.getItem('logedinUser'));
+        //   console.log(this.ppp);
+        // this.modalService.userName(this.ppp)
+
+        this.close();
       }
 
-      createUserForm(): FormGroup
-    {
-        // console.log('t c createProductForm');
-        return this._formBuilder.group({
-          email                       : [this.user.email],
-          password                    : [this.user.password]
-        });
-    }
     
     ngOnInit(): void {
 
         this.user = new UserModel();
+        this.userName = new UserModel();
 
-        this.postUserForm = this.createUserForm();
+        // this.postUserForm = this.createUserForm();
     
-        console.log(this.id);
+        // console.log(this.id);
         // ensure id attribute exists
         if (!this.id) {
             console.error('modal must have an id');
@@ -88,7 +91,6 @@ export class ModalComponent implements OnInit, OnDestroy {
 
     // open modal
     open(): void {
-        console.log('aa');
         this.element.style.display = 'block';
         document.body.classList.add('tvs-jw-modal-open');
     }
