@@ -49,6 +49,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import { HomeComponent } from './home/home.component';
 import { Routes, RouterModule } from '@angular/router';
+import { ModalModule } from '../../main/microservices/login/user-login/modal.module';
 
 const appRoutes: Routes = [
   // {
@@ -66,7 +67,7 @@ const appRoutes: Routes = [
   declarations: [NavBarComponent, FooterComponent, 
     SliderComponent, FrontBlocksComponent, HomeComponent
   ],
-  imports: [
+  imports: [ModalModule,
     RouterModule.forRoot(appRoutes),
     CommonModule,DrawYourHomeModule,MatCardModule,MatButtonModule,MatIconModule,MatDividerModule
   ],

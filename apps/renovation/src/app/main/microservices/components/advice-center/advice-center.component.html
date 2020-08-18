@@ -2,95 +2,58 @@
   .space{
     line-height: 27px;
   }
+  .lidefaule{
+    color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+  }
+  .lidefaule :hover{
+    color: #0056b3;
+    text-decoration: underline;
+    cursor: pointer;
+  }
 </style>
-<!-- Page Content -->
 <div class="container">
-
   <div class="row">
-
-    <!-- Post Content Column -->
     <div class="col-lg-8">
-
-      <!-- Title -->
-      <h1 class="mt-4">Building Rehabilitation, Renovation Federal Grants</h1>
-
-      <!-- Author -->
+      <h1 class="mt-4">{{adviceCenterPost.title}}</h1>
       <p class="lead">
         by
-        <a href="#">Md. Masum Jahangir</a>
+        <a routerLink="/advice-center-author">{{adviceCenterPost.authorName}}</a>
+        Welcome to Rockfield
       </p>
-
       <hr>
-
-      <!-- Date/Time -->
-      <p>Posted on June 30, 2020 at 12:00 PM</p>
-
+      <p>Posted on {{adviceCenterPost.createDate | date: 'MMM-dd-yyyy'}}</p>
       <hr>
-
-      <!-- Preview Image -->
       <!-- <img class="img-fluid rounded" src="http://placehold.it/900x300" alt=""> -->
       <img class="img-fluid rounded" src="../../../../../assets/img/renovation-blog.jpg" alt="">
       <hr>
-
-      <!-- Post Content -->
-      <p class="lead">
-        Showing results 1-25 of 84 for Building Rehabilitation, Renovation federal grants, government grants and loans. For detailed information on a Building Rehabilitation, Renovation federal grant including eligibility requirements or financial assistance, click the title.
-      </p>
-      <p>
-        Enables nonprofit cooperative ownership housing corporations or trusts to develop or sponsor the development of housing projects to be operated as cooperatives. Section 213 allows investors to provide good quality multifamily housing to be sold to...
-        <br><a href="#">www.FederalGrantsWire.com/mortgage-insurancecooper... </a>
-      </p>
-
-      <p>
-        To link elderly, especially frail and disabled, or disabled non-elderly assisted housing and neighborhood residents to supportive services in the general community; to prevent premature and unnecessary institutionalization; and, to assess individual...
-        <br> <a href="#">www.FederalGrantsWire.com/multifamily-housing-serv...</a> 
-
-      </p>
-      <p>
-        To promote the development of local strategies to coordinate the use of assistance under the Public Housing program with public and private resources to enable participating families to achieve economic independence and housing self-sufficiency.
-      </p>
-
-     
-      <blockquote class="blockquote">
-        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-        <footer class="blockquote-footer">Someone famous in
-          <cite title="Source Title">Source Title</cite>
-        </footer>
-      </blockquote>
-      <p>
-        This program has been designed to increase the supply of affordable multifamily housing in rural areas through partnerships between Rural Development and major lending sources, as well as State and local housing finance agencies and bond insurers....
-      </p>
-      <p>
-        To develop viable urban communities by providing decent housing, a suitable living environment, and expanding economic opportunities, principally for persons of low and moderate income.
-      </p>
-     
-
+      <div [innerHTML]="adviceCenterPost.postText"></div>
       <hr>
 
       <!-- Comments Form -->
       <div class="card my-4">
         <h5 class="card-header">Leave a Comment:</h5>
         <div class="card-body">
-          <form>
+          <form name="postCommentEntryForm" [formGroup]="postCommentEntryForm">
             <div class="form-group">
-              <textarea class="form-control" rows="3"></textarea>
+              <textarea formControlName="comment" class="form-control" rows="3"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button (click)="saveComment()" type="submit" class="btn btn-primary">Submit</button>
           </form>
         </div>
       </div>
 
-      <!-- Single Comment -->
-      <div class="media mb-4">
+
+      <div class="media mb-4" *ngFor="let comment of adviceCenterPost.adviceCenterPostComment">
         <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
         <div class="media-body">
-          <h5 class="mt-0">Commenter Name</h5>
-          Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+          <h5 class="mt-0">{{comment.user.userName}}</h5>
+          {{comment.comment}}
         </div>
       </div>
 
-      <!-- Comment with nested comments -->
-      <div class="media mb-4">
+      <!-- <div class="media mb-4">
         <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
         <div class="media-body">
           <h5 class="mt-0">Commenter Name</h5>
@@ -113,86 +76,29 @@
           </div>
 
         </div>
-      </div>
+      </div> -->
 
     </div>
-
-    <!-- Sidebar Widgets Column -->
     <div class="col-md-4">
-
-      <!-- Search Widget -->
       <div class="card my-4">
         <h5 class="card-header">Search</h5>
         <div class="card-body">
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search for...">
+            <input type="text" [(ngModel)]="searchText" class="form-control" placeholder="Search for...">
             <span class="input-group-append">
               <button class="btn btn-secondary" type="button">Go!</button>
             </span>
           </div>
         </div>
       </div>
-
-      <!-- Categories Widget -->
       <div class="card my-4">
         <h5 class="card-header">Categories</h5>
         <div class="card-body">
           <div class="row">
             <div class="col-lg-12">
               <ul class="list-unstyled mb-0" style="list-style: circle;">
-                <li class="space">
-                  <a href="#">Applicant Eligibility</a>
-                </li>
-                <li class="space">
-                  <a href="#">Beneficiary Eligibility</a>
-                </li>
-                <li class="space">
-                  <a href="#">Credentials/Documentation</a>
-                </li>
-                <li class="space">
-                  <a href="#">Pre-Application Procedure</a>
-                </li>
-                <li class="space">
-                  <a href="#">Application Procedure</a>
-                </li>
-                <li class="space">
-                  <a href="#">Award Procedure</a>
-                </li>
-                <li class="space">
-                  <a href="#">Deadlines</a>
-                </li>
-                <li class="space">
-                  <a href="#">Approval/Disapproval Decision Time</a>
-                </li>
-                <li class="space">
-                  <a href="#">Appeals</a>
-                </li>
-                <li>
-                  <a href="#">Renewals</a>
-                </li>
-                <li class="space">
-                  <a href="#">How are proposals selected?</a>
-                </li>
-                <li class="space">
-                  <a href="#">How may assistance be used?</a>
-                </li>
-                <li class="space">
-                  <a href="#">Reporting</a>
-                </li>
-                <li class="space">
-                  <a href="#">Auditing</a>
-                </li>
-                <li class="space">
-                  <a href="#">Records</a>
-                </li>
-                <li class="space">
-                  <a href="#">Regional or Local Offic</a>
-                </li>
-                <li class="space">
-                  <a href="#">Headquarters Office</a>
-                </li>
-                <li class="space">
-                  <a href="#">Account Identification</a>
+                <li (click)="getAdviceCenterPost(title.adviceCenterId)" class="space lidefaule" *ngFor="let title of adviceCenterTitleList | filter: searchText;">
+                  <a>{{title.title}}</a>
                 </li>
               </ul>
             </div>
@@ -200,19 +106,12 @@
           </div>
         </div>
       </div>
-
-      <!-- Side Widget -->
-      <div class="card my-4">
+      <!-- <div class="card my-4">
         <h5 class="card-header">Side Widget</h5>
         <div class="card-body">
           You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
         </div>
-      </div>
-
+      </div> -->
     </div>
-
   </div>
-  <!-- /.row -->
-
 </div>
-<!-- /.container -->

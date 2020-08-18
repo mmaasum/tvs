@@ -33,7 +33,7 @@ export class DrawHomeComponent implements OnInit {
   editCourse() {
 
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.height = 'auto'
+    dialogConfig.height = '95%'
     dialogConfig.width = 'auto'
 
     dialogConfig.disableClose = false;

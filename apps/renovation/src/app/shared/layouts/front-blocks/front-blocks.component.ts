@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FrontBlocksComponent implements OnInit {
   master = 'Draw Now';
+  master2 = 'Search';
+  master3 = 'Make Plan';
   constructor() { }
 
   ngOnInit(): void {

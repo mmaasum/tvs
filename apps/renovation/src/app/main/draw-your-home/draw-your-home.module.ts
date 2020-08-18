@@ -14,14 +14,20 @@ import { DrawHomeDialogComponent } from './draw-home-dialog/draw-home-dialog.com
 import {MatInputModule} from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatIconModule} from '@angular/material/icon';
+import { Routes, RouterModule } from '@angular/router';
+import { FindTradesmenComponent } from '../microservices/components/find-tradesmen/find-tradesmen.component';
 
+const routes: Routes = [
+  { path        : 'find-tradesmen', component: FindTradesmenComponent }
+];
 @NgModule({
   declarations: [DrawHomeComponent,DrawHomeDialogComponent],
   imports: [MatDialogModule,MatCardModule,BrowserAnimationsModule,
     ReactiveFormsModule,MatButtonModule,MatFormFieldModule,MatSelectModule,
     MatDatepickerModule,MatInputModule,MatDatepickerModule,MatNativeDateModule,
     MatIconModule,
-    CommonModule
+    CommonModule,
+    RouterModule.forChild(routes)
   ],
   exports: [
     CommonModule,DrawHomeComponent,DrawHomeDialogComponent

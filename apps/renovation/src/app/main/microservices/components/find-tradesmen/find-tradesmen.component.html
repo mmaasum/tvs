@@ -1,5 +1,3 @@
-<!-- <p style="margin-top:20px;padding-top:50px;height: 100px;border: 1px solid black;background-color: gray;">Find tradesmen works!</p> -->
-
 
 <style>
     .customshadaw{
@@ -33,6 +31,7 @@
     display: flex;
     width: 100%;
 }
+
 .middleheaderbox{
     font-family: -apple-system, BlinkMacSystemFont, segoe ui, avenir next, avenir, helvetica neue, helvetica, ubuntu, roboto, noto, arial, sans-serif;
     -webkit-font-smoothing: subpixel-antialiased;
@@ -124,6 +123,93 @@
     content: "\f067"; 
 }
 
+.elips {
+  /* height: 18px; */
+  /* width: 140px; */
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  display: inline-block;
+  margin: 0 5px 0 5px;
+  text-align: center;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  /* color: #000; */
+  max-width: 200px;
+  font-size: 12px;
+    color: hsl(0, 0%, 60%);
+    border-radius: 4px;
+    background-color: hsl(0, 0%, 100%);
+}
+
+.seeall{
+    padding: 0;
+    font-size: 12px;
+    color: hsl(238deg 79% 77%);
+    border-radius: 4px;
+    background-color: hsl(0, 0%, 100%);
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.customshadaw:hover { 
+    box-shadow: 0 0rem 1rem rgba(0, 0, 0, 0.4) !important;
+    }
+ 
+ 
+
+    .tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.bg{
+    
+    min-height: 100vh;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-align: center;
+      align-items: center;
+  background: url(../../../../../assets/images/Searchs_012.png);
+  background-size: cover;
+  background-position: center center;
+  padding: 15px;
+  font-family: 'Lato', sans-serif;
+}
+
+.ng-autocomplete {
+    width: 230px;
+}
+
+::ng-deep .ng-autocomplete .autocomplete-container .input-container input {
+    height: 30px;
+}
+
+::ng-deep .ng-autocomplete .autocomplete-container {
+    box-shadow: none;
+}
 
 </style>
 
@@ -138,6 +224,7 @@
                             <div class="card mb-0">
                                 <div class="card-header collapsed" data-toggle="collapse" href="#collapseOne">
                                     <a class="card-title"> Item 1 </a>
+                                    
                                 </div>
                                 <div id="collapseOne" class="card-body collapse" data-parent="#accordion">
                                     <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS. </p>
@@ -161,52 +248,121 @@
             </ul>
         </div>
         <div class="col-lg-9 mx-auto">
+
+
+
+            <div class="s012">
+                <form>
+                  <div class="inner-form">
+                    <div class="main-form" id="main-form">
+          
+                      <div class="row second">
+                        <div style="margin-right: 10px;padding-top: 5px;" class="input-wrap">
+                          <div class="icon-wrap">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"></path>
+                            </svg>
+                          </div>
+                          <div class="input-field">
+                            <label style="margin-bottom: 0px;">Trade</label>
+                            <ng-autocomplete 
+                                [data]="data" 
+                                [searchKeyword]="keyword" 
+                                placeHolder="e.g Electrician" 
+                                (selected)='selectEvent($event)'
+                                (inputChanged)='onChangeSearch($event)' 
+                                (inputFocused)='onFocused($event)' 
+                                [itemTemplate]="itemTemplate"
+                                [notFoundTemplate]="notFoundTemplate">
+                            </ng-autocomplete>
+                            <ng-template #itemTemplate let-item>
+                                <a [innerHTML]="item.itemCategoryName"></a>
+                            </ng-template>
+                            
+                            <ng-template #notFoundTemplate let-notFound>
+                                <div [innerHTML]="notFound"></div>
+                            </ng-template>
+                          </div>
+                        </div>
+                        <div style="margin-right: 25px;padding-top: 5px;" class="input-wrap">
+                          <div class="icon-wrap">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"></path>
+                            </svg>
+                          </div>
+                          <div class="input-field">
+                            <label style="margin-bottom: 0px;">Postcode</label>
+                            <input type="text" placeholder="e.g M 30" 
+                                [value]="postcode" 
+                                (input) = 'postcode = $event.target.value'
+                                id="postcode"/>
+                          </div>
+                        </div>
+                        <div class="row last">
+                        <button (click)="getSearchItemcategoryList()" class="btn-search" type="button">Search</button>
+                      </div>
+                      </div>
+                     
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+              
+
+
+              
             <ul style="padding-left: 0px; margin-left: 0px;">
-                <li class="list-group shadow customshadaw">
+                <li *ngFor="let item of tradesman" class="list-group shadow customshadaw">
                     <div class="row">
                         <div class="col-md-9">
                             <div class="row">
-                                <div class="col-md-6" style="padding-right: 0px;">
+                                <div class="col-md-5" style="padding-right: 0px;">
                                     <div class="row" style="padding:16px;padding-right: 0px;padding-bottom: 0px;">
                                         <div class="col-md-12" style="padding-right: 0px;">
                                             <section class="sectionpedding">
-                                                <img src="../../../../../assets/images/tradesmen/achievments_bg.jpg">
+                                                <img style="height: 170px" src="../../../../../assets/tradesman/{{item.image}}.jpg">
                                             </section>
                                         </div>
-                                        <div class="col-md-12" style="margin-top: 16px;">
-                                            <span class="tags">
-                                                Tags: angular, admin, dashboar.. See all tags
-                                            </span>
-                                        </div>
+                                        
+                                          <button type="button" class="tooltip">
+                                            <span class="tooltiptext">Tooltip text</span>
+                                          </button>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="row" style="padding:16px">
+                                <!-- routerLink="/tradesmen-detail/{{item.tradesmanId}}" -->
+                                <div class="col-md-7">
+                                    <div class="row" style="padding:16px;padding-bottom: 0px;">
                                         <div class="col-md-12">
-                                            <!-- <span class="tags">
-                                                                            Tags: angular, admin, dashboar.. See all tags
-                                                                        </span> -->
                                             <div class="_25ygu" style="line-height: 1.3;">
                                                 <h3 class="_2WWZB" style="max-height: 40px; max-width: 100%;margin-bottom: 0px;">
-                                                    <a href="https://themeforest.net/item/fuse-angularjs-material-design-admin-template/12931855"
+                                                    <a [routerLink]="['/tradesmen-detail',item.tradesmanId]"
+                                                        target="_blank"
                                                         class="middleheaderbox" tabindex="0">
-                                                        Fuse - Angular 9+ Material Design Admin Template
+                                                        {{item.companyName}}
                                                     </a>
                                                 </h3>
-                                                <div class="middlesubtitle">
-                                                    <i> by </i>
-                                                    <a class="middlesubtitletext" href="https://themeforest.net/user/srcn">srcn</a>
-                                                    <span> in </span>
-                                                    <a class="middlesubtitletext" href="/category/site-templates/admin-templates">Admin
-                                                        Templates</a>
+                                                <div class="col-md-12" style="padding-left: 0px;">
+                                                    <span class="tags elips">
+                                                        Skills: {{item.tags}} 
+                                                    </span>
+                                                    <a class="seeall tooltip-ex" style="float: right;" href="#">
+                                                        <span>See all</span>
+                                                        <span class="tooltip-ex-text">
+                                                            <span>{{item.tags}}</span>
+                                                        </span>
+                                                    </a> 
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-12" style="padding-top: 16px;">
                                             <ul style="color: hsl(0, 0%, 40%);margin-left: 16px;">
-                                                <li class="middledetail">Angular Material library</li>
-                                                <li class="middledetail">Built-in ready to use applications</li>
-                                                <li class="middledetail">Configurable layouts</li>
+                                                <li style="list-style-type: none;max-height: 123px;overflow: hidden;" class="middledetail">
+                                                    <span >
+                                                        {{item.serviceDescription}}
+                                                    </span>
+                                                    
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
@@ -216,6 +372,9 @@
                         <div class="col-md-3 lastbox">
                             <div class="row">
                                 <div class="col-md-12">
+                                    <button class="btn pull-right" style="border: 0px; background-color: transparent">
+                                        <mat-icon style="color:orange">favorite</mat-icon>
+                                    </button>
                                     <button class="btn pull-right"
                                         style="border: 0px; background-color: transparent;border-left: 1px solid hsl(0, 0%, 90%);">
                                         <mat-icon style="color: hsl(0, 0%, 60%);">share</mat-icon>
@@ -232,143 +391,33 @@
                                         <span class="fa fa-star checked"></span>
                                         <span class="fa fa-star checked"></span>
                                         <span class="fa fa-star" style="color: hsl(0, 4%, 47%);"></span>
-                                        <span style="color: hsl(0, 0%, 60%);font-size: 12px;"> (193 reviews)</span>
+                                        <span style="color: hsl(0, 0%, 60%);font-size: 12px;"><a [routerLink]="'/review'"
+                                                        target="_blank">(193 reviews)</a> </span>
                 
                                     </span>
                                 </div>
-                                <div class="col-md-12 text-center">
+                                <!-- <div class="col-md-12 text-center">
                                     <span>
                                         <span style="color: hsl(0, 0%, 60%);font-size: 12px;">15.3K Sales</span>
                                     </span>
-                                </div>
+                                </div> -->
                                 <div class="col-md-12 text-center">
+                                    
                                     <span>
-                                        <span style="color: hsl(0, 0%, 60%);font-size: 12px;">Last updated:</span>
-                                    </span>
-                                    <span style="color: hsl(0, 0%, 60%);font-size: 12px;">7 Feb 20</span>
-                                </div>
-                
-                                <div class="col-md-12 text-center"
-                                    style="display: flex; flex-direction: column; justify-content: flex-end;">
-                                    <a mat-button href="https://www.google.com/" target="_blank">Detail</a>
-                                </div>
-                            </div>
-                
-                        </div>
-                    </div>
-                    <div class="row" style="border-top: 1px solid hsl(0, 0%, 90%);margin-left: 0px;margin-right: 0px;">
-                        <div class="col-md-12" style="height: 27px;background-color: #f7f7f7;">
-                        <div class="row" style="font-size:16px; color:hsl(0, 0%, 60%);padding-top: 3px;">
-                            <div class="col-md-3">
-                                <span style="color: orange;padding-right: 10px; padding-left: 35px;"><i class="fa fa-phone"></i></span>
-                                <span style="font-size: 12px;">02457496</span>
-                            </div>
-                            <div class="col-md-3">
-                                <span style="padding: 10px;color: orange;padding: 15px;"><i class="fa fa-mobile-phone"></i></span>
-                                <span style="font-size: 12px;">+8801914658574</span>
-                            </div>
-                            <div class="col-md-3">
-                                <span style="color: orange;"><i class="fa fa-comment"></i></span>
-                                <input style="background-color: #f7f7f7; font-size: 12px; color: hsl(0, 0%, 60%); border: 1px solid hsl(0, 0%, 90%); height: 21px; width: 160px;" type="text" placeholder="SMS">
-                                <!-- <span style="font-size: 12px;">SMS</span> -->
-                            </div>
-                            <div class="col-md-3">
-                                <span style="color: orange;padding: 15px;"><i class="fa fa-envelope"></i></span>
-                                <span style="font-size: 12px;">Email</span>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group shadow customshadaw">
-                    <div class="row">
-                        <div class="col-md-9">
-                            <div class="row">
-                                <div class="col-md-6" style="padding-right: 0px;">
-                                    <div class="row" style="padding:16px;padding-right: 0px;padding-bottom: 0px;">
-                                        <div class="col-md-12" style="padding-right: 0px;">
-                                            <section class="sectionpedding">
-                                                <img src="../../../../../assets/images/tradesmen/achievments_bg.jpg">
-                                            </section>
-                                        </div>
-                                        <div class="col-md-12" style="margin-top: 16px;">
-                                            <span class="tags">
-                                                Tags: angular, admin, dashboar.. See all tags
+                                        <span style="float: left;margin-top: -3px;margin-right: -22px;color: orange;" class="material-icons">
+                                            location_on
                                             </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="row" style="padding:16px">
-                                        <div class="col-md-12">
-                                            <!-- <span class="tags">
-                                                                            Tags: angular, admin, dashboar.. See all tags
-                                                                        </span> -->
-                                            <div class="_25ygu" style="line-height: 1.3;">
-                                                <h3 class="_2WWZB" style="max-height: 40px; max-width: 100%;margin-bottom: 0px;">
-                                                    <a href="https://themeforest.net/item/fuse-angularjs-material-design-admin-template/12931855"
-                                                        class="middleheaderbox" tabindex="0">
-                                                        Fuse - Angular 9+ Material Design Admin Template
-                                                    </a>
-                                                </h3>
-                                                <div class="middlesubtitle">
-                                                    <i> by </i>
-                                                    <a class="middlesubtitletext" href="https://themeforest.net/user/srcn">srcn</a>
-                                                    <span> in </span>
-                                                    <a class="middlesubtitletext" href="/category/site-templates/admin-templates">Admin
-                                                        Templates</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12" style="padding-top: 16px;">
-                                            <ul style="color: hsl(0, 0%, 40%);margin-left: 16px;">
-                                                <li class="middledetail">Angular Material library</li>
-                                                <li class="middledetail">Built-in ready to use applications</li>
-                                                <li class="middledetail">Configurable layouts</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 lastbox">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <button class="btn pull-right"
-                                        style="border: 0px; background-color: transparent;border-left: 1px solid hsl(0, 0%, 90%);">
-                                        <mat-icon style="color: hsl(0, 0%, 60%);">share</mat-icon>
-                                    </button>
-                                    <button class="btn pull-right" style="border: 0px; background-color: transparent">
-                                        <mat-icon style="color: hsl(0, 0%, 60%);">home</mat-icon>
-                                    </button>
-                
-                                </div>
-                                <div class="col-md-12 text-center" style="padding-top: 25px;">
-                                    <span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star" style="color: hsl(0, 4%, 47%);"></span>
-                                        <span style="color: hsl(0, 0%, 60%);font-size: 12px;"> (193 reviews)</span>
-                
+                                        <span style="color: hsl(0, 0%, 60%);font-size: 12px;">Based in Salford (1.6 Miles)</span>
                                     </span>
-                                </div>
-                                <div class="col-md-12 text-center">
-                                    <span>
-                                        <span style="color: hsl(0, 0%, 60%);font-size: 12px;">15.3K Sales</span>
-                                    </span>
-                                </div>
-                                <div class="col-md-12 text-center">
-                                    <span>
-                                        <span style="color: hsl(0, 0%, 60%);font-size: 12px;">Last updated:</span>
-                                    </span>
-                                    <span style="color: hsl(0, 0%, 60%);font-size: 12px;">7 Feb 20</span>
+                                    <!-- <span style="color: hsl(0, 0%, 60%);font-size: 12px;">7 Feb 20</span> -->
                                 </div>
                 
                                 <div class="col-md-12 text-center"
                                     style="display: flex; flex-direction: column; justify-content: flex-end;">
-                                    <a mat-button href="https://www.google.com/" target="_blank">Detail</a>
+                                    <a mat-button target="_blank"
+                                    [routerLink]="['/tradesmen-detail',item.tradesmanId]"
+                                    
+                                    >Detail</a>
                                 </div>
                             </div>
                 
@@ -377,18 +426,13 @@
                     <div class="row" style="border-top: 1px solid hsl(0, 0%, 90%);margin-left: 0px;margin-right: 0px;">
                         <div class="col-md-12" style="height: 27px;background-color: #f7f7f7;">
                         <div class="row" style="font-size:16px; color:hsl(0, 0%, 60%);padding-top: 3px;">
+
                             <div class="col-md-3">
-                                <span style="color: orange;padding-right: 10px; padding-left: 35px;"><i class="fa fa-phone"></i></span>
-                                <span style="font-size: 12px;">02457496</span>
+
                             </div>
-                            <div class="col-md-3">
-                                <span style="padding: 10px;color: orange;padding: 15px;"><i class="fa fa-mobile-phone"></i></span>
-                                <span style="font-size: 12px;">+8801914658574</span>
-                            </div>
-                            <div class="col-md-3">
+                            <div class="col-md-6">
                                 <span style="color: orange;"><i class="fa fa-comment"></i></span>
-                                <input style="background-color: #f7f7f7; font-size: 12px; color: hsl(0, 0%, 60%); border: 1px solid hsl(0, 0%, 90%); height: 21px; width: 160px;" type="text" placeholder="SMS">
-                                <!-- <span style="font-size: 12px;">SMS</span> -->
+                                <input style="background-color: #f7f7f7; font-size: 12px; color: hsl(0, 0%, 60%); border: 1px solid hsl(0, 0%, 90%); height: 21px; width: 360px;" type="text" placeholder="SMS">
                             </div>
                             <div class="col-md-3">
                                 <span style="color: orange;padding: 15px;"><i class="fa fa-envelope"></i></span>
@@ -398,242 +442,7 @@
                         </div>
                     </div>
                 </li>
-                <li class="list-group shadow customshadaw">
-                    <div class="row">
-                        <div class="col-md-9">
-                            <div class="row">
-                                <div class="col-md-6" style="padding-right: 0px;">
-                                    <div class="row" style="padding:16px;padding-right: 0px;padding-bottom: 0px;">
-                                        <div class="col-md-12" style="padding-right: 0px;">
-                                            <section class="sectionpedding">
-                                                <img src="../../../../../assets/images/tradesmen/achievments_bg.jpg">
-                                            </section>
-                                        </div>
-                                        <div class="col-md-12" style="margin-top: 16px;">
-                                            <span class="tags">
-                                                Tags: angular, admin, dashboar.. See all tags
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="row" style="padding:16px">
-                                        <div class="col-md-12">
-                                            <!-- <span class="tags">
-                                                                            Tags: angular, admin, dashboar.. See all tags
-                                                                        </span> -->
-                                            <div class="_25ygu" style="line-height: 1.3;">
-                                                <h3 class="_2WWZB" style="max-height: 40px; max-width: 100%;margin-bottom: 0px;">
-                                                    <a href="https://themeforest.net/item/fuse-angularjs-material-design-admin-template/12931855"
-                                                        class="middleheaderbox" tabindex="0">
-                                                        Fuse - Angular 9+ Material Design Admin Template
-                                                    </a>
-                                                </h3>
-                                                <div class="middlesubtitle">
-                                                    <i> by </i>
-                                                    <a class="middlesubtitletext" href="https://themeforest.net/user/srcn">srcn</a>
-                                                    <span> in </span>
-                                                    <a class="middlesubtitletext" href="/category/site-templates/admin-templates">Admin
-                                                        Templates</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12" style="padding-top: 16px;">
-                                            <ul style="color: hsl(0, 0%, 40%);margin-left: 16px;">
-                                                <li class="middledetail">Angular Material library</li>
-                                                <li class="middledetail">Built-in ready to use applications</li>
-                                                <li class="middledetail">Configurable layouts</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 lastbox">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <button class="btn pull-right"
-                                        style="border: 0px; background-color: transparent;border-left: 1px solid hsl(0, 0%, 90%);">
-                                        <mat-icon style="color: hsl(0, 0%, 60%);">share</mat-icon>
-                                    </button>
-                                    <button class="btn pull-right" style="border: 0px; background-color: transparent">
-                                        <mat-icon style="color: hsl(0, 0%, 60%);">home</mat-icon>
-                                    </button>
                 
-                                </div>
-                                <div class="col-md-12 text-center" style="padding-top: 25px;">
-                                    <span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star" style="color: hsl(0, 4%, 47%);"></span>
-                                        <span style="color: hsl(0, 0%, 60%);font-size: 12px;"> (193 reviews)</span>
-                
-                                    </span>
-                                </div>
-                                <div class="col-md-12 text-center">
-                                    <span>
-                                        <span style="color: hsl(0, 0%, 60%);font-size: 12px;">15.3K Sales</span>
-                                    </span>
-                                </div>
-                                <div class="col-md-12 text-center">
-                                    <span>
-                                        <span style="color: hsl(0, 0%, 60%);font-size: 12px;">Last updated:</span>
-                                    </span>
-                                    <span style="color: hsl(0, 0%, 60%);font-size: 12px;">7 Feb 20</span>
-                                </div>
-                
-                                <div class="col-md-12 text-center"
-                                    style="display: flex; flex-direction: column; justify-content: flex-end;">
-                                    <a mat-button href="https://www.google.com/" target="_blank">Detail</a>
-                                </div>
-                            </div>
-                
-                        </div>
-                    </div>
-                    <div class="row" style="border-top: 1px solid hsl(0, 0%, 90%);margin-left: 0px;margin-right: 0px;">
-                        <div class="col-md-12" style="height: 27px;background-color: #f7f7f7;">
-                        <div class="row" style="font-size:16px; color:hsl(0, 0%, 60%);padding-top: 3px;">
-                            <div class="col-md-3">
-                                <span style="color: orange;padding-right: 10px; padding-left: 35px;"><i class="fa fa-phone"></i></span>
-                                <span style="font-size: 12px;">02457496</span>
-                            </div>
-                            <div class="col-md-3">
-                                <span style="padding: 10px;color: orange;padding: 15px;"><i class="fa fa-mobile-phone"></i></span>
-                                <span style="font-size: 12px;">+8801914658574</span>
-                            </div>
-                            <div class="col-md-3">
-                                <span style="color: orange;"><i class="fa fa-comment"></i></span>
-                                <input style="background-color: #f7f7f7; font-size: 12px; color: hsl(0, 0%, 60%); border: 1px solid hsl(0, 0%, 90%); height: 21px; width: 160px;" type="text" placeholder="SMS">
-                                <!-- <span style="font-size: 12px;">SMS</span> -->
-                            </div>
-                            <div class="col-md-3">
-                                <span style="color: orange;padding: 15px;"><i class="fa fa-envelope"></i></span>
-                                <span style="font-size: 12px;">Email</span>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group shadow customshadaw">
-                    <div class="row">
-                        <div class="col-md-9">
-                            <div class="row">
-                                <div class="col-md-6" style="padding-right: 0px;">
-                                    <div class="row" style="padding:16px;padding-right: 0px;padding-bottom: 0px;">
-                                        <div class="col-md-12" style="padding-right: 0px;">
-                                            <section class="sectionpedding">
-                                                <img src="../../../../../assets/images/tradesmen/achievments_bg.jpg">
-                                            </section>
-                                        </div>
-                                        <div class="col-md-12" style="margin-top: 16px;">
-                                            <span class="tags">
-                                                Tags: angular, admin, dashboar.. See all tags
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="row" style="padding:16px">
-                                        <div class="col-md-12">
-                                            <!-- <span class="tags">
-                                                                            Tags: angular, admin, dashboar.. See all tags
-                                                                        </span> -->
-                                            <div class="_25ygu" style="line-height: 1.3;">
-                                                <h3 class="_2WWZB" style="max-height: 40px; max-width: 100%;margin-bottom: 0px;">
-                                                    <a href="https://themeforest.net/item/fuse-angularjs-material-design-admin-template/12931855"
-                                                        class="middleheaderbox" tabindex="0">
-                                                        Fuse - Angular 9+ Material Design Admin Template
-                                                    </a>
-                                                </h3>
-                                                <div class="middlesubtitle">
-                                                    <i> by </i>
-                                                    <a class="middlesubtitletext" href="https://themeforest.net/user/srcn">srcn</a>
-                                                    <span> in </span>
-                                                    <a class="middlesubtitletext" href="/category/site-templates/admin-templates">Admin
-                                                        Templates</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12" style="padding-top: 16px;">
-                                            <ul style="color: hsl(0, 0%, 40%);margin-left: 16px;">
-                                                <li class="middledetail">Angular Material library</li>
-                                                <li class="middledetail">Built-in ready to use applications</li>
-                                                <li class="middledetail">Configurable layouts</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 lastbox">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <button class="btn pull-right"
-                                        style="border: 0px; background-color: transparent;border-left: 1px solid hsl(0, 0%, 90%);">
-                                        <mat-icon style="color: hsl(0, 0%, 60%);">share</mat-icon>
-                                    </button>
-                                    <button class="btn pull-right" style="border: 0px; background-color: transparent">
-                                        <mat-icon style="color: hsl(0, 0%, 60%);">home</mat-icon>
-                                    </button>
-                
-                                </div>
-                                <div class="col-md-12 text-center" style="padding-top: 25px;">
-                                    <span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star" style="color: hsl(0, 4%, 47%);"></span>
-                                        <span style="color: hsl(0, 0%, 60%);font-size: 12px;"> (193 reviews)</span>
-                
-                                    </span>
-                                </div>
-                                <div class="col-md-12 text-center">
-                                    <span>
-                                        <span style="color: hsl(0, 0%, 60%);font-size: 12px;">15.3K Sales</span>
-                                    </span>
-                                </div>
-                                <div class="col-md-12 text-center">
-                                    <span>
-                                        <span style="color: hsl(0, 0%, 60%);font-size: 12px;">Last updated:</span>
-                                    </span>
-                                    <span style="color: hsl(0, 0%, 60%);font-size: 12px;">7 Feb 20</span>
-                                </div>
-                
-                                <div class="col-md-12 text-center"
-                                    style="display: flex; flex-direction: column; justify-content: flex-end;">
-                                    <a mat-button href="https://www.google.com/" target="_blank">Detail</a>
-                                </div>
-                            </div>
-                
-                        </div>
-                    </div>
-                    <div class="row" style="border-top: 1px solid hsl(0, 0%, 90%);margin-left: 0px;margin-right: 0px;">
-                        <div class="col-md-12" style="height: 27px;background-color: #f7f7f7;">
-                        <div class="row" style="font-size:16px; color:hsl(0, 0%, 60%);padding-top: 3px;">
-                            <div class="col-md-3">
-                                <span style="color: orange;padding-right: 10px; padding-left: 35px;"><i class="fa fa-phone"></i></span>
-                                <span style="font-size: 12px;">02457496</span>
-                            </div>
-                            <div class="col-md-3">
-                                <span style="padding: 10px;color: orange;padding: 15px;"><i class="fa fa-mobile-phone"></i></span>
-                                <span style="font-size: 12px;">+8801914658574</span>
-                            </div>
-                            <div class="col-md-3">
-                                <span style="color: orange;"><i class="fa fa-comment"></i></span>
-                                <input style="background-color: #f7f7f7; font-size: 12px; color: hsl(0, 0%, 60%); border: 1px solid hsl(0, 0%, 90%); height: 21px; width: 160px;" type="text" placeholder="SMS">
-                                <!-- <span style="font-size: 12px;">SMS</span> -->
-                            </div>
-                            <div class="col-md-3">
-                                <span style="color: orange;padding: 15px;"><i class="fa fa-envelope"></i></span>
-                                <span style="font-size: 12px;">Email</span>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                </li>
             </ul>
         </div>
     </div>

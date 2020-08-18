@@ -1,0 +1,88 @@
+<div class="tvs-jw-modal">
+    <div class="tvs-jw-modal-body">
+        
+
+
+
+        <div class="row">
+            <div class="col-lg-6 col-md-6 log-det">
+                <div class="small-logo">
+                    <i class="fab fa-asymmetrik"></i> Style Login Hi! {{userName}}
+                </div>
+                <p class="dfmn">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pharetra ut dui in dictum. </p>
+                
+
+
+                <div class="text-box-cont">
+                    <form>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span style="padding-left: 10px;" class="input-group-text" id="basic-addon1"><i style="padding-right: 20px;" class="fa fa-user"></i></span>
+                            </div>
+                            <input style="margin-bottom: 0px;" 
+                                    type="text" class="form-control" 
+                                    placeholder="Username" aria-label="Username" 
+                                    formControlName="email"
+                                    aria-describedby="basic-addon1">
+                        </div>
+                         <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span style="padding-left: 10px;" class="input-group-text" id="basic-addon1"><i style="padding-right: 20px;" class="fa fa-lock"></i></span>
+                            </div>
+                            <input style="margin-bottom: 0px;" 
+                                    type="text" class="form-control" 
+                                    placeholder="Username" aria-label="Username" 
+                                    formControlName="password"
+                                    aria-describedby="basic-addon1">
+                        </div>
+                        
+                        <div class="input-group center">
+                            <button (click)="login()" class="btn btn-danger btn-round">SIGN IN</button>
+                            <ng-content></ng-content>
+                        </div> 
+                    </form>
+                    
+                    <div class="row">
+                        <p class="forget-p">Don't have an account? <span>Sign Up Now</span></p>
+                    </div>
+                     <div class="row">
+                        <p class="small-info">Connect With Social Media</p>
+                    </div>   
+                </div>
+                
+                
+                
+                <div class="row">
+                    <ul>
+                        <li><i class="fa fa-facebook-f"></i></li>
+                        <li><i class="fa fa-twitter"></i></li>
+                        <li><i class="fa fa-instagram"></i></li>
+                    </ul>
+                </div>
+               
+
+
+            </div>
+            <div class="col-lg-6 col-md-6 box-de">
+               <div class="inn-cover">
+                   <div class="ditk-inf">
+                       <div class="small-logo">
+                    <i class="fab fa-asymmetrik"></i> Style Login
+                </div>
+                        <h2 style="color: #b7bfcc;" class="w-100">Don't Have an Account </h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pharetra ut dui in dictum. Simply Create your account by clicking the Signup Button</p>
+                        <a href="#">
+                        <button type="button" class="btn btn-outline-light">SIGN UP</button>
+                        </a>
+                    </div>
+               </div>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+</div>
+<div class="tvs-jw-modal-background"></div>
