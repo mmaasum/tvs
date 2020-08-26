@@ -50,7 +50,9 @@ import {MatTreeModule} from '@angular/material/tree';
 import { HomeComponent } from './home/home.component';
 import { Routes, RouterModule } from '@angular/router';
 import { ModalModule } from '../../main/microservices/login/user-login/modal.module';
-// import { ModalSignupModule } from '../../main/microservices/login/registration/modal.module';
+import { SignupModalModule } from '../../main/microservices/login/registration/modal.module';
+// import { SignupModalModule } from '../../main/microservices/login/registration/modal.module';
+
 
 const appRoutes: Routes = [
   // {
@@ -68,7 +70,7 @@ const appRoutes: Routes = [
   declarations: [NavBarComponent, FooterComponent, 
     SliderComponent, FrontBlocksComponent, HomeComponent
   ],
-  imports: [ModalModule,
+  imports: [ModalModule,SignupModalModule,
     RouterModule.forRoot(appRoutes),
     CommonModule,DrawYourHomeModule,MatCardModule,MatButtonModule,MatIconModule,MatDividerModule
   ],

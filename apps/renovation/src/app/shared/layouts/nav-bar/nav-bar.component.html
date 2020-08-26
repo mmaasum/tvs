@@ -25,16 +25,30 @@
                     class="chaildnev">
                     <i style="padding-right: 6px;" class="fa fa-plug"></i>Wellcome!
             </span>
-            <a *ngIf="wellcomeMessage === 'hide'" 
-                    (click)="openSignupModal('custom-modal-1')"
-                     class="get-started-btn scrollto">Sign Up</a>
+            
+            
+             <span (click)="showFavoriteList()"
+                     style="margin-left: 10px;margin-top: 5px;cursor:pointer" 
+                     class="chaildnev"
+                     routerLink="/favorite-list">
+                     <mat-icon style="color:orange;margin-right: -11px;font-size: 30px;">favorite</mat-icon>
+                     <span class="badge badge-pill badge-outline-primary">{{favoritListCount}}</span>
+             </span>
+             
         </div>
     </header>
 </section>
+<!-- *ngIf="!myVar" {{favoritList.length}}-->
+
+<jw-modal id="custom-modal-1" style="height: 200px;">
+    <button style="padding: 0px;margin: 0px;width: 100%;width: 100%;border-radius: 50px;padding: 10px 30px;margin: auto;margin-bottom: 10px;font-size: 13px;background-color: #ff5776;color: white;" (click)="closeModal2('custom-modal-1');">CLOSE</button>
+</jw-modal>
+
+
 
 <tvs-jw-modal id="custom-modal-1" style="height: 200px;">
    
-    <button (click)="closeModal('custom-modal-1');">Close</button>
+    <button style="padding: 0px;margin: 0px;width: 100%;width: 100%;border-radius: 50px;padding: 10px 30px;margin: auto;margin-bottom: 10px;font-size: 13px;background-color: #ff5776;color: white;"  (click)="closeModal('custom-modal-1');">CLOSE</button>
 </tvs-jw-modal>
 
 

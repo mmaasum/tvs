@@ -15,16 +15,16 @@ export class RegistrationComponent implements OnInit {
   }
 
   saveUser(): void{
-    this.loginRegistrationService.saveUser()
-    .subscribe(
-      response => {
-        this.loginRegistrationService =  response;
-        // console.log(this.adviceCenterPost);
-      },
-      error => {
-        console.log(error);
-      }
-    );
+    // this.loginRegistrationService.saveUser()
+    // .subscribe(
+    //   response => {
+    //     this.loginRegistrationService =  response;
+    //     // console.log(this.adviceCenterPost);
+    //   },
+    //   error => {
+    //     console.log(error);
+    //   }
+    // );
     
   }
 

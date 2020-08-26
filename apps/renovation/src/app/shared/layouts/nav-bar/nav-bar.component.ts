@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { LoginRegistrationService } from '../../../main/microservices/services/login-registration.service';
 import { ModalService } from '../../../main/microservices/login/user-login';
+import { SignupModalService } from '../../../main/microservices/login/registration';
+import { TradesmanModel } from '../../../main/model/tradesman.model';
+import { TradesmanService } from '../../../main/microservices/services/tradesman.service';
 // import { ModalSignupService } from '../../../main/microservices/login/registration';
 
 @Component({
@@ -17,15 +20,29 @@ export class NavBarComponent implements OnInit {
   bodyText: string;
   wellcomeMessage:string;
   userName:string;
+
+  favoritList: Array<TradesmanModel>=[];
+  favoritListCount: number;
   constructor(private activatedRoute: ActivatedRoute,
+    private tradesmanService: TradesmanService,
     private modalService: ModalService,
+    private modalService2: SignupModalService,
     // private modalSignupService: ModalSignupService
     ) { }
 
   ngOnInit(): void {
+    
+    if(this.favoritList.length>0){
+      this.favoritList = JSON.parse(localStorage.getItem('favoriteList'));
+      this.favoritListCount = this.favoritList.length
+      // console.log(this.favoritListCount);
+  
+     
+    }
+    this.tradesmanService.currentMessage.subscribe(message => this.favoritListCount = message)
+    // this.tradesmanService.changeMessage(this.favoritListCount)
 
     this.modalService.currentMessage.subscribe(message => this.message = message)
-
     this.modalService.currentWellcomeMessage.subscribe(wMessage => this.wellcomeMessage = wMessage)
 
     // this.modalService.currentUsername.subscribe(name => this.userName = name)
@@ -45,6 +62,10 @@ export class NavBarComponent implements OnInit {
     //   this.routLinkName = params['name'];
     //   console.log('nav bar ' + this.routLinkName);
     // });
+  }
+
+  showFavoriteList(){
+
   }
   homePage(){
       this.isDisplay = true;
@@ -82,6 +103,15 @@ closeModal(id: string) {
   this.modalService.close(id);
 }
 
+
+
+openModal2(id: string) {
+  this.modalService2.open(id);
+}
+
+closeModal2(id: string) {
+  this.modalService2.close(id);
+}
 
 
 }

@@ -1,6 +1,8 @@
 import { Injectable, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { UserModel } from '../../model/user.model';
+import { UserProfileModel } from '../../model/user-profile.model';
 
 @Injectable()
 export class LoginRegistrationService implements  OnInit
@@ -21,21 +23,20 @@ export class LoginRegistrationService implements  OnInit
         
     }
     
-    saveUser(): Observable<any>
+    saveUser(user: UserModel, userProfile: UserProfileModel): Observable<any>
     {
-        
-
-        this.user ={
-            UserId : 0,
-            UserName : 'Jahangir',
-            Password : '123456',
-            Email : 'abc@gamil.com',
-        }
-       console.log(this.user);
-
-        return this._httpClient.post('http://localhost:8005/login/InsertItem/', this.user);
+        const headers = { 'content-type': 'application/json'} 
+        return this._httpClient.post('http://localhost:8005/login/InsertItem/', JSON.stringify(user), {'headers':headers});
     }
     
+    // saveUser2(user: UserModel, userProfile: UserProfileModel): Observable<any>
+    // {
+    //     console.log(user);
+    //     console.log(userProfile);
+    //     const headers = { 'content-type': 'application/json'} 
+    //     return this._httpClient.post('http://localhost:8005/login/InsertItemTradesman/', {user, userProfile}, {'headers':headers});
+    // }
+
     getUserByEmailId(user): Observable<any>
     {
         console.log(user);

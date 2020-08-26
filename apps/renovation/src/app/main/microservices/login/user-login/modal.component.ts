@@ -29,18 +29,13 @@ export class ModalComponent implements OnInit, OnDestroy {
     login(): void{
         console.log(this.modalService);
         this.modalService.changeMessage("Log Out")
-    
         this.modalService.wellcomeMessage('show')
 
         this.ppp = this.modalService.getUserByEmailId(this.user)
         .subscribe(
           response => {
-            // this.modalService =  response;
             localStorage.setItem('logedinUser', JSON.stringify(response));
-            // this.userName = JSON.stringify(response);
-
-            // this.ppp = response;
-            //  console.log(this.userName);
+            
           },
           error => {
             console.log(error);
@@ -60,6 +55,12 @@ export class ModalComponent implements OnInit, OnDestroy {
         this.user = new UserModel();
         this.userName = new UserModel();
 
+        console.log(localStorage.getItem('logedinUser'));
+        
+        if(localStorage.getItem('logedinUser')){
+            this.modalService.changeMessage("Log Out")
+            this.modalService.wellcomeMessage('show')
+        }
         // this.postUserForm = this.createUserForm();
     
         // console.log(this.id);
@@ -93,6 +94,12 @@ export class ModalComponent implements OnInit, OnDestroy {
     open(): void {
         this.element.style.display = 'block';
         document.body.classList.add('tvs-jw-modal-open');
+    }
+
+    openSignup(): void {
+        this.close();
+        this.element.style.display = 'block';
+        document.body.classList.add('jw-modal-open');
     }
 
     // close modal

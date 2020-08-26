@@ -1,0 +1,177 @@
+<div class="jw-modal">
+    <div class="jw-modal-body">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 log-det">
+                <div class="small-logo">
+                    <i class="fa fa-user-plus fa-10x"></i>
+                    <h3>Registration Form</h3>
+                </div>
+                <p class="dfmn">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pharetra ut dui in dictum. </p>
+                 
+                <div class="text-box-cont">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span style="padding-left: 10px;" class="input-group-text" id="basic-addon1"><i style="padding-right: 20px;" class="fa fa-user"></i></span>
+                            </div>
+                            <input style="margin-bottom: 0px;" 
+                                    type="text" class="form-control" 
+                                    placeholder="Name" aria-label="firstName" 
+                                    [(ngModel)]="user.userName"
+                                    id="userName"
+                                    name="userName"
+                                    aria-describedby="basic-addon1">
+                        </div>
+                         <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span style="padding-left: 10px;" class="input-group-text" id="basic-addon1"><i style="padding-right: 20px;" class="fa fa-lock"></i></span>
+                            </div>
+                            <input style="margin-bottom: 0px;" 
+                                    type="text" class="form-control" 
+                                    placeholder="Email" 
+                                    aria-label="Username" 
+                                    [(ngModel)]="user.email"
+                                    id="email"
+                                    name="email"
+                                    aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span style="padding-left: 10px;" class="input-group-text" id="basic-addon1"><i style="padding-right: 20px;" class="fa fa-user"></i></span>
+                            </div>
+                            <input style="margin-bottom: 0px;" 
+                                    type="text" class="form-control" 
+                                    placeholder="Password" aria-label="Username" 
+                                    [(ngModel)]="user.password"
+                                    id="password"
+                                    name="password"
+                                    aria-describedby="basic-addon1">
+                        </div>
+                         <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span style="padding-left: 10px;" class="input-group-text" id="basic-addon1"><i style="padding-right: 20px;" class="fa fa-lock"></i></span>
+                            </div>
+                            <input style="margin-bottom: 0px;" 
+                                    type="text" class="form-control" 
+                                    placeholder="Confirm Password" 
+                                    aria-label="Username" 
+                                    
+                                    id="password"
+                                    name="password"
+                                    aria-describedby="basic-addon1">
+                        </div>
+                        
+                        <div class="input-group center">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> Register as a tradesman.
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div> 
+                    <div class="row">
+                        <p class="forget-p">Already registered? <span>Login Now</span></p>
+                    </div>
+                </div>
+            </div>
+            <div style="background: url('../../../../../assets/images/gallery/bg-registration-form-2.jpg');" 
+                    class="col-lg-6 col-md-6 log-det">
+                <img src="../../../../../assets/images/logo.png">
+                <div style="padding-top: 45px;pointer-events: none;" class="text-box-cont">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span style="padding-left: 10px;" class="input-group-text" id="basic-addon1"><i style="padding-right: 20px;" class="fa fa-user"></i></span>
+                            </div>
+                            <input style="margin-bottom: 0px;" 
+                                    type="text" class="form-control" 
+                                    placeholder="First Name" aria-label="Username" 
+                                    [(ngModel)]="userProfile.firstName"
+                                    id="firstName"
+                                    name="firstName"
+                                    aria-describedby="basic-addon1">
+                        </div>
+                         <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span style="padding-left: 10px;" class="input-group-text" id="basic-addon1"><i style="padding-right: 20px;" class="fa fa-lock"></i></span>
+                            </div>
+                            <input style="margin-bottom: 0px;" 
+                                    type="text" class="form-control" 
+                                    placeholder="Last Name" 
+                                    aria-label="lastName" 
+                                    [(ngModel)]="userProfile.lastName"
+                                    id="lastName"
+                                    name="lastName"
+                                    aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span style="padding-left: 10px;" class="input-group-text" id="basic-addon1"><i style="padding-right: 20px;" class="fa fa-user"></i></span>
+                            </div>
+                            <input style="margin-bottom: 0px;" 
+                                    type="text" class="form-control" 
+                                    placeholder="Post Code" aria-label="postCode" 
+                                    [(ngModel)]="userProfile.postCode"
+                                    id="postCode"
+                                    name="postCode"
+                                    aria-describedby="basic-addon1">
+                        </div>
+                         <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span style="padding-left: 10px;" class="input-group-text" id="basic-addon1"><i style="padding-right: 20px;" class="fa fa-lock"></i></span>
+                            </div>
+                            <input style="margin-bottom: 0px;" 
+                                    type="text" class="form-control" 
+                                    placeholder="TradeLicence" 
+                                    aria-label="tradeLicence" 
+                                    [(ngModel)]="userProfile.tradeLicence"
+                                    id="tradeLicence"
+                                    name="tradeLicence"
+                                    aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span style="padding-left: 10px;" class="input-group-text" id="basic-addon1"><i style="padding-right: 20px;" class="fa fa-user"></i></span>
+                            </div>
+                            <input style="margin-bottom: 0px;" 
+                                    type="text" class="form-control" 
+                                    placeholder="Cell No" aria-label="mobilNo" 
+                                    [(ngModel)]="userProfile.mobilNo"
+                                    id="mobilNo"
+                                    name="mobilNo"
+                                    aria-describedby="basic-addon1">
+                        </div>
+                         <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span style="padding-left: 10px;" class="input-group-text" id="basic-addon1"><i style="padding-right: 20px;" class="fa fa-lock"></i></span>
+                            </div>
+                            <input style="margin-bottom: 0px;" 
+                                    type="text" class="form-control" 
+                                    placeholder="Address" 
+                                    aria-label="address" 
+                                    [(ngModel)]="userProfile.address"
+                                    id="address"
+                                    name="address"
+                                    aria-describedby="basic-addon1">
+                        </div>
+
+
+                        <div class="input-group center">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> I caccept the Terms of Use & Privacy Policy.
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div> 
+
+                        <div class="input-group center">
+                            <button (click)="saveUser()" class="btn btn-danger btn-round">
+                                SIGN UP
+                            </button>
+                            <ng-content class="btn btn-danger btn-round"></ng-content>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="jw-modal-background"></div>

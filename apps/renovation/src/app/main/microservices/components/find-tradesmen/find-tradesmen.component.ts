@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TradesmanModel } from '../../../model/tradesman.model';
 import { TradesmanService } from '../../services/tradesman.service';
 import { Router } from '@angular/router';
+import { SignupModalService } from '../../login/registration';
 
 @Component({
   selector: 'tvs-find-tradesmen',
@@ -10,24 +11,33 @@ import { Router } from '@angular/router';
 })
 export class FindTradesmenComponent implements OnInit {
 
+  // favorite:any;
+  favoriteList: Array<TradesmanModel> = [];
   tradesman: [];
   isDisplay: boolean;
   selectedItemCategoryId;
   postcode = '';
-  constructor(private tradesmanService: TradesmanService,
+
+  favoritList: Array<TradesmanModel>=[];
+  favoritListCount: number;
+
+  constructor(public tradesmanService: TradesmanService,
+    private modalService: SignupModalService,
     private router: Router) {
     // this.tradesman = any[];
   }
 
 
   keyword = 'itemCategoryName';
-  data = [];
+  data;
+  parentData = [];
+  chieldData = [];
 
   Name = '';
   selectEvent(item) {
     
     this.selectedItemCategoryId = item.itemCategoryId;
-    console.log(this.postcode  + ', ' + this.selectedItemCategoryId);
+    // console.log(this.postcode  + ', ' + this.selectedItemCategoryId);
     // do something with selected item
   }
 
@@ -41,9 +51,42 @@ export class FindTradesmenComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
+    
+
     this.isDisplay = false;
     this.getTradesmanList();
     this.getItemcategoryList();
+    
+    
+    // this.getchieldData(29);
+  }
+
+  addToFavorite(item: any){
+    // console.log(item.cmpanyName);
+    const favorite = new TradesmanModel();
+    favorite.companyName = item.companyName;
+
+    favorite.image = item.image;
+    favorite.tradesmanId = item.tradesmanId;
+    favorite.serviceDescription = item.serviceDescription;
+
+    
+    // favorite.companyName = item.cmpanyName;
+    // favorite.companyName = item.cmpanyName;
+    // favorite.companyName = item.cmpanyName;
+
+
+    this.favoriteList.push(favorite);
+
+    localStorage.setItem('favoriteList', JSON.stringify(this.favoriteList));
+
+    this.favoritList = JSON.parse(localStorage.getItem('favoriteList'));
+    this.favoritListCount = this.favoritList.length
+
+    this.tradesmanService.changeMessage(this.favoritListCount)
+
+    
   }
 
   getTradesmanList(): void{
@@ -61,11 +104,14 @@ export class FindTradesmenComponent implements OnInit {
   }
 
   getItemcategoryList(): void{
-    this.tradesmanService.getItemcategoryList()
+     this.tradesmanService.getItemcategoryList()
     .subscribe(
       response => {
         this.data =  response;
-       // console.log(this.data);
+        this.parentData = this.data;
+        // this.parentData = this.data.filter(obj => obj.parentId === 0);
+        // this.chieldData = this.data.filter(obj => obj.parentId > 0)
+        console.log(this.parentData);
       },
       error => {
         console.log(error);
@@ -74,8 +120,37 @@ export class FindTradesmenComponent implements OnInit {
     
   }
 
+  getItemcategoryList2(): void{
+    this.tradesmanService.getItemcategoryList()
+   .subscribe(
+     response => {
+       this.data =  response;
+       this.chieldData = this.data.filter(obj => obj.parentId === 29)
+     },
+     error => {
+       console.log(error);
+     }
+   );
+   
+ }
+  // getchieldData(parentId:number){
+  //   console.log('a');
+  //   this.tradesmanService.getItemcategoryList()
+  //   .subscribe(
+  //     response => {
+  //       this.data =  response;
+  //       this.chieldData = this.data.filter(obj => obj.parentId === parentId)
+  //     },
+  //     error => {
+  //       console.log(error);
+  //     }
+  //   );
+  // }
+
+  
+
   getSearchItemcategoryList(): void{
-    console.log(this.selectedItemCategoryId);
+    // console.log(this.selectedItemCategoryId);
     if(!this.selectedItemCategoryId)
     {
       alert('Please enter a valid category name')
@@ -85,7 +160,7 @@ export class FindTradesmenComponent implements OnInit {
     .subscribe(
       response => {
         this.tradesman =  response;
-        console.log(this.tradesman);
+        // console.log(this.tradesman);
       },
       error => {
         console.log(error);
@@ -95,7 +170,7 @@ export class FindTradesmenComponent implements OnInit {
   }
 
   showDetail(tradesmanId):void{
-    console.log(tradesmanId);
+    // console.log(tradesmanId);
     this.router.navigate(['/tradesmen-detail'], { queryParams: { id: tradesmanId } });
     
     
@@ -113,6 +188,26 @@ export class FindTradesmenComponent implements OnInit {
   }
 
   seeAll(val){
-    console.log(val);
+    // console.log(val);
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
