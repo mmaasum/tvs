@@ -32,36 +32,19 @@ export class NavBarComponent implements OnInit {
 
   ngOnInit(): void {
     
-    if(this.favoritList.length>0){
-      this.favoritList = JSON.parse(localStorage.getItem('favoriteList'));
+    this.favoritList = JSON.parse(localStorage.getItem('favoriteList'));
+    if(this.favoritList.length > 0){
       this.favoritListCount = this.favoritList.length
-      // console.log(this.favoritListCount);
-  
-     
     }
-    this.tradesmanService.currentMessage.subscribe(message => this.favoritListCount = message)
-    // this.tradesmanService.changeMessage(this.favoritListCount)
+    this.tradesmanService.changeMessage(this.favoritListCount);
 
+    this.tradesmanService.currentMessage.subscribe(message => this.favoritListCount = message)
     this.modalService.currentMessage.subscribe(message => this.message = message)
     this.modalService.currentWellcomeMessage.subscribe(wMessage => this.wellcomeMessage = wMessage)
 
-    // this.modalService.currentUsername.subscribe(name => this.userName = name)
-
-    // this.userName = localStorage.getItem('logedinUser');
-    // console.log('vvvv');
-    console.log(this.userName);
-    // if(this.message === 'Log Out'){
-    //   this.wellcomeMessage = true;
-    // }
-    // else{
-    //   this.wellcomeMessage = false;
-    // }
 
     this.isDisplay = false;
-    // this.activatedRoute.queryParams.subscribe(params => {
-    //   this.routLinkName = params['name'];
-    //   console.log('nav bar ' + this.routLinkName);
-    // });
+    
   }
 
   showFavoriteList(){

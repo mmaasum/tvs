@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TradesmanModel } from '../../../model/tradesman.model';
+import { TradesmanService } from '../../services/tradesman.service';
 
 @Component({
   selector: 'tvs-favorite-list',
@@ -8,7 +9,7 @@ import { TradesmanModel } from '../../../model/tradesman.model';
 })
 export class FavoriteListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private tradesmanService: TradesmanService) { }
 favoritList: Array<TradesmanModel>=[];
   ngOnInit(): void {
    
@@ -20,18 +21,32 @@ favoritList: Array<TradesmanModel>=[];
   remove(e){
     console.log(e);
    
+    const cart_items = JSON.parse(localStorage["favoriteList"]);
+
+    for (let i=0;i<cart_items.length;i++)
+    {
+      if (cart_items[i].tradesmanId === e) 
+      cart_items.splice(i,1);
+      localStorage["favoriteList"] = JSON.stringify(cart_items);
+    }
+
+
+    // this.favoritList = JSON.parse(localStorage.getItem('favoriteList'));
+    // if(this.favoritList.length > 0){
+    //   this.favoritListCount = this.favoritList.length
+    // }
+
+    this.tradesmanService.changeMessage(cart_items.length);
+
+    // this.tradesmanService.currentMessage.subscribe(message => this.favoritListCount = message)
+    
+
+
 
     const targetElement = document.getElementById(e);
     targetElement.classList.add("btn-change");
-    // this.bntStyle = 'btn-change';
-
-    // const classList = e.target.classList;
-    // console.log(e);
-    // console.log(classList);
-    // const classes = e.target.className;
-    // console.log(classes);
-
-    // classes.includes('background-color') ? classList.remove('red') : classList.add('red');
+    
+    
   }
 
 }
