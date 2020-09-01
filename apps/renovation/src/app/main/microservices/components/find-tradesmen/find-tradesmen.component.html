@@ -214,21 +214,27 @@
 .bs-example{
         margin: 20px;
     }
+
+    .itemcategory{
+        margin-left: 0px;
+    }
+
+    /* .itemcategory:hover{
+        cursor: pointer;
+    } */
+
+    .subcategory{
+
+    }
+
+    .subcategory:hover{
+        background-color: #edf1f0;
+        cursor: pointer;
+    }
+
+
 </style>
-
 <div id="divbody" class="container-fluid py-5">
-
-    
-
-
-
-
-
-
-
-
-
-
 
     <div class="row">
         <!-- <div class="col-md-12">
@@ -241,27 +247,14 @@
                     <div class="container" style="padding-top: 16px;padding-bottom: 16px;">
                         <div id="accordion" class="accordion">
                             <div class="card mb-0">
-                                <!-- <ul *ngFor="let person of tradesmanService.getData(0)"> -->
-
-                                    
-
-
-
-
-
-
-
-
-
-
-                                    <ul *ngFor="let item of parentData; index as i;">
+                                    <ul class="itemcategory" *ngFor="let item of parentData; index as i;">
                                         <div class="card-header collapsed" 
                                                     data-toggle="collapse" 
                                                     [attr.data-target]="'#test' + i">
                                             <a class="card-title">{{item.itemCategoryName}}</a>
                                         </div>
-                                        <li *ngFor="let item2 of item.children;">
-                                            <div id="test{{i}}" class="card-body collapse" data-parent="#accordion">
+                                        <li class="subcategory" *ngFor="let item2 of item.children;">
+                                            <div style="padding-top: 10px;padding-bottom: 30px;" id="test{{i}}" class="card-body collapse" data-parent="#accordion">
                                                 <p>{{item2.itemCategoryName}}</p>
                                             </div>
                                         </li>

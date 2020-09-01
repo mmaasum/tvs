@@ -47,19 +47,19 @@ export class AdviceCenterService implements  OnInit
     getAdviceCenterPost(adviceCenterId): Observable<any>
     {
         console.log(adviceCenterId);
-       return this._httpClient.get('http://localhost:51733/api/AdviceCenter/GetAdviceCenterPostByAdvicecenterId/'+ adviceCenterId)
+       return this._httpClient.get('http://localhost:8004/api/AdviceCenter/GetAdviceCenterPostByAdvicecenterId/'+ adviceCenterId)
             
     }
 
     getAdviceCenterPosts(): Observable<any>
     {
-       return this._httpClient.get('http://localhost:51733/api/AdviceCenter/GetAdviceCenterPosts')
+       return this._httpClient.get('http://localhost:8004/api/AdviceCenter/GetAdviceCenterPosts')
             
     }
 
     getAdviceCenterTitleList(): Observable<any>
     {
-       return this._httpClient.get('http://localhost:51733/api/AdviceCenter/GetAdviceCenterTitleList')
+       return this._httpClient.get('http://localhost:8004/api/AdviceCenter/GetAdviceCenterTitleList')
     }
     
 }

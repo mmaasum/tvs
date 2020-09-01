@@ -6,7 +6,8 @@ import { AdviceCenterComponent } from './components/advice-center/advice-center.
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
-import { TradesmenDetailComponent } from './components/tradesmen-detail/tradesmen-detail.component';
+// import { TradesmenDetailComponent } from './components/tradesmen-detail/tradesmen-detail.component';
+
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { AdviceCenterService } from './services/advicecenter.service';
@@ -24,15 +25,20 @@ import { LoginRegistrationService } from './services/login-registration.service'
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 import { FavoriteListComponent } from './tradesman/favorite-list/favorite-list.component';
 import { TradesmanDetailComponent } from './tradesman/tradesman-detail/tradesman-detail.component';
-
+import { ClientFeedbackComponent } from './tradesman/client-feedback/client-feedback.component';
+import { NgxGalleryModule } from 'ngx-gallery-9';
 
 const routes: Routes = [
   { path        : 'find-tradesmen', component: FindTradesmenComponent },
   { path        : 'advice-center', component: AdviceCenterComponent },
   { path        : 'advice-center-author', component: AuthorComponent },
   { path        : 'registration', component: RegistrationComponent },
-  { path        : 'tradesmen-detail', component: TradesmenDetailComponent },
-  { path        : 'tradesmen-detail/:Id', component: TradesmenDetailComponent },
+  // { path        : 'tradesmen-detail', component: TradesmenDetailComponent },
+  // { path        : 'tradesmen-detail/:Id', component: TradesmenDetailComponent },
+
+  { path        : 'tradesmen-detail', component: TradesmanDetailComponent },
+  { path        : 'tradesmen-detail/:Id', component: TradesmanDetailComponent },
+
   { path        : 'review', component: TradesmanReviewComponent},
   { path        : 'favorite-list', component: FavoriteListComponent}
 ];
@@ -40,13 +46,16 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [FindTradesmenComponent, AdviceCenterComponent, 
-    TradesmenDetailComponent, TradesmanReviewComponent,
+    // TradesmenDetailComponent, 
+    TradesmanReviewComponent,
     FilterPipe,
     AuthorComponent,
     RegistrationComponent,
     FavoriteListComponent,
-    TradesmanDetailComponent],
+    TradesmanDetailComponent,
+    ClientFeedbackComponent],
   imports: [MatTableModule,MatPaginatorModule,
+    NgxGalleryModule,
     AutocompleteLibModule,
     ReactiveFormsModule,
     FormsModule,

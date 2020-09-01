@@ -47,6 +47,9 @@
     "bootstrap": "^4.5.0",
     "core-js": "^2.5.4",
     "express": "^4.17.1",
+    "hammerjs": "^2.0.8",
+    "lodash": "^4.17.20",
+    "ngx-gallery-9": "^1.0.6",
     "path": "^0.12.7",
     "rxjs": "~6.5.4",
     "zone.js": "^0.10.2"

@@ -24,6 +24,7 @@ export class AdviceCenterComponent implements OnInit {
 
 
   ngOnInit(): void {
+    alert('d');
     this.getAdviceCenterPosts();
    
     this.getAdviceCenterTitleList();
