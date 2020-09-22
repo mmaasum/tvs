@@ -18,14 +18,12 @@ export class TradesmanService implements  OnInit
         private _httpClient: HttpClient
     )
     {
-      console.log('ss3')
       this.ngOnInit();
         // Set the defaults
         this.onProductsChanged = new BehaviorSubject({});
     }
 
     ngOnInit(): Observable<any> | Promise<any> | any{
-      console.log('ss2')
         return new Promise((resolve, reject) => {
 
             Promise.all([
@@ -48,7 +46,6 @@ export class TradesmanService implements  OnInit
      */
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any
     {
-      console.log('ss2')
         return new Promise((resolve, reject) => {
 
             Promise.all([
@@ -69,7 +66,6 @@ export class TradesmanService implements  OnInit
      */
     getProducts(): Promise<any>
     {
-      console.log('ss');
         return new Promise((resolve, reject) => {
             this._httpClient.get('http://localhost:8003/api/Tradesman/GetTradesmen')
                 .subscribe((response: any) => {

@@ -14,13 +14,9 @@ favoritList: Array<TradesmanModel>=[];
   ngOnInit(): void {
    
     this.favoritList = JSON.parse(localStorage.getItem('favoriteList'));
-
-    console.log(this.favoritList);
   }
 
   remove(e){
-    console.log(e);
-   
     const cart_items = JSON.parse(localStorage["favoriteList"]);
 
     for (let i=0;i<cart_items.length;i++)

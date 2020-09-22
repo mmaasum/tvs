@@ -24,7 +24,6 @@ export class TradesmanService implements  OnInit
     }
 
     changeMessage(message: number) {
-      console.log('fav' + message);
       this.messageSource.next(message)
    }
 
@@ -36,13 +35,30 @@ export class TradesmanService implements  OnInit
 
     getItemcategoryList(): Observable<any>
     {
-       return this._httpClient.get('http://localhost:8003/Itemcategory/GetItemgategorys/')
+        return this._httpClient.get('http://localhost:8003/Itemcategory/GetItemgategorys/')
+            
+    }
+    getForSearchItemcategoryList(): Observable<any>
+    {
+       return this._httpClient.get('http://localhost:8003/Itemcategory/GetSearchItemCategorys/')
             
     }
 
     getSearchItemcategoryList(selectedItemCategoryId, postcode): Observable<any>
     {
        return this._httpClient.get('http://localhost:8003/Itemcategory/GetItemgategorys/'+selectedItemCategoryId+'/'+postcode)
+            
+    }
+
+    importPostcods(files: File): Observable<any>
+    {
+       console.log('called');
+      const headers = { 'Content-Type': 'application/json', 'Accept': 'application/json'} 
+      
+      //  return this._httpClient.post('http://localhost:8003/Itemcategory/ImportExcel/', JSON.stringify(files), {'headers':headers})
+
+
+      return this._httpClient.post('http://localhost:8003/Itemcategory/ImportExcel/', files, {'headers':headers})
             
     }
 
@@ -62,7 +78,6 @@ export class TradesmanService implements  OnInit
             this.data.filter(obj => {
                return obj.parentId === 0;
             })
-            console.log(this.data)
          },
          error => {
             console.log(error);

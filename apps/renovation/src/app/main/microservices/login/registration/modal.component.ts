@@ -48,14 +48,10 @@ export class SignupModalComponent implements OnInit, OnDestroy {
     }
 
     saveUser(): void{
-
-         console.log(this.userProfile);
         this.loginRegistrationService.saveUser(this.user, this.userProfile)
         .subscribe(
           response => {
             this.loginRegistrationService =  response;
-            
-             console.log(response);
           },
           error => {
             console.log(error);

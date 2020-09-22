@@ -3,6 +3,7 @@ import { TradesmanDetailService } from '../../services/tradesman-detail.service'
 import { ActivatedRoute } from '@angular/router';
 
 import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gallery-9';
+import { TradesmanModel } from '../../../model/tradesman.model';
 
 @Component({
   selector: 'tvs-tradesman-detail',
@@ -15,30 +16,23 @@ export class TradesmanDetailComponent implements OnInit {
 
   tradesman;
   tradesmanId;
+  serviceDescription: string;
+
   constructor(private tradesmanDetailService: TradesmanDetailService,
     private router: ActivatedRoute ) {
-      
-      
-      
-      
       this.router.params.subscribe(params => {
         
         this.tradesmanId=(params['Id']);
-
-        console.log(params['Id']);
         });
-        
-
-
-
     }
 
   ngOnInit(): void {
+    this.tradesman = new TradesmanModel();
     this.galleryOptions = [
       {
           width: '100%',
           height: '300px',
-          thumbnailsColumns: 4,
+          thumbnailsColumns: 3,
           imageAnimation: NgxGalleryAnimation.Slide
       },
       // max-width 800
@@ -73,7 +67,17 @@ export class TradesmanDetailComponent implements OnInit {
           small: 'assets/gallery/3-small.jpg',
           medium: 'assets/gallery/3-medium.jpg',
           big: 'assets/gallery/3-big.jpg'
-      }
+      },
+      {
+        small: 'assets/gallery/4-small.jpg',
+        medium: 'assets/gallery/4-medium.jpg',
+        big: 'assets/gallery/4-big.jpg'
+    },
+    {
+        small: 'assets/gallery/5-small.jpg',
+        medium: 'assets/gallery/5-medium.jpg',
+        big: 'assets/gallery/5-big.jpg'
+    }
   ];
     
     this.getTradesmanDetail();
@@ -84,6 +88,7 @@ export class TradesmanDetailComponent implements OnInit {
     .subscribe(
       response => {
         this.tradesman =  response;
+        // this.serviceDescription = response.serviceDescription;
         console.log(this.tradesman);
       },
       error => {

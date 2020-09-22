@@ -27,7 +27,6 @@ export class ModalComponent implements OnInit, OnDestroy {
 
     
     login(): void{
-        console.log(this.modalService);
         this.modalService.changeMessage("Log Out")
         this.modalService.wellcomeMessage('show')
 
@@ -41,11 +40,6 @@ export class ModalComponent implements OnInit, OnDestroy {
             console.log(error);
           }
         );
-
-        // this.userName = JSON.parse(localStorage.getItem('logedinUser'));
-        //   console.log(this.ppp);
-        // this.modalService.userName(this.ppp)
-
         this.close();
       }
 
@@ -54,17 +48,12 @@ export class ModalComponent implements OnInit, OnDestroy {
 
         this.user = new UserModel();
         this.userName = new UserModel();
-
-        console.log(localStorage.getItem('logedinUser'));
         
         if(localStorage.getItem('logedinUser')){
             this.modalService.changeMessage("Log Out")
             this.modalService.wellcomeMessage('show')
         }
-        // this.postUserForm = this.createUserForm();
-    
-        // console.log(this.id);
-        // ensure id attribute exists
+
         if (!this.id) {
             console.error('modal must have an id');
             return;

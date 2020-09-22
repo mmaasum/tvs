@@ -14,7 +14,6 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe(params => {
       this.routLinkName = params['name'];
-      console.log('home ' +this.routLinkName);
     });
   }
 

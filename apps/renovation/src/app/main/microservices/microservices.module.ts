@@ -25,21 +25,24 @@ import { LoginRegistrationService } from './services/login-registration.service'
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 import { FavoriteListComponent } from './tradesman/favorite-list/favorite-list.component';
 import { TradesmanDetailComponent } from './tradesman/tradesman-detail/tradesman-detail.component';
-import { ClientFeedbackComponent } from './tradesman/client-feedback/client-feedback.component';
+
 import { NgxGalleryModule } from 'ngx-gallery-9';
+import { LayoutsModule } from '../../shared/layouts/layouts.module';
+import { UserReviewComponent } from './tradesman/user-review/user-review.component';
+import { SMSService } from './services/sms.service';
+import { DrawHomeComponent } from './draw-home/draw-home.component';
+import { SplitterModule } from '@syncfusion/ej2-angular-layouts';
+import { NgScrollbarModule } from 'ngx-scrollbar';
 
 const routes: Routes = [
+  { path        : 'draw-home', component: DrawHomeComponent },
   { path        : 'find-tradesmen', component: FindTradesmenComponent },
   { path        : 'advice-center', component: AdviceCenterComponent },
   { path        : 'advice-center-author', component: AuthorComponent },
   { path        : 'registration', component: RegistrationComponent },
-  // { path        : 'tradesmen-detail', component: TradesmenDetailComponent },
-  // { path        : 'tradesmen-detail/:Id', component: TradesmenDetailComponent },
-
   { path        : 'tradesmen-detail', component: TradesmanDetailComponent },
   { path        : 'tradesmen-detail/:Id', component: TradesmanDetailComponent },
-
-  { path        : 'review', component: TradesmanReviewComponent},
+  { path        : 'review', component: UserReviewComponent},
   { path        : 'favorite-list', component: FavoriteListComponent}
 ];
 
@@ -53,8 +56,12 @@ const routes: Routes = [
     RegistrationComponent,
     FavoriteListComponent,
     TradesmanDetailComponent,
-    ClientFeedbackComponent],
+    UserReviewComponent,
+    DrawHomeComponent],
   imports: [MatTableModule,MatPaginatorModule,
+    NgScrollbarModule,
+    SplitterModule,
+    LayoutsModule,
     NgxGalleryModule,
     AutocompleteLibModule,
     ReactiveFormsModule,
@@ -74,6 +81,7 @@ const routes: Routes = [
     MatCardModule,MatButtonModule
   ],
   providers: [AdviceCenterService, TradesmanService,TradesmanDetailService,
-    LoginRegistrationService]
+    LoginRegistrationService,
+    SMSService]
 })
 export class MicroservicesModule { }

@@ -32,8 +32,6 @@ export class ModalService {
     }
 
     open(id: string) {
-        // open modal specified by id
-        console.log(this.modals.find(x => x.id === id));
         const modal = this.modals.find(x => x.id === id);
         modal.open();
     }
@@ -53,7 +51,6 @@ export class ModalService {
     }
 
     userName(name: string) {
-        console.log('sasa');
         this.userNameSource.next(name)
     }
 
@@ -67,14 +64,12 @@ export class ModalService {
             Password : '123456',
             Email : 'abc@gamil.com',
         }
-       console.log(this.user);
 
         return this._httpClient.post('http://localhost:8005/login/InsertItem/', this.user);
     }
     
     getUserByEmailId(user): Observable<any>
     {
-        console.log(user);
        return this._httpClient.post('http://localhost:8005/login/GetUserByEmail/', user)
             
     }

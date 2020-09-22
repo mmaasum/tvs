@@ -34,8 +34,6 @@ export class UserLoginComponent implements OnInit {
         this.loginRegistrationService =  response;
 
         localStorage.setItem('logedinUser', JSON.stringify(response));
-
-         console.log(this.loginRegistrationService);
       },
       error => {
         console.log(error);
@@ -46,7 +44,6 @@ export class UserLoginComponent implements OnInit {
 
   createUserForm(): FormGroup
     {
-        // console.log('t c createProductForm');
         return this._formBuilder.group({
           email                       : [this.user.email],
           password                    : [this.user.password]

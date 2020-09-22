@@ -39,10 +39,6 @@ export class DrawHomeComponent implements OnInit {
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
 
-  //   dialogConfig.position = {
-  //     'top': '0',
-  //     left: '0'
-  // };
     dialogConfig.data = {
         // description, longDescription, category
     };

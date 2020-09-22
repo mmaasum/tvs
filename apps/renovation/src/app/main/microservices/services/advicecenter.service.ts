@@ -17,21 +17,12 @@ export class AdviceCenterService implements  OnInit
         
     }
 
-    // saveAdviceCenterPostComment(adviceCenterPostComment): Observable<any>
-    // {
-    //     console.log(adviceCenterPostComment);
-    //    return this._httpClient.put('http://localhost:51733/api/AdviceCenter/InsertItem/', adviceCenterPostComment)
-            
-    // }
-
+    
     saveAdviceCenterPostComment(comment): Promise<any>
     {
-        console.log(comment);
         comment.adviceCenterId=1;
         comment.adviceCenterPostCommentId=1;
         comment.userId=1;
-
-        // comment.comment=1;
         comment.createDate=Date.now;
         comment.isActiv=1;
 
@@ -46,9 +37,8 @@ export class AdviceCenterService implements  OnInit
     
     getAdviceCenterPost(adviceCenterId): Observable<any>
     {
-        console.log(adviceCenterId);
        return this._httpClient.get('http://localhost:8004/api/AdviceCenter/GetAdviceCenterPostByAdvicecenterId/'+ adviceCenterId)
-            
+    
     }
 
     getAdviceCenterPosts(): Observable<any>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { LoginRegistrationService } from '../../../main/microservices/services/login-registration.service';
 import { ModalService } from '../../../main/microservices/login/user-login';
@@ -12,7 +12,7 @@ import { TradesmanService } from '../../../main/microservices/services/tradesman
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.scss']
 })
-export class NavBarComponent implements OnInit {
+export class NavBarComponent implements OnInit, AfterViewInit {
   master = 'Draw Home';
   routLinkName:string;
   isDisplay:boolean;
@@ -30,18 +30,22 @@ export class NavBarComponent implements OnInit {
     // private modalSignupService: ModalSignupService
     ) { }
 
+    ngAfterViewInit() {
+      this.favoritList = JSON.parse(localStorage.getItem('favoriteList'));
+      if(this.favoritList.length > 0){
+        this.favoritListCount = this.favoritList.length
+      }
+      this.tradesmanService.changeMessage(this.favoritListCount);
+
+      this.tradesmanService.currentMessage.subscribe(message => this.favoritListCount = message)
+      this.modalService.currentMessage.subscribe(message => this.message = message)
+      this.modalService.currentWellcomeMessage.subscribe(wMessage => this.wellcomeMessage = wMessage)
+
+    }
+
   ngOnInit(): void {
     
-    this.favoritList = JSON.parse(localStorage.getItem('favoriteList'));
-    if(this.favoritList.length > 0){
-      this.favoritListCount = this.favoritList.length
-    }
-    this.tradesmanService.changeMessage(this.favoritListCount);
-
-    this.tradesmanService.currentMessage.subscribe(message => this.favoritListCount = message)
-    this.modalService.currentMessage.subscribe(message => this.message = message)
-    this.modalService.currentWellcomeMessage.subscribe(wMessage => this.wellcomeMessage = wMessage)
-
+    
 
     this.isDisplay = false;
     

@@ -1,0 +1,782 @@
+<style>
+      ng-scrollbar.virtual-scroll {
+    --scrollbar-size: 8px;
+    --scrollbar-thumb-color: gray;
+    --scrollbar-hover-size: 12px;
+    --scrollbar-track-color: rgba(0, 0, 0, 0.05);
+    --scrollbar-border-radius: 10px;
+
+    margin: 1em;
+    height: 200px;
+    max-height: 200px;
+    border-radius: 6px;
+    border: 1px solid gray;
+    overflow: hidden;
+  }
+
+  .inner {
+    width: 140%;
+  }
+
+  .example-item {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding-left: 2em;
+
+    
+
+  }
+
+  
+
+</style>
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4" style="height: 50px;background-color: #23282f;border-bottom:1px solid green;">
+    
+            </div>
+            <div class="col-md-4" style="height: 50px;background-color: #23282f;border-bottom:1px solid green;">
+                <div style="height: 40px;background-color: #23282f;text-align: center;">
+                    <button class="btn btn-success" style="font-size: 15px;padding-top: 4px;padding-bottom: 4px;background: #528400;margin-top: 10px;margin-right: 1px;">
+                        <i class="fa fa-mouse-pointer" aria-hidden="true"></i>
+                    </button>
+                    
+                    <button style="background-color: #363e45;color: white;font-weight: 100;margin-left: 2px;border: 1px solid !important;border-color: #363e45 !important;height: 30px;width: 30px;margin-top: 10px;margin-right: 3px;">
+                        <i class="fa fa-crop" aria-hidden="true"></i>
+                    </button>
+                    <select style="padding-right: 10px;padding-left: 10px;font-size: 1.1em;height: 30px;background-color: #363e45;color: white;border: none;font-weight: 100;margin-top: 10px;" >
+                       <option>100%</option>
+                       <option>75%</option>
+                       <option>80%</option>
+                       <option>50%</option>
+                       <option>25%</option>
+                      </select>
+                </div>
+            </div>
+            <div class="col-md-4" style="height: 50px;background-color: #23282f;border-bottom:1px solid green;">
+                <button class="btn btn-success" style="font-size: 15px;padding-top: 4px;padding-bottom: 4px;background: #528400;float: right;margin-top: 8px;margin-right: 21px;">
+                    <i class="fa fa-upload" aria-hidden="true"></i>
+                    Export
+                </button>
+                <button style="background-color: #363e45;color: white;font-weight: 100;margin-left: 2px;border: 1px solid !important;border-color: #363e45 !important;float: right;height: 30px;width: 30px;margin-top: 8px;margin-right: 10px;border-radius: 3px;">
+                    <i class="fa fa-download" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+        <div class="row" style="margin-left: -18px;">
+            <div class="col-md-12" style="height: 80vh;">
+                <ejs-splitter #splitterInstance id="nested-splitter" 
+                            (created)='onCreated()' 
+                            height='100%' 
+                            width='100%'>
+                    <e-panes>
+                        <e-pane>
+                            <ng-template #content>
+                                <div id='vertical_splitter' class="vertical_splitter">
+                                    <div>
+                                        <ejs-splitter #splitterInstance id="nested-splitter" 
+                                                        (created)='onCreated()' 
+                                                        height='100%' 
+                                                        width='100%'>
+                                            <e-panes>
+                                                <!-- <e-pane size='15%'>
+                                                    <ng-template #content>
+                                                        <div style="background-color: #2a3137 !important;color:#d8dee3;height: 100%;">
+                                                            <div class="content" style="padding: 0px;">
+                                                                <nav id="sidebar" style="width: 100%;">
+                                                                        <ul style="margin-left: 0px;" class="list-unstyled components">
+                                                                            <li>
+                                                                                <a href="#">
+                                                                                    <i style="font-size: 16px;color: orange;margin-right: 7px;" class="fa fa-btc" aria-hidden="true"></i>
+                                                                                    Detached</a>
+                                                                            </li>
+                                                                            
+                                                                            <li>
+                                                                                <a active href="#">
+                                                                                    
+                                                                                    <i style="font-size: 16px;color: orange;margin-right: 7px;" class="fa fa-paper-plane" aria-hidden="true"></i>
+                                                                                    Semi Detached</a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a href="#">
+                                                                                    <i style="font-size: 16px;color: orange;margin-right: 7px;" class="fa fa-diamond" aria-hidden="true"></i>
+                                                                                    End Terraced</a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a href="#">
+                                                                                    <i style="font-size: 16px;color: orange;margin-right: 7px;" class="fa fa-suitcase" aria-hidden="true"></i>
+                                                                                    Mid Terraced</a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a href="#">
+                                                                                    <i style="font-size: 16px;color: orange;margin-right: 7px;" class="fa fa-heartbeat" aria-hidden="true"></i>
+                                                                                    Bungalow</a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a href="#">
+                                                                                    <i style="font-size: 16px;color: orange;margin-right: 7px;" class="fa fa-credit-card" aria-hidden="true"></i>
+                                                                                    Flat</a>
+                                                                            </li>
+                                                                            <li style="margin-left: 30px;position: absolute;bottom: 0px;text-align: center;">
+                                                                                <a href="#">More</a>
+                                                                            </li>
+                                                                        </ul>
+                                                                </nav>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    </ng-template>
+                                                </e-pane> -->
+                                                <e-pane size='15%'>
+                                                    <ng-template #content>
+                                                        <ng-scrollbar>
+                                                            <div style="background-color: #161b1d !important;color:#d8dee3;height: 100%;">
+                                                                <div class="content" style="padding: 0px;">
+                                                                    <div style="height: 38px;background-color: #23282f;">
+                                                                        <select style="font-size: 1.1em;margin-left: 17px;height: 25px;width: 140px;margin-top: 8px;background-color: #363e45;color: white;border: none;font-weight: 100;" >
+                                                                           <option>Detached</option>
+                                                                            <option>Semi Detached</option>
+                                                                            <option>End Terraced</option>
+                                                                            <option>Mid Terraced</option>
+                                                                            <option>Bungalow</option>
+                                                                            <option>Flat</option>
+                                                                          </select>
+                                                                    </div>
+                                                                    
+                                                                    <nav id="sidebar" style="width: 100%;">
+                                                                            <ul style="margin-left: 0px;font-weight: 100;text-align: right;" class="list-unstyled components">
+                                                                                <li>
+                                                                                    <a style="color: #999;">
+                                                                                        <!-- <i style="font-size: 16px;color: orange;margin-right: 7px;" class="fa fa-btc" aria-hidden="true"></i> -->
+                                                                                        Width
+                                                                                        <input type="text" style="margin-left: 8px;padding: 8px;height: 22px;border: 1px solid !important;border-color: #363e45 !important;text-align: right;width: 50px;background-color: #161b1d;border: 0px;color: white;font-weight: 100;">
+                                                                                    </a>
+                                                                                </li>
+                                                                                
+                                                                                <li>
+                                                                                    <a style="color: #999;">
+                                                                                        <!-- <i style="font-size: 16px;color: orange;margin-right: 7px;" class="fa fa-paper-plane" aria-hidden="true"></i> -->
+                                                                                        Length
+                                                                                        <input type="text" style="margin-left: 8px;padding: 8px;height: 22px;border: 1px solid !important;border-color: #363e45 !important;text-align: right;width: 50px;background-color: #161b1d;border: 0px;color: white;font-weight: 100;">
+                                                                                    </a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a style="color: #999;">
+                                                                                        <!-- <i style="font-size: 16px;color: orange;margin-right: 7px;" class="fa fa-diamond" aria-hidden="true"></i> -->
+                                                                                        Floor Thickness
+                                                                                        <input type="text" style="margin-left: 8px;padding: 8px;height: 22px;border: 1px solid !important;border-color: #363e45 !important;text-align: right;width: 50px;background-color: #161b1d;border: 0px;color: white;font-weight: 100;">
+                                                                                    </a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a style="color: #999;">
+                                                                                        <!-- <i style="font-size: 16px;color: orange;margin-right: 7px;" class="fa fa-suitcase" aria-hidden="true"></i> -->
+                                                                                        Wall Thickness
+                                                                                        <input type="text" style="margin-left: 8px;padding: 8px;height: 22px;border: 1px solid !important;border-color: #363e45 !important;text-align: right;width: 50px;background-color: #161b1d;border: 0px;color: white;font-weight: 100;">
+                                                                                    </a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a style="color: #999;">
+                                                                                        <!-- <i style="font-size: 16px;color: orange;margin-right: 7px;" class="fa fa-heartbeat" aria-hidden="true"></i> -->
+                                                                                        Wall Height
+                                                                                        <input type="text" style="margin-left: 8px;padding: 8px;height: 22px;border: 1px solid !important;border-color: #363e45 !important;text-align: right;width: 50px;background-color: #161b1d;border: 0px;color: white;font-weight: 100;">
+                                                                                    </a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a style="color: #999;">
+                                                                                        <!-- <i style="font-size: 16px;color: orange;margin-right: 7px;" class="fa fa-credit-card" aria-hidden="true"></i> -->
+                                                                                        NB Floors
+                                                                                        <input type="text" style="margin-left: 8px;padding: 8px;height: 22px;border: 1px solid !important;border-color: #363e45 !important;text-align: right;width: 50px;background-color: #161b1d;border: 0px;color: white;font-weight: 100;">
+                                                                                    </a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a style="color: #999;">
+                                                                                        <!-- <i style="font-size: 16px;color: orange;margin-right: 7px;" class="fa fa-credit-card" aria-hidden="true"></i> -->
+                                                                                        Roof Height
+                                                                                        <input type="text" style="margin-left: 8px;padding: 8px;height: 22px;border: 1px solid !important;border-color: #363e45 !important;text-align: right;width: 50px;background-color: #161b1d;border: 0px;color: white;font-weight: 100;">
+                                                                                    </a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a style="color: #999;">
+                                                                                        <!-- <i style="font-size: 16px;color: orange;margin-right: 7px;" class="fa fa-credit-card" aria-hidden="true"></i> -->
+                                                                                        Roof Thickness
+                                                                                        <input type="text" style="margin-left: 8px;padding: 8px;height: 22px;border: 1px solid !important;border-color: #363e45 !important;text-align: right;width: 50px;background-color: #161b1d;border: 0px;color: white;font-weight: 100;">
+                                                                                    </a>
+                                                                                </li>
+                                                                            </ul>
+                                                                    </nav>
+                                                                </div>
+                                                            </div>
+                                                        </ng-scrollbar>
+                                                        
+                                                        
+                                                    </ng-template>
+                                                </e-pane>
+
+                                                <e-pane>
+                                                    <ng-template #content>
+                                                        <div style="background: #23282f !important;color:#d8dee3;height: 100%;">
+                                                            <div class="content" style="padding: 0px;">
+                                                                <div class="row">
+                                                                    <div class="col-md-4" style="height: 38px;">
+                                                                        <button style="height: 100%;width: 38px;background-color: #23282f;color: white;border: 0;border-right: 1px solid;border-color: #363e45;">
+                                                                            <i class="fa fa-share-alt" aria-hidden="true"></i>
+                                                                        </button>
+                                                                        <button style="height: 100%;width: 38px;background-color: #23282f;color: white;border: 0;border-right: 1px solid;border-color: #363e45;">
+                                                                            <i class="fa fa-refresh" aria-hidden="true"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="col-md-8" style="height: 38px;">
+                                                                        
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row" style="margin: 0px;background-color: #161b1d;">
+                                                                    <div class="col-md-12">
+                                                                        <select style="width: 98%;font-size: 1.1em;height: 38px;background-color: #161b1d;color: white;border: none;font-weight: 100;">
+                                                                            <option>User_Default</option>
+                                                                           </select>
+                                                                    </div>
+                                                                </div>
+                                                                <hr style="background-color: #363e45;">
+                                                                <div class="row" style="margin: 0px;">
+                                                                    <div class="col-md-2" style="padding: 0;text-align: right;padding-right: 8px;padding-top: 3px;">
+                                                                        <span>
+                                                                            Window
+                                                                        </span>
+                                                                    </div>
+                                                                    <div class="col-md-4" style="padding: 0;">
+                                                                        <div style="height: 40px;background-color: #23282f;">
+                                                                            <select style="width: 98%;font-size: 1.1em;height: 25px;background-color: #363e45;color: white;border: none;font-weight: 100;" >
+                                                                               <option>Front</option>
+                                                                                <option>Back</option>
+                                                                                <option>Left</option>
+                                                                                <option>Right</option>
+                                                                              </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-3" style="padding: 0;">
+                                                                        <div style="height: 40px;background-color: #23282f;">
+                                                                            <select style="width:98%;font-size: 1.1em;height: 25px;background-color: #363e45;color: white;border: none;font-weight: 100;" >
+                                                                               <option>Wood</option>
+                                                                                <option>Steel</option>
+                                                                                <option>Glass</option>
+                                                                              </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-3" style="padding: 0;">
+                                                                        <input type="number" value="2" style="height: 25px;border: 1px solid !important;border-color: #363e45 !important;text-align: right;width: 35px;background-color: #161b1d;border: 0px;color: white;font-weight: 100;">x
+                                                                        <input type="number" value="2" style="height: 25px;border: 1px solid !important;border-color: #363e45 !important;text-align: right;width: 35px;background-color: #161b1d;border: 0px;color: white;font-weight: 100;">
+                                                                        <button style="width: 20px;background-color: #363e45;border: 0px;color: white;font-weight: 100;margin-left: 2px;border: 1px solid !important;border-color: #363e45 !important;">+</button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row" style="margin: 0px;">
+                                                                    <div class="col-md-11" style="text-align: right;padding: 0;">
+                                                                        <p style="margin: 0">
+                                                                            2.5x3 Foot- Front- Glass- Window
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="col-md-1" style="text-align: left;padding: 0;padding-left: 7px;padding-top: 2px;">
+                                                                        <i class="fa fa-trash" aria-hidden="true" style="color: #999;cursor: pointer;"></i>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row" style="margin: 0px;">
+                                                                    <div class="col-md-11" style="text-align: right;padding: 0;">
+                                                                        <p style="margin: 0">
+                                                                            2.5x3 Foot- Back- Glass- Window
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="col-md-1" style="text-align: left;padding: 0;padding-left: 7px;padding-top: 2px;">
+                                                                        <i class="fa fa-trash" aria-hidden="true" style="color: #999;cursor: pointer;"></i>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row" style="margin: 0px;">
+                                                                    <div class="col-md-11" style="text-align: right;padding: 0;">
+                                                                        <p style="margin: 0">
+                                                                            2.5x3 Foot- Left- Wood- Window
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="col-md-1" style="text-align: left;padding: 0;padding-left: 7px;padding-top: 2px;">
+                                                                        <i class="fa fa-trash" aria-hidden="true" style="color: #999;cursor: pointer;"></i>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row" style="margin: 0px;">
+                                                                    <div class="col-md-11" style="text-align: right;padding: 0;">
+                                                                        <p style="margin: 0">
+                                                                            2.5x3 Foot- Right- Wood- Window
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="col-md-1" style="text-align: left;padding: 0;padding-left: 7px;padding-top: 2px;">
+                                                                        <i class="fa fa-trash" aria-hidden="true" style="color: #999;cursor: pointer;"></i>
+                                                                    </div>
+                                                                </div>
+
+                                                                
+                                                                <hr style="background-color: #363e45;">
+
+                                                                <div class="row" style="margin: 0px;">
+                                                                    <div class="col-md-2" style="padding: 0;text-align: right;padding-right: 8px;padding-top: 3px;">
+                                                                        <span>
+                                                                            Door
+                                                                        </span>
+                                                                    </div>
+                                                                    <div class="col-md-4" style="padding: 0;">
+                                                                        <div style="height: 40px;background-color: #23282f;">
+                                                                            <select style="width: 98%;font-size: 1.1em;height: 25px;background-color: #363e45;color: white;border: none;font-weight: 100;" >
+                                                                               <option>Front</option>
+                                                                                <option>Back</option>
+                                                                                <option>Left</option>
+                                                                                <option>Right</option>
+                                                                              </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-3" style="padding: 0;">
+                                                                        <div style="height: 40px;background-color: #23282f;">
+                                                                            <select style="width:98%;font-size: 1.1em;height: 25px;background-color: #363e45;color: white;border: none;font-weight: 100;" >
+                                                                               <option>Wood</option>
+                                                                                <option>Steel</option>
+                                                                                <option>Glass</option>
+                                                                              </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-3" style="padding: 0;">
+                                                                        <input type="number" value="2" style="height: 25px;border: 1px solid !important;border-color: #363e45 !important;text-align: right;width: 35px;background-color: #161b1d;border: 0px;color: white;font-weight: 100;">x
+                                                                        <input type="number" value="2" style="height: 25px;border: 1px solid !important;border-color: #363e45 !important;text-align: right;width: 35px;background-color: #161b1d;border: 0px;color: white;font-weight: 100;">
+                                                                        <button style="width: 20px;background-color: #363e45;border: 0px;color: white;font-weight: 100;margin-left: 2px;border: 1px solid !important;border-color: #363e45 !important;">+</button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row" style="margin: 0px;">
+                                                                    <div class="col-md-11" style="text-align: right;padding: 0;">
+                                                                        <p style="margin: 0">
+                                                                            7x4 Foot- Front- Glass- Door
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="col-md-1" style="text-align: left;padding: 0;padding-left: 7px;padding-top: 2px;">
+                                                                        <i class="fa fa-trash" aria-hidden="true" style="color: #999;cursor: pointer;"></i>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row" style="margin: 0px;">
+                                                                    <div class="col-md-11" style="text-align: right;padding: 0;">
+                                                                        <p style="margin: 0">
+                                                                            7x4 Foot- Back- Glass- Door
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="col-md-1" style="text-align: left;padding: 0;padding-left: 7px;padding-top: 2px;">
+                                                                        <i class="fa fa-trash" aria-hidden="true" style="color: #999;cursor: pointer;"></i>
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                                
+                                                                <hr style="background-color: #363e45;">
+
+
+                                                                
+
+
+
+                                                                <button class="btn btn-success" style="font-size: 15px;padding-top: 4px;padding-bottom: 4px;background: #528400;bottom: 0px;position: absolute;bottom: 6px;margin-left: 20px;text-align: right;">
+                                                                    <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                                                                    Save
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    </ng-template>
+                                                </e-pane>
+
+                                                <e-pane size= '50%'>
+                                                    <ng-template #content>
+                                                        <div style="background:#171b1f !important; height: 100%;">
+                                                            <div class="container" style="height: 100%;">
+                                                                <div class="row" style="height: 100%;">
+                                                                    <div class="col-md-12">
+                                                                        <div class="card-body" style="background: #000000;height: 92%;border: 1px solid #363e45;margin-top: 15px;margin-bottom: 15px;">
+                                                                            <iframe style="height: 100%; width: 100%;border: 0;" 
+                                                                                src="//sharecad.org/cadframe/load?url=https://tvs-renovation.web.app/assets/dwg-template.dwg" 
+                                                                                scrolling="no"></iframe>
+                                                                        </div>
+                                                                        
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    </ng-template>
+                                                </e-pane>
+                                            </e-panes>
+    
+                                        </ejs-splitter>
+                                    </div>
+                                    <div>
+                                        <ejs-splitter #splitterInstance id="nested-splitter" 
+                                                        (created)='onCreated()' 
+                                                        height='100%' 
+                                                        width='100%'>
+                                            <e-panes>
+                                                <e-pane size = '33%'>
+                                                   <ng-template #content>
+                                                    <div class="content" style="color: #999;">
+
+                                                        <div class="row">
+                                                            <div class="col-md-4" style="text-align: right;">
+                                                                <a style="color: #d8dee3;font-weight: 500;">
+                                                                    Item(s)
+                                                                </a>
+                                                            </div>
+                                                            <div class="col-md-4" style="color: #d8dee3;font-weight: 500;">
+                                                                Quantity
+                                                            </div>
+                                                            <div class="col-md-4" style="color: #d8dee3;font-weight: 500;">
+                                                                Cost(Basic)
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-md-4" style="text-align: right;">
+                                                                <a href="https://www.buildbase.co.uk/building-materials/bricks/facing-bricks/browngrey-bricks-100010353-0000" target="_blank" style="color: #999;">
+                                                                    Bricks and Blocks
+                                                                </a>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                30,00 Pcs
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                £ 34,000
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-4" style="text-align: right;">
+                                                                <a href="https://www.buildingmaterials.co.uk/sharp-sand" target="_blank" style="color: #999;">
+                                                                    Sand
+                                                                </a>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                600 Cubic Feet
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                £ 700
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-4" style="text-align: right;">
+                                                                <a href="https://www.wickes.co.uk/Blue-Circle-General-Purpose-Cement---25kg/p/224661" target="_blank" style="color: #999;">
+                                                                    Cement
+                                                                </a>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                300 bag
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                £ 1600
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-4" style="text-align: right;">
+                                                                <a href="https://www.ukstonedirect.com/welsh-slate-plum-slate-40mm-decorative-aggregate.html" target="_blank" style="color: #999;">
+                                                                    Stone
+                                                                </a>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                150 Cubic Feet
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                £ 3000
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="row">
+                                                            <div class="col-md-4" style="text-align: right;">
+                                                                <a href="https://www.misterconcrete.co.uk/ready-mix-concrete-prices" target="_blank" style="color: #999;">
+                                                                    Concrete
+                                                                </a>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                700 Square Meter
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                £ 2500
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-4" style="text-align: right;">
+                                                                <a href="https://www.wickes.co.uk/Wickes-Treated-Kiln-Dried-C16-Timber---45-x-95-x-3000-mm/p/190166" target="_blank" style="color: #999;">
+                                                                    Wood
+                                                                </a>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                500 Square Meter
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                £ 1500
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            
+                                                            <div class="col-md-4" style="text-align: right;">
+                                                                <button class="btn btn-success" style="font-size: 15px;background: #528400;padding-top: 4px;padding-bottom: 4px;">
+                                                                    <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                                                                    Print
+                                                                </button>
+                                                            </div>
+                                                            <div class="col-md-4" style="color: #d8dee3;font-weight: 500;text-align: right;">
+                                                                Total
+                                                            </div>
+                                                            <div class="col-md-4" style="color: #d8dee3;font-weight: 500;">
+                                                                £ 40,825
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                   </ng-template>
+                                                </e-pane>
+                                                <e-pane size = '33%'>
+                                                    <ng-template #content>
+                                                        <div class="content" style="color: #999;">
+
+                                                            <div class="row">
+                                                                <div class="col-md-4" style="text-align: right;">
+                                                                    <a style="color: #d8dee3;font-weight: 500;">
+                                                                        Item(s)
+                                                                    </a>
+                                                                </div>
+                                                                <div class="col-md-4" style="color: #d8dee3;font-weight: 500;">
+                                                                    Quantity
+                                                                </div>
+                                                                <div class="col-md-4" style="color: #d8dee3;font-weight: 500;">
+                                                                    Cost(Custom)
+                                                                </div>
+                                                            </div>
+    
+                                                            <div class="row">
+                                                                <div class="col-md-4" style="text-align: right;">
+                                                                    <a href="https://www.buildbase.co.uk/building-materials/bricks/facing-bricks/browngrey-bricks-100010353-0000" target="_blank" style="color: #999;">
+                                                                        Bricks and Blocks
+                                                                    </a>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    30,100 Pcs
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    £ 34,000
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-4" style="text-align: right;">
+                                                                    <a href="https://www.buildingmaterials.co.uk/sharp-sand" target="_blank" style="color: #999;">
+                                                                        Sand
+                                                                    </a>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    600 Cubic Feet
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    £ 700
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-4" style="text-align: right;">
+                                                                    <a href="https://www.wickes.co.uk/Blue-Circle-General-Purpose-Cement---25kg/p/224661" target="_blank" style="color: #999;">
+                                                                        Cement
+                                                                    </a>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    300 bag
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    £ 1650
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-4" style="text-align: right;">
+                                                                    <a href="https://www.ukstonedirect.com/welsh-slate-plum-slate-40mm-decorative-aggregate.html" target="_blank" style="color: #999;">
+                                                                        Stone
+                                                                    </a>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    150 Cubic Feet
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    £ 3000
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            <div class="row">
+                                                                <div class="col-md-4" style="text-align: right;">
+                                                                    <a href="https://www.misterconcrete.co.uk/ready-mix-concrete-prices" target="_blank" style="color: #999;">
+                                                                        Concrete
+                                                                    </a>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    700 Square Meter
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    £ 2550
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-4" style="text-align: right;">
+                                                                    <a href="https://www.wickes.co.uk/Wickes-Treated-Kiln-Dried-C16-Timber---45-x-95-x-3000-mm/p/190166" target="_blank" style="color: #999;">
+                                                                        Wood
+                                                                    </a>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    500 Square Meter
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    £ 1500
+                                                                </div>
+                                                            </div>
+    
+                                                            <div class="row">
+                                                                
+                                                                <div class="col-md-4" style="text-align: right;">
+                                                                    <button class="btn btn-success" style="font-size: 15px;background: #528400;padding-top: 4px;padding-bottom: 4px;">
+                                                                        <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                                                                        Print
+                                                                    </button>
+                                                                </div>
+                                                                <div class="col-md-4" style="color: #d8dee3;font-weight: 500;text-align: right;">
+                                                                    Total
+                                                                </div>
+                                                                <div class="col-md-4" style="color: #d8dee3;font-weight: 500;">
+                                                                    £ 41,025
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                       </ng-template>
+                                                </e-pane>
+                                                <e-pane>
+                                                    <ng-template #content>
+                                                        <div class="content" style="color: #999;">
+
+                                                            <div class="row">
+                                                                <div class="col-md-4" style="text-align: right;">
+                                                                    <a style="color: #d8dee3;font-weight: 500;">
+                                                                        Item(s)
+                                                                    </a>
+                                                                </div>
+                                                                <div class="col-md-4" style="color: #d8dee3;font-weight: 500;">
+                                                                    Quantity
+                                                                </div>
+                                                                <div class="col-md-4" style="color: #d8dee3;font-weight: 500;">
+                                                                    Cost(Advanced)
+                                                                </div>
+                                                            </div>
+    
+                                                            <div class="row">
+                                                                <div class="col-md-4" style="text-align: right;">
+                                                                    <a href="https://www.buildbase.co.uk/building-materials/bricks/facing-bricks/browngrey-bricks-100010353-0000" target="_blank" style="color: #999;">
+                                                                        Bricks and Blocks
+                                                                    </a>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    30,000 Pcs
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    £ 34,150
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-4" style="text-align: right;">
+                                                                    <a href="https://www.buildingmaterials.co.uk/sharp-sand" target="_blank" style="color: #999;">
+                                                                        Sand
+                                                                    </a>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    600 Cubic Feet
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    £ 700
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-4" style="text-align: right;">
+                                                                    <a href="https://www.wickes.co.uk/Blue-Circle-General-Purpose-Cement---25kg/p/224661" target="_blank" style="color: #999;">
+                                                                        Cement
+                                                                    </a>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    300 bag
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    £ 1700
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-4" style="text-align: right;">
+                                                                    <a href="https://www.ukstonedirect.com/welsh-slate-plum-slate-40mm-decorative-aggregate.html" target="_blank" style="color: #999;">
+                                                                        Stone
+                                                                    </a>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    150 Cubic Feet
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    £ 3100
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            <div class="row">
+                                                                <div class="col-md-4" style="text-align: right;">
+                                                                    <a href="https://www.misterconcrete.co.uk/ready-mix-concrete-prices" target="_blank" style="color: #999;">
+                                                                        Concrete
+                                                                    </a>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    700 Square Meter
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    £ 2600
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-4" style="text-align: right;">
+                                                                    <a href="https://www.wickes.co.uk/Wickes-Treated-Kiln-Dried-C16-Timber---45-x-95-x-3000-mm/p/190166" target="_blank" style="color: #999;">
+                                                                        Wood
+                                                                    </a>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    500 Square Meter
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    £ 1550
+                                                                </div>
+                                                            </div>
+    
+                                                            <div class="row">
+                                                                
+                                                                <div class="col-md-4" style="text-align: right;">
+                                                                    <button class="btn btn-success" style="font-size: 15px;background: #528400;padding-top: 4px;padding-bottom: 4px;">
+                                                                        <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                                                                        Print
+                                                                    </button>
+                                                                </div>
+                                                                <div class="col-md-4" style="color: #d8dee3;font-weight: 500;text-align: right;">
+                                                                    Total
+                                                                </div>
+                                                                <div class="col-md-4" style="color: #d8dee3;font-weight: 500;">
+                                                                    £ 41,325
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                       </ng-template>
+                                                 </e-pane>
+                                            </e-panes>
+
+                                        </ejs-splitter>
+                                        
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </e-pane>
+                    </e-panes>
+                </ejs-splitter>
+            </div>
+        </div>
+    </div>
+
+
+
+
+

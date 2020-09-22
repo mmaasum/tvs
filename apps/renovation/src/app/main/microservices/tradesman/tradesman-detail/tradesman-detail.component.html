@@ -33,26 +33,27 @@
   <div class="container">
     <div class="row" style="padding-top: 50px;">
       <div class="col-lg-8">
-        <p class="lead">
+        <div [innerHTML]="tradesman.serviceDescription"></div>
+        <!-- <p class="lead">
             Here at JB Plumbing and Heating we specialise in repairing, servicing and installing central heating systems and full bathroom refurbishments, down to leaks and blockages throughout Manchester and Greater Manchester. We pride ourselves on customer satisfaction and take great pride in the high quality work in which we undertake. Our engineers hold industry recognised accreditation such as Gas Safe.
         </p>
         <p class="lead">
            We are selected partners with various boiler manufactures including ATAG. We at JB Plumbing and Heating understand that replacing your boiler or bathroom can sometimes be a daunting prospect and aim to make it as stress-free as possible. We offer the best solutions to meet the customers specific needs. We have return custom from our loyal customers, which we feel is a testament to our professionalism and great service that we provide. Whichever job, big or small, we have the expertise to cover it. We offer a free on site consultation of the works to be undertaken at a time to suit you. Here the works will be discussed thoroughly while checking that customers specific requirements can be provided.
-        </p>
+        </p> -->
         <hr>
         
   
   
         
   
-    </div>
-    <div class="col-md-4 company">
+      </div>
+      <div class="col-md-4 company">
         <div class="card mb-3" [routerLink]="['/tradesmen-detail',7]" target="_blank">
             <div class="row no-gutters">
                 
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h3 class="card-title" style="font-weight: bold;">Drainflo Ltd</h3>
+                        <h3 class="card-title" style="font-weight: bold;">{{tradesman.companyName}}</h3>
                         <p class="card-text">
                             Mr Lewis Odell</p>
                         <span style="margin-left: -7px;float: left;margin-top: -3px;margin-right: -22px;color: orange;"
@@ -61,45 +62,83 @@
                         </span>
                         <p style="margin-left: 16px;" class="card-text">
                             Eccles, Manchester</p>
+                            
                         <p class="card-text">10 (11 Reviews)</p>
+                        
                         <p class="card-text">
                             Website</p>
+                        
     
                     </div>
+                    
                 </div>
                 <div class="col-md-4 card-img-wrap">
-                    <img style="margin-top: 18px;height: 90px;width: 90px;border-radius: 50%;"
+                    <div class="row">
+                      <div class="col-md-12">
+                        <img style="margin-left: 10px;margin-top: 18px;height: 90px;width: 90px;border-radius: 50%;"
                         src="../../../../../assets/tradesman/1.jpg" class="card-img" alt="...">
+                      </div>
+                      <div class="col-md-12">
+                        <button 
+                          [routerLink]="['/review']" target="_blank"
+                          style="background-color: #6ca41c;color: #fff;padding: 10px;border: none;margin-top: 11px;" type="submit">Leave a review</button>
+                      </div>
+                    </div>
+                    
                 </div>
             </div>
         </div>
     
     
-        <div style="color: #2479a2;font-weight: 700;padding-bottom: 24px;font-size: 22px;line-height: 32px;" class="my-4">
+        <div style="color: #2479a2;font-weight: 700;font-size: 22px;line-height: 32px;" class="my-4">
           Photos & videos
-      </div>
+        </div>
         <div class="card mb-3" [routerLink]="['/tradesmen-detail',7]" target="_blank">
           <div class="row no-gutters">
               
               <div class="col-md-12">
-                  <div class="card-body">
+                  <div class="card-body" style="padding: 0px;">
                     <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
                   </div>
               </div>
           </div>
-      </div>
+        </div>
         
 
-        
+        <div style="color: #2479a2;font-weight: 700;font-size: 22px;line-height: 32px;" class="my-4">
+        Vetting Status
+        </div>
         <div class="card my-4">
-          <h5 class="card-header">Categories</h5>
+          
           <div class="card-body">
             <div class="row">
-              <div class="col-lg-12">
-                <ul class="list-unstyled mb-0" style="list-style: circle;">
-                  <li class="space lidefaule">
-                    <!-- <a>{{title.title}}</a> -->
+              <div class="col-lg-12" style="padding-left: 0;">
+                <ul class="list-unstyled mb-0 lead" style="color: #6A6A6A; margin-left: 12px;list-style: circle;">
+                  <li class="space card-text" style="padding-bottom: 5px;font-size: 16px;">
+                    <span style="padding-right: 10px;font-size: 17px;color: orange;"><i class="fa fa-check-circle"></i></span>
+                    <span>Accreditations	Checked</span>
                   </li>
+                  <li class="space card-text" style="padding-bottom: 5px;font-size: 16px;">
+                    <span style="padding-right: 10px;font-size: 17px;color: orange;"><i class="fa fa-check-circle"></i></span>
+                    <span>Insurance	Checked</span>
+                  </li>
+                  <li class="space card-text" style="padding-bottom: 5px;font-size: 16px;">
+                    <span style="padding-right: 10px;font-size: 17px;color: orange;"><i class="fa fa-check-circle"></i></span>
+                    <span>Company address verified</span>
+                  </li>
+                  <li class="space card-text" style="padding-bottom: 5px;font-size: 16px;">
+                    <span style="padding-right: 10px;font-size: 17px;color: orange;"><i class="fa fa-check-circle"></i></span>
+                    <span>Identification	Checked</span>
+                  </li>
+                  <li class="space card-text" style="padding-bottom: 5px;font-size: 16px;">
+                    <span style="padding-right: 10px;font-size: 17px;color: orange;"><i class="fa fa-check-circle"></i></span>
+                    <span>References	Checked</span>
+                  </li>
+                  <li class="space card-text" style="padding-bottom: 5px;font-size: 16px;">
+                    <span style="padding-right: 10px;font-size: 17px;color: orange;"><i class="fa fa-check-circle"></i></span>
+                    <span>Checkatrade T&Cs Signed</span>
+                  </li>
+                  
                 </ul>
               </div>
             </div>
@@ -107,4 +146,346 @@
         </div>
       </div>
     </div>
+
+
   </div>
+  <div class="container-fluid">
+    <div style="text-align: center;padding: 32px 0;-webkit-box-shadow: 1px 0 0 0 #ebebeb, -1px 0 0 0 #ebebeb;box-shadow: 1px 0 0 0 #ebebeb, -1px 0 0 0 #ebebeb;background-color: #ebebeb;position: relative;">
+      <span>Review</span>
+    </div>
+  </div>
+  <div class="container" style="margin-top: 50px;">
+
+    <div class="row">
+      <div class="card mb-3" [routerLink]="['/tradesmen-detail',7]" target="_blank">
+        <div class="row no-gutters">
+          <div class="card" style="padding: 15px;">
+            <div class="row">
+              <div class="col-md-2" style="margin-top: 90px;;text-align: center;">
+                <span style="color: orange;font-size: 20px;">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                </span>
+                <p style="padding-top: 10px;text-align: center;color: #a3a3a3;;font-size: 50px;line-height: 32px;letter-spacing: .2px;">
+                  3.5
+                </p>
+              </div>
+              <div class="col-md-10" style="margin-bottom: 24px;">
+
+                <div class="row">
+                  <div class="col-md-12" style="padding-bottom: 20px;">
+                    <span style="color: #7d7d7d;font-size: 22px;line-height: 32px;letter-spacing: .2px;">
+                      Gareth Carter,
+                    </span>
+                    <span style="color: #a3a3a3;;">
+                      26th August 2020
+                    </span>
+                  </div>
+                  
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <p>
+                      Initial impression
+                      <span style="color: orange;float: right;">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                      </span>
+                    </p>
+                    <p>
+                      Cleanliness
+                      <span style="color: orange;float: right;">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                      </span>
+                    </p>
+                    <p>
+                      Value
+                      <span style="color: orange;float: right;">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                      </span>
+                    </p>
+                    <p>
+                      Punctuality
+                      <span style="color: orange;float: right;">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                      </span>
+                    </p>
+                    <p>
+                      Quality
+                      <span style="color: orange;float: right;">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                      </span>
+                    </p>
+                    <p>
+                      Overall opinion
+                      <span style="color: orange;float: right;">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                      </span>
+                    </p>
+                    
+                  </div>
+                  <div class="col-md-9">
+                    <p>
+                      Kino is a family run business located in Manchester. We specilaise Auido visual and Electrical Installations and have made many regular clients over our years in bussiness. We pride ourselves in offering quality workmanship and a friendly reliable service at affordable prices. All our work is fully guaranteed and although we've never needed to use it we are fully covered to give that extra piece of mind. Please don't hesitate to call us if we could be of any assistance.
+                    </p>
+                  </div>
+                </div>
+
+                
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="card mb-3" [routerLink]="['/tradesmen-detail',7]" target="_blank">
+        <div class="row no-gutters">
+          <div class="card" style="padding: 15px;">
+            <div class="row">
+              <div class="col-md-2" style="margin-top: 90px;;text-align: center;">
+                <span style="color: orange;font-size: 20px;">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                </span>
+                <p style="padding-top: 10px;text-align: center;color: #a3a3a3;;font-size: 50px;line-height: 32px;letter-spacing: .2px;">
+                  3.5
+                </p>
+              </div>
+              <div class="col-md-10" style="margin-bottom: 24px;">
+
+                <div class="row">
+                  <div class="col-md-12" style="padding-bottom: 20px;">
+                    <span style="color: #7d7d7d;font-size: 22px;line-height: 32px;letter-spacing: .2px;">
+                      Gareth Carter,
+                    </span>
+                    <span style="color: #a3a3a3;;">
+                      26th August 2020
+                    </span>
+                  </div>
+                  
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <p>
+                      Initial impression
+                      <span style="color: orange;float: right;">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                      </span>
+                    </p>
+                    <p>
+                      Cleanliness
+                      <span style="color: orange;float: right;">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                      </span>
+                    </p>
+                    <p>
+                      Value
+                      <span style="color: orange;float: right;">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                      </span>
+                    </p>
+                    <p>
+                      Punctuality
+                      <span style="color: orange;float: right;">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                      </span>
+                    </p>
+                    <p>
+                      Quality
+                      <span style="color: orange;float: right;">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                      </span>
+                    </p>
+                    <p>
+                      Overall opinion
+                      <span style="color: orange;float: right;">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                      </span>
+                    </p>
+                    
+                  </div>
+                  <div class="col-md-9">
+                    <p>
+                      Kino is a family run business located in Manchester. We specilaise Auido visual and Electrical Installations and have made many regular clients over our years in bussiness. We pride ourselves in offering quality workmanship and a friendly reliable service at affordable prices. All our work is fully guaranteed and although we've never needed to use it we are fully covered to give that extra piece of mind. Please don't hesitate to call us if we could be of any assistance.
+                    </p>
+                  </div>
+                </div>
+
+                
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="card mb-3" [routerLink]="['/tradesmen-detail',7]" target="_blank">
+        <div class="row no-gutters">
+          <div class="card" style="padding: 15px;">
+            <div class="row">
+              <div class="col-md-2" style="margin-top: 90px;;text-align: center;">
+                <span style="color: orange;font-size: 20px;">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                </span>
+                <p style="padding-top: 10px;text-align: center;color: #a3a3a3;;font-size: 50px;line-height: 32px;letter-spacing: .2px;">
+                  3.5
+                </p>
+              </div>
+              <div class="col-md-10" style="margin-bottom: 24px;">
+
+                <div class="row">
+                  <div class="col-md-12" style="padding-bottom: 20px;">
+                    <span style="color: #7d7d7d;font-size: 22px;line-height: 32px;letter-spacing: .2px;">
+                      Gareth Carter,
+                    </span>
+                    <span style="color: #a3a3a3;;">
+                      26th August 2020
+                    </span>
+                  </div>
+                  
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <p>
+                      Initial impression
+                      <span style="color: orange;float: right;">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                      </span>
+                    </p>
+                    <p>
+                      Cleanliness
+                      <span style="color: orange;float: right;">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                      </span>
+                    </p>
+                    <p>
+                      Value
+                      <span style="color: orange;float: right;">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                      </span>
+                    </p>
+                    <p>
+                      Punctuality
+                      <span style="color: orange;float: right;">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                      </span>
+                    </p>
+                    <p>
+                      Quality
+                      <span style="color: orange;float: right;">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                      </span>
+                    </p>
+                    <p>
+                      Overall opinion
+                      <span style="color: orange;float: right;">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                      </span>
+                    </p>
+                    
+                  </div>
+                  <div class="col-md-9">
+                    <p>
+                      Kino is a family run business located in Manchester. We specilaise Auido visual and Electrical Installations and have made many regular clients over our years in bussiness. We pride ourselves in offering quality workmanship and a friendly reliable service at affordable prices. All our work is fully guaranteed and although we've never needed to use it we are fully covered to give that extra piece of mind. Please don't hesitate to call us if we could be of any assistance.
+                    </p>
+                  </div>
+                </div>
+
+                
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <tvs-footer></tvs-footer>
+  

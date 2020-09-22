@@ -12,20 +12,10 @@ export class TradesmenDetailComponent implements OnInit {
   tradesmanId;
   constructor(private tradesmanDetailService: TradesmanDetailService,
     private router: ActivatedRoute ) {
-      
-      
-      
-      
       this.router.params.subscribe(params => {
         
         this.tradesmanId=(params['Id']);
-
-        console.log(params['Id']);
         });
-        
-
-
-
     }
 
   ngOnInit(): void {
@@ -38,7 +28,6 @@ export class TradesmenDetailComponent implements OnInit {
     .subscribe(
       response => {
         this.tradesman =  response;
-        console.log(this.tradesman);
       },
       error => {
         console.log(error);

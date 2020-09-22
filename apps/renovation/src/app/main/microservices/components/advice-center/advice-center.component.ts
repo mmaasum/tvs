@@ -35,17 +35,11 @@ export class AdviceCenterComponent implements OnInit {
   }
 
   saveComment(){
-
-
     const data = this.postCommentEntryForm.getRawValue();
-        // console.log(data);
-        this.advicecenterService.saveAdviceCenterPostComment(data);
-
-
+    this.advicecenterService.saveAdviceCenterPostComment(data);
   }
   createProductForm(): FormGroup
     {
-        // console.log('t c createProductForm');
         return this._formBuilder.group({
           adviceCenterId              : [this.adviceCenterPostCommentModel.adviceCenterId],
           adviceCenterPostCommentId   : [this.adviceCenterPostCommentModel.adviceCenterPostCommentId],
@@ -56,13 +50,10 @@ export class AdviceCenterComponent implements OnInit {
     }
     
   getAdviceCenterPost(adviceCenterId) {
-    console.log(adviceCenterId);
-
     this.advicecenterService.getAdviceCenterPost(adviceCenterId)
     .subscribe(
       response => {
         this.adviceCenterPost =  response;
-        console.log(this.adviceCenterPost);
       },
       error => {
         console.log(error);
@@ -75,7 +66,6 @@ export class AdviceCenterComponent implements OnInit {
     .subscribe(
       response => {
         this.adviceCenterPost =  response;
-        // console.log(this.adviceCenterPost);
       },
       error => {
         console.log(error);
@@ -89,7 +79,6 @@ export class AdviceCenterComponent implements OnInit {
     this.advicecenterService.getAdviceCenterTitleList()
     .subscribe(responce=>{
       this.adviceCenterTitleList = responce
-      // console.log(this.adviceCenterTitleList)
     });
   }
 

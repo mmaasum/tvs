@@ -3,6 +3,9 @@ import { TradesmanModel } from '../../../model/tradesman.model';
 import { TradesmanService } from '../../services/tradesman.service';
 import { Router } from '@angular/router';
 import { SignupModalService } from '../../login/registration';
+import { SMSService } from '../../services/sms.service';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'tvs-find-tradesmen',
@@ -21,7 +24,13 @@ export class FindTradesmenComponent implements OnInit {
   favoritList: Array<TradesmanModel>=[];
   favoritListCount: number;
 
+  title = 'appBootstrap';
+  
+  closeResult: string;
+
   constructor(public tradesmanService: TradesmanService,
+    private modalService2: NgbModal,
+    private sMSService: SMSService,
     private modalService: SignupModalService,
     private router: Router) {
     // this.tradesman = any[];
@@ -29,16 +38,114 @@ export class FindTradesmenComponent implements OnInit {
 
 
   keyword = 'itemCategoryName';
+  clickedCategory = '';
+
   data;
   parentData = [];
   chieldData = [];
 
   Name = '';
+  uploadedFiles: Array < File > ;
+
+  fileChange(element) {
+    this.uploadedFiles = element.target.files;
+  }
+// tslint:disable-next-line: member-ordering
+fileToUpload: File = null;
+
+
+
+
+
+  
+  
+  open(content) {
+    console.log(content);
+    this.modalService2.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+  
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+sendSms(message, mobile){
+  console.log(message);
+  console.log(mobile);
+  this.sMSService.sendSms(message, mobile)
+  .subscribe(
+    response => {
+      this.tradesman =  response;
+    },
+    error => {
+      console.log(error);
+    }
+  );
+}
+handleFileInput(files: any) {
+
+  console.log(files);
+
+  
+
+  for (let i = 0; i < files.length; i++) {
+    this.fileToUpload = files.item(i);
+    
+  }
+
+  this.tradesmanService.importPostcods(this.fileToUpload)
+    .subscribe(
+      response => {
+        this.tradesman =  response;
+        console.log(response);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+
+  // console.log(this.fileToUpload);
+
+  
+}
+
+upload() {
+    const formData = new FormData();
+    for (let i = 0; i < this.uploadedFiles.length; i++) {
+        formData.append("uploads[]", this.uploadedFiles[i], this.uploadedFiles[i].name);
+    }
+    console.log(formData);
+    // this.http.post('/api/upload', formData)
+    //     .subscribe((response) => {
+    //         console.log('response received is ', response);
+    //     })
+  }
+
+
+
   selectEvent(item) {
     
     this.selectedItemCategoryId = item.itemCategoryId;
-    // console.log(this.postcode  + ', ' + this.selectedItemCategoryId);
-    // do something with selected item
+
   }
 
   onChangeSearch(val: string) {
@@ -51,32 +158,27 @@ export class FindTradesmenComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
-    
 
     this.isDisplay = false;
     this.getTradesmanList();
     this.getItemcategoryList();
-    
-    
-    // this.getchieldData(29);
+    this.getForSearchItemcategoryList();
+
+  }
+
+  searchCategory(Item:any){
+    this.clickedCategory = Item.itemCategoryName;
+    this.selectedItemCategoryId = Item.itemCategoryId;
+   
   }
 
   addToFavorite(item: any){
-    // console.log(item.cmpanyName);
     const favorite = new TradesmanModel();
     favorite.companyName = item.companyName;
 
     favorite.image = item.image;
     favorite.tradesmanId = item.tradesmanId;
     favorite.serviceDescription = item.serviceDescription;
-
-    
-    // favorite.companyName = item.cmpanyName;
-    // favorite.companyName = item.cmpanyName;
-    // favorite.companyName = item.cmpanyName;
-
-
     this.favoriteList.push(favorite);
 
     localStorage.setItem('favoriteList', JSON.stringify(this.favoriteList));
@@ -94,7 +196,19 @@ export class FindTradesmenComponent implements OnInit {
     .subscribe(
       response => {
         this.tradesman =  response;
-        // console.log(this.tradesman);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+    
+  }
+
+  getForSearchItemcategoryList(): void{
+     this.tradesmanService.getForSearchItemcategoryList()
+    .subscribe(
+      response => {
+        this.data =  response;
       },
       error => {
         console.log(error);
@@ -104,22 +218,19 @@ export class FindTradesmenComponent implements OnInit {
   }
 
   getItemcategoryList(): void{
-     this.tradesmanService.getItemcategoryList()
-    .subscribe(
-      response => {
-        this.data =  response;
-        this.parentData = this.data;
-        // this.parentData = this.data.filter(obj => obj.parentId === 0);
-        // this.chieldData = this.data.filter(obj => obj.parentId > 0)
-        console.log(this.parentData);
-      },
-      error => {
-        console.log(error);
-      }
-    );
-    
-  }
-
+    this.tradesmanService.getItemcategoryList()
+   .subscribe(
+     response => {
+      
+       this.parentData = response;
+      //  console.log(this.parentData);
+     },
+     error => {
+       console.log(error);
+     }
+   );
+   
+ }
   getItemcategoryList2(): void{
     this.tradesmanService.getItemcategoryList()
    .subscribe(
@@ -133,24 +244,21 @@ export class FindTradesmenComponent implements OnInit {
    );
    
  }
-  // getchieldData(parentId:number){
-  //   console.log('a');
-  //   this.tradesmanService.getItemcategoryList()
-  //   .subscribe(
-  //     response => {
-  //       this.data =  response;
-  //       this.chieldData = this.data.filter(obj => obj.parentId === parentId)
-  //     },
-  //     error => {
-  //       console.log(error);
-  //     }
-  //   );
-  // }
+  importPostcods(){
+    // this.tradesmanService.importPostcods()
+    // .subscribe(
+    //   response => {
+    //     this.tradesman =  response;
+    //     console.log(response);
+    //   },
+    //   error => {
+    //     console.log(error);
+    //   }
+    // );
+  }
 
-  
 
   getSearchItemcategoryList(): void{
-    // console.log(this.selectedItemCategoryId);
     if(!this.selectedItemCategoryId)
     {
       alert('Please enter a valid category name')
@@ -160,7 +268,7 @@ export class FindTradesmenComponent implements OnInit {
     .subscribe(
       response => {
         this.tradesman =  response;
-        // console.log(this.tradesman);
+        console.log(response);
       },
       error => {
         console.log(error);
@@ -170,25 +278,10 @@ export class FindTradesmenComponent implements OnInit {
   }
 
   showDetail(tradesmanId):void{
-    // console.log(tradesmanId);
     this.router.navigate(['/tradesmen-detail'], { queryParams: { id: tradesmanId } });
-    
-    
-    
-    // this.tradesmanService.getTradesmanList(tradesmanId)
-    // .subscribe(
-    //   response => {
-    //     this.tradesman =  response;
-    //     console.log(this.tradesman);
-    //   },
-    //   error => {
-    //     console.log(error);
-    //   }
-    // );
   }
 
   seeAll(val){
-    // console.log(val);
   }
 
 

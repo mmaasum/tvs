@@ -29,17 +29,8 @@ export class LoginRegistrationService implements  OnInit
         return this._httpClient.post('http://localhost:8005/login/InsertItem/', JSON.stringify(user), {'headers':headers});
     }
     
-    // saveUser2(user: UserModel, userProfile: UserProfileModel): Observable<any>
-    // {
-    //     console.log(user);
-    //     console.log(userProfile);
-    //     const headers = { 'content-type': 'application/json'} 
-    //     return this._httpClient.post('http://localhost:8005/login/InsertItemTradesman/', {user, userProfile}, {'headers':headers});
-    // }
-
     getUserByEmailId(user): Observable<any>
     {
-        console.log(user);
        return this._httpClient.post('http://localhost:8005/login/GetUserByEmail/', user)
             
     }
