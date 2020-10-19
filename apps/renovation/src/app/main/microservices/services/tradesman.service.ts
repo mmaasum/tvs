@@ -5,19 +5,19 @@ import { Observable, BehaviorSubject } from 'rxjs';
 @Injectable()
 export class TradesmanService implements  OnInit
 {
-   
+   private _baseUrl: string;
+   filteredData;
+   data:any;
+   private messageSource = new BehaviorSubject(0);
+
     constructor(
         private _httpClient: HttpClient
     )
     {
-        
+        this._baseUrl = 'http://localhost:8003';
     }
-   private messageSource = new BehaviorSubject(0);
+   
    currentMessage = this.messageSource.asObservable();
-    
-    filteredData;
-
-    data:any;
     
     ngOnInit(): void {
         
@@ -25,41 +25,31 @@ export class TradesmanService implements  OnInit
 
     changeMessage(message: number) {
       this.messageSource.next(message)
-   }
+    }
 
     getTradesmanList(): Observable<any>
     {
-       return this._httpClient.get('http://localhost:8003/api/Tradesman/GetTradesmen/')
-            
+       return this._httpClient.get(this._baseUrl +'/api/Tradesman/GetTradesmen/')    
     }
 
     getItemcategoryList(): Observable<any>
     {
-        return this._httpClient.get('http://localhost:8003/Itemcategory/GetItemgategorys/')
-            
+        return this._httpClient.get(this._baseUrl +'/Itemcategory/GetItemgategorys/')    
     }
     getForSearchItemcategoryList(): Observable<any>
     {
-       return this._httpClient.get('http://localhost:8003/Itemcategory/GetSearchItemCategorys/')
-            
+       return this._httpClient.get(this._baseUrl +'/Itemcategory/GetSearchItemCategorys/')        
     }
 
     getSearchItemcategoryList(selectedItemCategoryId, postcode): Observable<any>
     {
-       return this._httpClient.get('http://localhost:8003/Itemcategory/GetItemgategorys/'+selectedItemCategoryId+'/'+postcode)
-            
+       return this._httpClient.get(this._baseUrl +'/Itemcategory/GetItemgategorys/'+selectedItemCategoryId+'/'+postcode)   
     }
 
     importPostcods(files: File): Observable<any>
     {
-       console.log('called');
       const headers = { 'Content-Type': 'application/json', 'Accept': 'application/json'} 
-      
-      //  return this._httpClient.post('http://localhost:8003/Itemcategory/ImportExcel/', JSON.stringify(files), {'headers':headers})
-
-
-      return this._httpClient.post('http://localhost:8003/Itemcategory/ImportExcel/', files, {'headers':headers})
-            
+      return this._httpClient.post(this._baseUrl +'/Itemcategory/ImportExcel/', files, {'headers':headers})     
     }
 
     getAdviceCenterTitleList(): Observable<any>
@@ -69,8 +59,7 @@ export class TradesmanService implements  OnInit
 
     getData(): any[]
     {
-
-       this._httpClient.get('http://localhost:8003/Itemcategory/GetItemgategorys/')
+       this._httpClient.get(this._baseUrl +'/Itemcategory/GetItemgategorys/')
          .subscribe(
          response => {
             this.data =  response;
@@ -83,9 +72,6 @@ export class TradesmanService implements  OnInit
             console.log(error);
          }
       );
-      
-       return this.filteredData;
-            
+       return this.filteredData;      
     }
-    
 }

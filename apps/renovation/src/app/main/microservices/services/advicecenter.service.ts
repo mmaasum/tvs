@@ -5,17 +5,15 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class AdviceCenterService implements  OnInit
 {
-
+    private _baseUrl: string;
     constructor(
         private _httpClient: HttpClient
     )
     {
-        
+        this._baseUrl = 'http://localhost:8004';
     }
     
-    ngOnInit(): void {
-        
-    }
+    ngOnInit(): void {}
 
     
     saveAdviceCenterPostComment(comment): Promise<any>
@@ -37,19 +35,17 @@ export class AdviceCenterService implements  OnInit
     
     getAdviceCenterPost(adviceCenterId): Observable<any>
     {
-       return this._httpClient.get('http://localhost:8004/api/AdviceCenter/GetAdviceCenterPostByAdvicecenterId/'+ adviceCenterId)
-    
+       return this._httpClient.get(this._baseUrl +'/api/AdviceCenter/GetAdviceCenterPostByAdvicecenterId/'+ adviceCenterId)
     }
 
     getAdviceCenterPosts(): Observable<any>
     {
-       return this._httpClient.get('http://localhost:8004/api/AdviceCenter/GetAdviceCenterPosts')
-            
+       return this._httpClient.get(this._baseUrl +'/api/AdviceCenter/GetAdviceCenterPosts')   
     }
 
     getAdviceCenterTitleList(): Observable<any>
     {
-       return this._httpClient.get('http://localhost:8004/api/AdviceCenter/GetAdviceCenterTitleList')
+       return this._httpClient.get(this._baseUrl +'/api/AdviceCenter/GetAdviceCenterTitleList')
     }
     
 }

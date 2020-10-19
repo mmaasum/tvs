@@ -4,7 +4,7 @@ import { TradesmanService } from '../../services/tradesman.service';
 import { Router } from '@angular/router';
 import { SignupModalService } from '../../login/registration';
 import { SMSService } from '../../services/sms.service';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { LoadingBarService } from '@ngx-loading-bar/core';
 
 
@@ -15,52 +15,38 @@ import { LoadingBarService } from '@ngx-loading-bar/core';
 })
 export class FindTradesmenComponent implements OnInit {
 
-  // favorite:any;
-  loader        = this.loadingBar.useRef();
-  favoriteList: Array<TradesmanModel> = [];
-  tradesman: [];
-  isDisplay: boolean;
-  selectedItemCategoryId;
-  postcode = '';
-
-  favoritList: Array<TradesmanModel>=[];
-  favoritListCount: number;
-
-  title = 'appBootstrap';
+  keyword             = 'itemCategoryName';
+  clickedCategory     = '';
+  parentData          = [];
+  chieldData          = [];
+  // Name                = '';
+  fileToUpload: File  = null;
+  postcode            = '';
+  title               = 'appBootstrap';
+  loader              = this.loadingBar.useRef();
   
-  closeResult: string;
-
+  favoriteList        : Array<TradesmanModel> = [];
+  favoritList         : Array<TradesmanModel>=[];
+  favoritListCount    : number;
+  tradesman           : [];
+  isDisplay           : boolean;
+  closeResult         : string;
+  uploadedFiles       : Array < File >;
+  
+  data;
+  selectedItemCategoryId;
+  
   constructor(public tradesmanService: TradesmanService,
     private modalService2: NgbModal,
     private sMSService: SMSService,
     private modalService: SignupModalService,
     private loadingBar: LoadingBarService,
     private router: Router) {
-    // this.tradesman = any[];
   }
-
-
-  keyword = 'itemCategoryName';
-  clickedCategory = '';
-
-  data;
-  parentData = [];
-  chieldData = [];
-
-  Name = '';
-  uploadedFiles: Array < File > ;
-
+  
   fileChange(element) {
     this.uploadedFiles = element.target.files;
   }
-// tslint:disable-next-line: member-ordering
-fileToUpload: File = null;
-
-
-
-
-
-  
   
   open(content) {
     console.log(content);
@@ -80,15 +66,6 @@ fileToUpload: File = null;
       return  `with: ${reason}`;
     }
   }
-
-
-
-
-
-
-
-
-
 
 
 sendSms(message, mobile){
@@ -226,9 +203,7 @@ upload() {
     this.tradesmanService.getItemcategoryList()
    .subscribe(
      response => {
-      
        this.parentData = response;
-      //  console.log(this.parentData);
      },
      error => {
        console.log(error);
@@ -286,26 +261,5 @@ upload() {
     this.router.navigate(['/tradesmen-detail'], { queryParams: { id: tradesmanId } });
   }
 
-  seeAll(val){
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
 }
