@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { FooterComponent } from './footer/footer.component';
 import { SliderComponent } from './slider/slider.component';
-import { DrawYourHomeModule } from '../../main/draw-your-home/draw-your-home.module';
+// import { DrawYourHomeModule } from '../../main/draw-your-home/draw-your-home.module';
 import { FrontBlocksComponent } from './front-blocks/front-blocks.component';
 import {A11yModule} from '@angular/cdk/a11y';
 import {ClipboardModule} from '@angular/cdk/clipboard';
@@ -72,10 +72,14 @@ const appRoutes: Routes = [
   ],
   imports: [ModalModule,SignupModalModule,
     RouterModule.forRoot(appRoutes),
-    CommonModule,DrawYourHomeModule,MatCardModule,MatButtonModule,MatIconModule,MatDividerModule
+    CommonModule,
+    // DrawYourHomeModule,
+    MatCardModule,MatButtonModule,MatIconModule,MatDividerModule
   ],
   exports     : [
-    NavBarComponent,FooterComponent,SliderComponent,DrawYourHomeModule,HomeComponent,
+    NavBarComponent,FooterComponent,SliderComponent,
+    // DrawYourHomeModule,
+    HomeComponent,
     A11yModule,
     ClipboardModule,
     CdkStepperModule,

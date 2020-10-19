@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { SignupModalService } from '../../login/registration';
 import { SMSService } from '../../services/sms.service';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { LoadingBarService } from '@ngx-loading-bar/core';
 
 
 @Component({
@@ -15,6 +16,7 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 export class FindTradesmenComponent implements OnInit {
 
   // favorite:any;
+  loader        = this.loadingBar.useRef();
   favoriteList: Array<TradesmanModel> = [];
   tradesman: [];
   isDisplay: boolean;
@@ -32,6 +34,7 @@ export class FindTradesmenComponent implements OnInit {
     private modalService2: NgbModal,
     private sMSService: SMSService,
     private modalService: SignupModalService,
+    private loadingBar: LoadingBarService,
     private router: Router) {
     // this.tradesman = any[];
   }
@@ -192,6 +195,7 @@ upload() {
   }
 
   getTradesmanList(): void{
+    this.loader.start();
     this.tradesmanService.getTradesmanList()
     .subscribe(
       response => {
@@ -200,8 +204,9 @@ upload() {
       error => {
         console.log(error);
       }
+      
     );
-    
+    this.loader.complete();
   }
 
   getForSearchItemcategoryList(): void{

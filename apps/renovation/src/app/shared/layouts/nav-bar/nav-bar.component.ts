@@ -33,12 +33,12 @@ export class NavBarComponent implements OnInit, AfterViewInit {
     ngAfterViewInit() {
       this.favoritList = JSON.parse(localStorage.getItem('favoriteList'));
       if(this.favoritList.length > 0){
-        this.favoritListCount = this.favoritList.length
+        // this.favoritListCount = this.favoritList.length
       }
       this.tradesmanService.changeMessage(this.favoritListCount);
 
-      this.tradesmanService.currentMessage.subscribe(message => this.favoritListCount = message)
-      this.modalService.currentMessage.subscribe(message => this.message = message)
+      this.tradesmanService.currentMessage.subscribe(message1 => this.favoritListCount = message1)
+      // this.modalService.currentMessage.subscribe(message => this.message = message)
       this.modalService.currentWellcomeMessage.subscribe(wMessage => this.wellcomeMessage = wMessage)
 
     }

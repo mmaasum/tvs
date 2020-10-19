@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DrawYourHomeModule } from './draw-your-home/draw-your-home.module';
+// import { DrawYourHomeModule } from './draw-your-home/draw-your-home.module';
 import { MicroservicesModule } from './microservices/microservices.module';
 import { HttpClientModule } from '@angular/common/http';
 import "@angular/compiler";
@@ -10,8 +10,13 @@ import "@angular/compiler";
 @NgModule({
   declarations: [],
   imports: [HttpClientModule,
-    CommonModule,DrawYourHomeModule, MicroservicesModule
+    CommonModule,
+    // DrawYourHomeModule,
+     MicroservicesModule
   ],
-  exports:[DrawYourHomeModule]
+  exports:[
+    MicroservicesModule
+    // DrawYourHomeModule
+  ]
 })
 export class MainModule { }

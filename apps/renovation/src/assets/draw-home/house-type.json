@@ -1,0 +1,27 @@
+
+[
+    {
+        "houseTypeId": "1",
+        "houseTypeName": "Detached"
+    },
+    {
+        "houseTypeId": "1",
+        "houseTypeName": "Semi Detached"
+    },
+    {
+        "houseTypeId": "1",
+        "houseTypeName": "End Terraced"
+    },
+    {
+        "houseTypeId": "1",
+        "houseTypeName": "Mid Terraced"
+    },
+    {
+        "houseTypeId": "1",
+        "houseTypeName": "Bungalow"
+    },
+    {
+        "houseTypeId": "1",
+        "houseTypeName": "Flat"
+    }
+]

@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { MainModule } from './main/main.module';
 import { RouterModule, Routes } from '@angular/router';
+import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 
 // import { NgxGalleryModule } from 'ngx-gallery-9';
 
@@ -25,7 +26,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, SharedModule,MainModule
+  imports: [BrowserModule, SharedModule,MainModule,LoadingBarRouterModule
      // RouterModule.forRoot(appRoutes),
   ],
   providers: [],

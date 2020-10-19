@@ -1,0 +1,41 @@
+
+[
+      {
+        "item": "Bricks and Blocks",
+        "quantity": "30,00",
+        "unit": "Pcs",
+        "cost": "33,000"
+      },
+      {
+        "item": "Sand",
+        "quantity": "600",
+        "unit": "Cubic Feet",
+        "cost": "700"
+      },
+      {
+        "item": "Cement",
+        "quantity": "300",
+        "unit": "bag",
+        "cost": "1600"
+      },
+      {
+        "item": "Stone",
+        "quantity": "150",
+        "unit": "Cubic Feet",
+        "cost": "3,000"
+      },
+      {
+        "item": "Concrete",
+        "quantity": "700",
+        "unit": "Square Meter",
+        "cost": "2500"
+      },
+      {
+        "item": "Wood",
+        "quantity": "500",
+        "unit": "Square Meter",
+        "cost": "1,500"
+      }
+    ]
+    
+  

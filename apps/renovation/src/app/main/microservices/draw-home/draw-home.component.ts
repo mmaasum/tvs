@@ -1,10 +1,14 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import * as THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import { FormBuilder, FormGroup } from '@angular/forms';
+
 import { SplitterComponent} from '@syncfusion/ej2-angular-layouts';
 import { Splitter } from '@syncfusion/ej2-layouts';
+import { HouseTypeLayoutModel } from '../../model/house-type-layout.model';
+import { MaterialVScostModel } from '../../model/material-vs-cost.model';
+import { DrawHomeService } from '../services/draw-home.service';
+import { LoadingBarService } from '@ngx-loading-bar/core';
 
-// import {} from '../../../../assets/tradesman/'
+// import {} '../../../../assets/images/cns-1.jpg';
 
 @Component({
   selector: 'tvs-draw-home',
@@ -12,82 +16,36 @@ import { Splitter } from '@syncfusion/ej2-layouts';
   styleUrls: ['./draw-home.component.css']
 })
 export class DrawHomeComponent implements OnInit {
+  loader        = this.loadingBar.useRef();
+  zoomSize      = ['100%','80%','75%','50%','35%','25%'];
+  selected      = [ 2, 8 ];
+  
+  normalPB: boolean;    
 
-  constructor() { 
-    // const scene = new THREE.Scene();
-    // const camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
+  stripedPB: boolean;    
 
-    // const renderer = new THREE.WebGLRenderer();
-    // renderer.setSize( window.innerWidth, window.innerHeight );
-    // document.body.appendChild( renderer.domElement );
+  animatedPB: boolean; 
 
-    // const geometry = new THREE.BoxGeometry( 1, 1, 1 );
-    // const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-    // // const cube = new THREE.Mesh( geometry, material );
-    // // scene.add( cube );
+  @ViewChild('splitterInstance') splitterObj: SplitterComponent;
+  houseType                                 : any;
+  displayHouseTypeLayout                    : any;
+  houseTypeLayoutModel                      : HouseTypeLayoutModel;
+  materialVScostBasic                       : MaterialVScostModel;
+  materialVScostCustom                      : MaterialVScostModel;
+  materialVScostAdvanced                    : MaterialVScostModel;
+  drawHomeEntryForm                         : FormGroup;
+  parentMessageBasic                        : any;
+  parentMessageCustom                       : any;
+  parentMessageAdvanced                     : any;
 
-    // camera.position.z = 200;
-    // const controls = new OrbitControls(camera, renderer.domElement);
-    // controls.enableDamping = true;
-    // // controls.campingFactor = 0.25;
-    // controls.enableZoom = true;
+  testJson                                  : any;
+  semiDetachedGableFlNo                     : number;
 
-    // const keyLight = new THREE.DirectionalLight(new THREE.Color('hsl(30, 100%, 75%)'), 1.0);
-    // keyLight.position.set(100, 0, 100);
+  constructor(private drawHome: DrawHomeService,
+              private _formBuilder: FormBuilder,
+              private loadingBar: LoadingBarService) { }
 
-    // const fillLignt = new THREE.DirectionalLight(new THREE.Color('hsl(240, 100%, 75%)'), 0.75);
-    // fillLignt.position.set(-100, 0, 100);
-
-    // const backLight = new THREE.DirectionalLight(0xffffff, 1.0);
-    // backLight.position.set(100, 0, -100).normalize();
-
-    // scene.add(keyLight);
-    // scene.add(fillLignt);
-    // scene.add(backLight);
-
-    // // Mycode
-    // const objLoader = new THREE.ObjectLoader();
-    // objLoader.setPath('../../../../assets/tradesman/');
-    // objLoader.load('house_design_template_Main.igs', function(objt){
-    //   objt.position.y -= 60;
-    //   scene.add(objt);
-    // });
-
-
-
-
-    // // const manager = new THREE.LoadingManager();
-    // // const loader = new THREE.ObjectLoader(manager);
-
-    // // loader.load('https://threejsfundamentals.org/threejs/resources/models/windmill/windmill.obj', function(object) {
-    // //   object.position.y -= 60;
-    // //   scene.add(object);
-    // // });
-
-
-    // // const objLoader = new THREE.ObjectLoader();
-    // // objLoader.setPath('../../../../assets/tradesman/');
-    // // objLoader.load('house_design_template.obj', function(object){
-    // //   object.position.y -= 60;
-    // //   scene.add(object);
-    // // })
-    // // end my code
-    // const animate = function () {
-    //   requestAnimationFrame( animate );
-    //   controls.update();
-    //   // cube.rotation.x += 0.01;
-    //   // cube.rotation.y += 0.01;
-
-    //   renderer.render( scene, camera );
-    // };
-
-    // animate();
-
-      }
-
-
-      @ViewChild('splitterInstance') splitterObj: SplitterComponent;
-      public onCreated () {
+  public onCreated () {
           const splitterObj1 = new Splitter({
               height: '310px',
               paneSettings: [
@@ -100,6 +58,107 @@ export class DrawHomeComponent implements OnInit {
       }
       
   ngOnInit(): void {
+
+    this.houseTypeLayoutModel         = new HouseTypeLayoutModel();
+    this.drawHomeEntryForm            = this.createDrawHomeForm();
+    this.materialVScostBasic          = new MaterialVScostModel();
+    this.materialVScostCustom         = new MaterialVScostModel();
+    this.materialVScostAdvanced       = new MaterialVScostModel();
+
+    this.drawHome.getHouseType().subscribe(data=>{
+      this.houseType = data;
+    });
+
+    this.drawHome.getHouseTypeLayout().subscribe(data=>{
+      // console.log(data);
+      this.displayHouseTypeLayout = data;
+    });
+    
+  }
+
+  onNbFloors(){
+    console.log(this.semiDetachedGableFlNo);
+    // this.semiDetachedGableFlNo = this.houseTypeLayoutModel.nbFloors;
+  }
+  calculateCost():void{
+    this.drawHome.getMaterialVScost().subscribe(data=>{
+
+      this.materialVScostBasic    = data[0].basic;
+      this.materialVScostCustom   = data[0].custom;
+      this.materialVScostAdvanced = data[0].advanced;
+
+      this.parentMessageBasic     = data[0].basic;
+      this.parentMessageCustom    = data[0].custom;
+      this.parentMessageAdvanced  = data[0].advanced;
+    })
+  }
+
+  // getMaterialVScost(): void{
+    
+  //   this.drawHome.getMaterialVScost().subscribe(data=>{
+
+  //     this.materialVScostBasic    = data[0].basic;
+  //     this.materialVScostCustom   = data[0].custom;
+  //     this.materialVScostAdvanced = data[0].advanced;
+
+  //     this.parentMessageBasic     = data[0].basic;
+  //     this.parentMessageCustom    = data[0].custom;
+  //     this.parentMessageAdvanced  = data[0].advanced;
+
+  //     // this.parentMessage = data[0].advanced;
+
+
+  //     // this.parentMessage = this.drawHome.changeMessage(data[0].basic);
+  //     // this.parentMessageCustom = this.drawHome.changeMessage(data[0].custom);
+  //     // this.parentMessage = this.drawHome.changeMessage(data[0].advanced);
+
+
+  //     // console.log(this.materialVScostBasic);
+  //     // console.log(this.materialVScostCustom);
+  //     // console.log(this.materialVScostAdvanced);
+  //   })
+  // }
+
+  onOptionsSelected(value:number){
+    
+    this.houseTypeLayoutModel = this.displayHouseTypeLayout.filter(x => x.houseTypeLayoutId === Number(value))[0]
+
+    // console.log(this.houseTypeLayoutModel);
+
+  }
+  saveData(): void{
+    this.loader.start();
+    const data = this.drawHomeEntryForm.getRawValue();
+    this.drawHome.saveDrawHome(data).subscribe(response => {
+      this.displayHouseTypeLayout = response;
+      // console.log(this.displayHouseTypeLayout);
+      this.loader.complete();
+    });
+  }
+  showProgressBar(value){    
+    
+        this.normalPB=false;    
+   
+        this.stripedPB=false;    
+    
+        this.animatedPB=false;    
+    
+    
+      }
+  createDrawHomeForm(): FormGroup{
+    return this._formBuilder.group({
+      width                           : [this.houseTypeLayoutModel.width],
+      length                          : [this.houseTypeLayoutModel.length],
+      floorThickness                  : [this.houseTypeLayoutModel.floorThickness],
+      wallThickness                   : [this.houseTypeLayoutModel.wallThickness],
+      wallHeight                      : [this.houseTypeLayoutModel.wallHeight],
+      nbFloors                        : [this.houseTypeLayoutModel.nbFloors],
+      roofHeight                      : [this.houseTypeLayoutModel.roofHeight],
+      roofThickness                   : [this.houseTypeLayoutModel.roofThickness],
+      roofTopLength                   : [this.houseTypeLayoutModel.roofTopLength],
+      roofBottomLength                : [this.houseTypeLayoutModel.roofBottomLength]
+    })
+
   }
 
 }

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FindTradesmenComponent } from './components/find-tradesmen/find-tradesmen.component';
 import { Routes, RouterModule } from '@angular/router';
@@ -33,9 +33,19 @@ import { SMSService } from './services/sms.service';
 import { DrawHomeComponent } from './draw-home/draw-home.component';
 import { SplitterModule } from '@syncfusion/ej2-angular-layouts';
 import { NgScrollbarModule } from 'ngx-scrollbar';
+import { PrintHomeComponent } from './draw-home/print-home/print-home.component';
+import { DrawHomeService } from './services/draw-home.service';
+import { MaterialCostComponent } from './draw-home/material-cost/material-cost.component';
+import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
+import { LoadingBarModule } from '@ngx-loading-bar/core';
+import { MiddlePaneComponent } from './draw-home/middle-pane/middle-pane.component';
+import { TemplateDisplayPaneComponent } from './draw-home/template-display-pane/template-display-pane.component';
+import { LeftPaneComponent } from './draw-home/left-pane/left-pane.component';
+
 
 const routes: Routes = [
   { path        : 'draw-home', component: DrawHomeComponent },
+  { path        : 'print-home', component: PrintHomeComponent },
   { path        : 'find-tradesmen', component: FindTradesmenComponent },
   { path        : 'advice-center', component: AdviceCenterComponent },
   { path        : 'advice-center-author', component: AuthorComponent },
@@ -57,8 +67,15 @@ const routes: Routes = [
     FavoriteListComponent,
     TradesmanDetailComponent,
     UserReviewComponent,
-    DrawHomeComponent],
+    DrawHomeComponent,
+    PrintHomeComponent,
+    MaterialCostComponent,
+    MiddlePaneComponent,
+    TemplateDisplayPaneComponent,
+    LeftPaneComponent],
   imports: [MatTableModule,MatPaginatorModule,
+    LoadingBarModule,
+    LoadingBarRouterModule,
     NgScrollbarModule,
     SplitterModule,
     LayoutsModule,
@@ -74,14 +91,17 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   exports:[MatPaginatorModule, 
+    LoadingBarModule,
+    LoadingBarRouterModule,
     RegistrationComponent,
     ReactiveFormsModule,
     FormsModule,
     MatTableModule,FindTradesmenComponent, AdviceCenterComponent,
     MatCardModule,MatButtonModule
   ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [AdviceCenterService, TradesmanService,TradesmanDetailService,
-    LoginRegistrationService,
+    LoginRegistrationService,DrawHomeService,
     SMSService]
 })
 export class MicroservicesModule { }

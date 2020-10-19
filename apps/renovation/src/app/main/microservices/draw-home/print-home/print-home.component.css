@@ -1,0 +1,26 @@
+#invoice {
+    vertical-align: top;
+}
+
+#invoice {
+    position: relative;
+    left: 80px;
+    opacity: 0.99;
+    width: 820px;
+    height: 1250px;
+    padding: 45px 65px;
+    /* background: #fcffff url(paper.png); */
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: 1px solid white;
+    -webkit-box-shadow: -1px -1px 5px rgba(0,0,0,0.7);
+    -moz-box-shadow: 0px 0px 5px rgba(0,0,0,0.7);
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.7);
+    overflow: hidden;
+}
+.clearfix, .container {
+    display: block;
+}
+
+
