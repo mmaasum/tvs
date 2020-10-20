@@ -10,10 +10,10 @@ import { LoadingBarService } from '@ngx-loading-bar/core';
 
 @Component({
   selector: 'tvs-find-tradesmen',
-  templateUrl: './find-tradesmen.component.html',
-  styleUrls: ['./find-tradesmen.component.scss']
+  templateUrl: './tradesman.component.html',
+  styleUrls: ['./tradesman.component.css']
 })
-export class FindTradesmenComponent implements OnInit {
+export class TradesmanComponent implements OnInit {
 
   keyword             = 'itemCategoryName';
   clickedCategory     = '';
