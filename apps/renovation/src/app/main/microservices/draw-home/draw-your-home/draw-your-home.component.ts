@@ -3,19 +3,19 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { SplitterComponent} from '@syncfusion/ej2-angular-layouts';
 import { Splitter } from '@syncfusion/ej2-layouts';
-import { HouseTypeLayoutModel } from '../../model/house-type-layout.model';
-import { MaterialVScostModel } from '../../model/material-vs-cost.model';
-import { DrawHomeService } from '../services/draw-home.service';
+import { HouseTypeLayoutModel } from '../../../model/house-type-layout.model';
+import { MaterialVScostModel } from '../../../model/material-vs-cost.model';
+import { DrawHomeService } from '../../services/draw-home.service';
 import { LoadingBarService } from '@ngx-loading-bar/core';
 
 // import {} '../../../../assets/images/cns-1.jpg';
 
 @Component({
-  selector: 'tvs-draw-home',
-  templateUrl: './draw-home.component.html',
-  styleUrls: ['./draw-home.component.css']
+  selector: 'tvs-draw-your-home',
+  templateUrl: './draw-your-home.component.html',
+  styleUrls: ['./draw-your-home.component.css']
 })
-export class DrawHomeComponent implements OnInit {
+export class DrawYourHomeComponent implements OnInit {
   loader        = this.loadingBar.useRef();
   zoomSize      = ['100%','80%','75%','50%','35%','25%'];
   selected      = [ 2, 8 ];
@@ -93,31 +93,7 @@ export class DrawHomeComponent implements OnInit {
     })
   }
 
-  // getMaterialVScost(): void{
-    
-  //   this.drawHome.getMaterialVScost().subscribe(data=>{
-
-  //     this.materialVScostBasic    = data[0].basic;
-  //     this.materialVScostCustom   = data[0].custom;
-  //     this.materialVScostAdvanced = data[0].advanced;
-
-  //     this.parentMessageBasic     = data[0].basic;
-  //     this.parentMessageCustom    = data[0].custom;
-  //     this.parentMessageAdvanced  = data[0].advanced;
-
-  //     // this.parentMessage = data[0].advanced;
-
-
-  //     // this.parentMessage = this.drawHome.changeMessage(data[0].basic);
-  //     // this.parentMessageCustom = this.drawHome.changeMessage(data[0].custom);
-  //     // this.parentMessage = this.drawHome.changeMessage(data[0].advanced);
-
-
-  //     // console.log(this.materialVScostBasic);
-  //     // console.log(this.materialVScostCustom);
-  //     // console.log(this.materialVScostAdvanced);
-  //   })
-  // }
+  
 
   onOptionsSelected(value:number){
     

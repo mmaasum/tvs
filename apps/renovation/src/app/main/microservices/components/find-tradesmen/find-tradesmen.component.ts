@@ -47,16 +47,7 @@ export class FindTradesmenComponent implements OnInit {
   fileChange(element) {
     this.uploadedFiles = element.target.files;
   }
-  
-  open(content) {
-    console.log(content);
-    this.modalService2.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
-  }
-  
+
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
@@ -69,8 +60,6 @@ export class FindTradesmenComponent implements OnInit {
 
 
 sendSms(message, mobile){
-  console.log(message);
-  console.log(mobile);
   this.sMSService.sendSms(message, mobile)
   .subscribe(
     response => {
@@ -81,11 +70,8 @@ sendSms(message, mobile){
     }
   );
 }
+
 handleFileInput(files: any) {
-
-  console.log(files);
-
-  
 
   for (let i = 0; i < files.length; i++) {
     this.fileToUpload = files.item(i);
@@ -102,10 +88,6 @@ handleFileInput(files: any) {
         console.log(error);
       }
     );
-
-  // console.log(this.fileToUpload);
-
-  
 }
 
 upload() {
@@ -113,7 +95,6 @@ upload() {
     for (let i = 0; i < this.uploadedFiles.length; i++) {
         formData.append("uploads[]", this.uploadedFiles[i], this.uploadedFiles[i].name);
     }
-    console.log(formData);
     // this.http.post('/api/upload', formData)
     //     .subscribe((response) => {
     //         console.log('response received is ', response);
@@ -123,9 +104,7 @@ upload() {
 
 
   selectEvent(item) {
-    
     this.selectedItemCategoryId = item.itemCategoryId;
-
   }
 
   onChangeSearch(val: string) {
@@ -138,7 +117,6 @@ upload() {
   }
 
   ngOnInit(): void {
-
     this.isDisplay = false;
     this.getTradesmanList();
     this.getItemcategoryList();
@@ -149,7 +127,6 @@ upload() {
   searchCategory(Item:any){
     this.clickedCategory = Item.itemCategoryName;
     this.selectedItemCategoryId = Item.itemCategoryId;
-   
   }
 
   addToFavorite(item: any){
@@ -167,8 +144,6 @@ upload() {
     this.favoritListCount = this.favoritList.length
 
     this.tradesmanService.changeMessage(this.favoritListCount)
-
-    
   }
 
   getTradesmanList(): void{
@@ -181,7 +156,6 @@ upload() {
       error => {
         console.log(error);
       }
-      
     );
     this.loader.complete();
   }
@@ -196,7 +170,6 @@ upload() {
         console.log(error);
       }
     );
-    
   }
 
   getItemcategoryList(): void{
@@ -211,6 +184,7 @@ upload() {
    );
    
  }
+
   getItemcategoryList2(): void{
     this.tradesmanService.getItemcategoryList()
    .subscribe(
@@ -224,6 +198,7 @@ upload() {
    );
    
  }
+
   importPostcods(){
     // this.tradesmanService.importPostcods()
     // .subscribe(
@@ -236,8 +211,7 @@ upload() {
     //   }
     // );
   }
-
-
+  
   getSearchItemcategoryList(): void{
     if(!this.selectedItemCategoryId)
     {
@@ -257,9 +231,7 @@ upload() {
     
   }
 
-  showDetail(tradesmanId):void{
-    this.router.navigate(['/tradesmen-detail'], { queryParams: { id: tradesmanId } });
-  }
-
-  
+  // showDetail(tradesmanId):void{
+  //   this.router.navigate(['/tradesmen-detail'], { queryParams: { id: tradesmanId } });
+  // }
 }

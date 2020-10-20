@@ -30,7 +30,7 @@ import { NgxGalleryModule } from 'ngx-gallery-9';
 import { LayoutsModule } from '../../shared/layouts/layouts.module';
 import { UserReviewComponent } from './tradesman/user-review/user-review.component';
 import { SMSService } from './services/sms.service';
-import { DrawHomeComponent } from './draw-home/draw-home.component';
+// import { DrawHomeComponent } from './draw-home/draw-home.component';
 import { SplitterModule } from '@syncfusion/ej2-angular-layouts';
 import { NgScrollbarModule } from 'ngx-scrollbar';
 import { PrintHomeComponent } from './draw-home/print-home/print-home.component';
@@ -41,10 +41,12 @@ import { LoadingBarModule } from '@ngx-loading-bar/core';
 import { MiddlePaneComponent } from './draw-home/middle-pane/middle-pane.component';
 import { TemplateDisplayPaneComponent } from './draw-home/template-display-pane/template-display-pane.component';
 import { LeftPaneComponent } from './draw-home/left-pane/left-pane.component';
+import { DrawYourHomeComponent } from './draw-home/draw-your-home/draw-your-home.component';
 
 
 const routes: Routes = [
-  { path        : 'draw-home', component: DrawHomeComponent },
+  { path        : 'draw-your-home', component: DrawYourHomeComponent },
+  // { path        : 'draw-home', component: DrawHomeComponent },
   { path        : 'print-home', component: PrintHomeComponent },
   { path        : 'find-tradesmen', component: FindTradesmenComponent },
   { path        : 'advice-center', component: AdviceCenterComponent },
@@ -67,12 +69,13 @@ const routes: Routes = [
     FavoriteListComponent,
     TradesmanDetailComponent,
     UserReviewComponent,
-    DrawHomeComponent,
+    // DrawHomeComponent,
     PrintHomeComponent,
     MaterialCostComponent,
     MiddlePaneComponent,
     TemplateDisplayPaneComponent,
-    LeftPaneComponent],
+    LeftPaneComponent,
+    DrawYourHomeComponent],
   imports: [MatTableModule,MatPaginatorModule,
     LoadingBarModule,
     LoadingBarRouterModule,
