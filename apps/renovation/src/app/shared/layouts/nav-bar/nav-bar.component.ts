@@ -1,10 +1,14 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { LoginRegistrationService } from '../../../main/microservices/services/login-registration.service';
+// import { LoginRegistrationService } from '../../../main/microservices/services/login-registration.service';
+
+import { LoginRegistrationService } from '../../../main/microservices/login/login-registration.service';
 import { ModalService } from '../../../main/microservices/login/user-login';
 import { SignupModalService } from '../../../main/microservices/login/registration';
 import { TradesmanModel } from '../../../main/model/tradesman.model';
-import { TradesmanService } from '../../../main/microservices/services/tradesman.service';
+// import { TradesmanService } from '../../../main/microservices/services/tradesman.service';
+
+import { TradesmanService } from '../../../main/microservices/tradesman/tradesman.service';
 // import { ModalSignupService } from '../../../main/microservices/login/registration';
 
 @Component({

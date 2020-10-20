@@ -1,7 +1,9 @@
 import { Component, ViewEncapsulation, ElementRef, Input, OnInit, OnDestroy } from '@angular/core';
 
 import { SignupModalService } from './modal.service';
-import { LoginRegistrationService } from '../../services/login-registration.service';
+// import { LoginRegistrationService } from '../../services/login-registration.service';
+
+import { LoginRegistrationService } from '../login-registration.service';
 import { FormGroup } from '@angular/forms';
 import { UserModel } from '../../../model/user.model';
 import { UserProfileModel } from '../../../model/user-profile.model';

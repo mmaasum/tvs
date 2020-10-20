@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginRegistrationService } from '../../services/login-registration.service';
+// import { LoginRegistrationService } from '../../services/login-registration.service';
+
+import { LoginRegistrationService } from '../login-registration.service';
 import { UserModel } from '../../../model/user.model';
 import { FormGroup, FormBuilder } from '@angular/forms';
 

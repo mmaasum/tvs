@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { TradesmanModel } from '../../../model/tradesman.model';
-import { TradesmanService } from '../../services/tradesman.service';
+// import { TradesmanService } from '../../services/tradesman.service';
+
+// import { TradesmanService } from '../tradesman.service';
+
+import { TradesmanService } from '../tradesman.service';
 import { Router } from '@angular/router';
 import { SignupModalService } from '../../login/registration';
-import { SMSService } from '../../services/sms.service';
+// import { SMSService } from '../../services/sms.service';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { LoadingBarService } from '@ngx-loading-bar/core';
 
@@ -38,7 +42,7 @@ export class TradesmanComponent implements OnInit {
   
   constructor(public tradesmanService: TradesmanService,
     private modalService2: NgbModal,
-    private sMSService: SMSService,
+    // private sMSService: SMSService,
     private modalService: SignupModalService,
     private loadingBar: LoadingBarService,
     private router: Router) {
@@ -60,7 +64,7 @@ export class TradesmanComponent implements OnInit {
 
 
 sendSms(message, mobile){
-  this.sMSService.sendSms(message, mobile)
+  this.tradesmanService.sendSms(message, mobile)
   .subscribe(
     response => {
       this.tradesman =  response;

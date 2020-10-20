@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { from } from 'rxjs';
 import { TradesmanModel } from '../../../model/tradesman.model';
-import { TradesmanService } from '../../services/tradesman.service';
+// import { TradesmanService } from '../../services/tradesman.service';
+
+import { TradesmanService } from '../tradesman.service';
 
 @Component({
   selector: 'tvs-favorite-list',

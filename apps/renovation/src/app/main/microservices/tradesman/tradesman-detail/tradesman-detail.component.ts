@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TradesmanDetailService } from '../../services/tradesman-detail.service';
+// import { TradesmanDetailService } from '../../services/tradesman-detail.service';
+import { TradesmanService } from '../tradesman.service';
 import { ActivatedRoute } from '@angular/router';
 
 import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gallery-9';
@@ -18,7 +19,8 @@ export class TradesmanDetailComponent implements OnInit {
   tradesmanId;
   serviceDescription: string;
 
-  constructor(private tradesmanDetailService: TradesmanDetailService,
+  constructor(
+    private tradesmanService: TradesmanService,
     private router: ActivatedRoute ) {
       this.router.params.subscribe(params => {
         
@@ -84,7 +86,7 @@ export class TradesmanDetailComponent implements OnInit {
   }
 
   getTradesmanDetail(): void{
-    this.tradesmanDetailService.getTradesmanDetail(this.tradesmanId)
+    this.tradesmanService.getTradesmanDetail(this.tradesmanId)
     .subscribe(
       response => {
         this.tradesman =  response;

@@ -23,6 +23,16 @@ export class TradesmanService implements  OnInit
         
     }
 
+    sendSms(message, mobile): Observable<any>
+    {
+       return this._httpClient.get(this._baseUrl +'/Sms/SendSMS/'+message+'/'+mobile)    
+    }
+    
+    getTradesmanDetail(tradesmanId): Observable<any>
+    {
+       return this._httpClient.get(this._baseUrl +'/api/Tradesman/GetItemUsingTradesmanId/'+tradesmanId)      
+    }
+    
     changeMessage(message: number) {
       this.messageSource.next(message)
     }
