@@ -5,10 +5,11 @@ import { SplitterComponent} from '@syncfusion/ej2-angular-layouts';
 import { Splitter } from '@syncfusion/ej2-layouts';
 import { HouseTypeLayoutModel } from '../../../model/house-type-layout.model';
 import { MaterialVScostModel } from '../../../model/material-vs-cost.model';
-import { DrawHomeService } from '../../services/draw-home.service';
+// import { DrawHomeService } from '../../services/draw-home.service';
+
+import { DrawHomeService } from '../draw-home.service';
 import { LoadingBarService } from '@ngx-loading-bar/core';
 
-// import {} '../../../../assets/images/cns-1.jpg';
 
 @Component({
   selector: 'tvs-draw-your-home',

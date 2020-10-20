@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { LoadingBarService } from '@ngx-loading-bar/core';
 import { HouseTypeLayoutModel } from '../../../model/house-type-layout.model';
-import { DrawHomeService } from '../../services/draw-home.service';
+import { DrawHomeService } from '../draw-home.service';
 
 @Component({
   selector: 'tvs-left-pane',

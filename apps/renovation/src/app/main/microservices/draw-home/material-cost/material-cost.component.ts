@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MaterialVScostModel } from '../../../model/material-vs-cost.model';
-import { DrawHomeService } from '../../services/draw-home.service';
+import { DrawHomeService } from '../draw-home.service';
 
 @Component({
   selector: 'tvs-material-cost',
