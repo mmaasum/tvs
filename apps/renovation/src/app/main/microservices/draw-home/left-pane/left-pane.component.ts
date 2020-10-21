@@ -28,23 +28,16 @@ export class LeftPaneComponent implements OnInit {
     this.houseTypeLayoutModel         = new HouseTypeLayoutModel();
 
     this.drawHome.getHouseType().subscribe(data=>{
-      
       this.houseType = data;
     });
 
-    
     this.drawHome.getHouseTypeLayout().subscribe(data=>{
-      // console.log(data);
       this.displayHouseTypeLayout = data;
-      console.log(this.displayHouseTypeLayout);
     });
   }
 
 
-  onNbFloors(value){
-    console.log(this.semiDetachedGableFlNo);
-    // this.semiDetachedGableFlNo = this.houseTypeLayoutModel.nbFloors;
-  }
+  onNbFloors(value){}
 
   createDrawHomeForm(): FormGroup{
     return this._formBuilder.group({
@@ -59,7 +52,5 @@ export class LeftPaneComponent implements OnInit {
       roofTopLength                   : [this.houseTypeLayoutModel.roofTopLength],
       roofBottomLength                : [this.houseTypeLayoutModel.roofBottomLength]
     })
-
   }
-
 }

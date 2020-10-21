@@ -1,15 +1,9 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-// import { LoginRegistrationService } from '../../../main/microservices/services/login-registration.service';
-
-import { LoginRegistrationService } from '../../../main/microservices/login/login-registration.service';
 import { ModalService } from '../../../main/microservices/login/user-login';
 import { SignupModalService } from '../../../main/microservices/login/registration';
 import { TradesmanModel } from '../../../main/model/tradesman.model';
-// import { TradesmanService } from '../../../main/microservices/services/tradesman.service';
-
 import { TradesmanService } from '../../../main/microservices/tradesman/tradesman.service';
-// import { ModalSignupService } from '../../../main/microservices/login/registration';
 
 @Component({
   selector: 'tvs-nav-bar',
@@ -22,7 +16,7 @@ export class NavBarComponent implements OnInit, AfterViewInit {
   isDisplay:boolean;
   message:string;
   bodyText: string;
-  wellcomeMessage:string;
+  wellcomeMessage = 'hide';
   userName:string;
 
   favoritList: Array<TradesmanModel>=[];
@@ -36,9 +30,9 @@ export class NavBarComponent implements OnInit, AfterViewInit {
 
     ngAfterViewInit() {
       this.favoritList = JSON.parse(localStorage.getItem('favoriteList'));
-      if(this.favoritList.length > 0){
-        // this.favoritListCount = this.favoritList.length
-      }
+      // if(this.favoritList.length > 0){
+      //   // this.favoritListCount = this.favoritList.length
+      // }
       this.tradesmanService.changeMessage(this.favoritListCount);
 
       this.tradesmanService.currentMessage.subscribe(message1 => this.favoritListCount = message1)
@@ -47,12 +41,9 @@ export class NavBarComponent implements OnInit, AfterViewInit {
 
     }
 
+  
   ngOnInit(): void {
-    
-    
-
-    this.isDisplay = false;
-    
+    this.isDisplay = true;
   }
 
   showFavoriteList(){
@@ -64,12 +55,11 @@ export class NavBarComponent implements OnInit, AfterViewInit {
 
   homePage2(){
     this.isDisplay = false;
-}
+  }
 
-openSignupModal(id: string) {
-  
-  this.modalService.open(id);
-}
+  openSignupModal(id: string) {
+    this.modalService.open(id);
+  }
 
 openModal(id: string) {
   
@@ -94,15 +84,11 @@ closeModal(id: string) {
   this.modalService.close(id);
 }
 
-
-
 openModal2(id: string) {
-  this.modalService2.open(id);
-}
+    this.modalService2.open(id);
+  }
 
 closeModal2(id: string) {
   this.modalService2.close(id);
-}
-
-
+  }
 }

@@ -1,71 +1,35 @@
 <style>
-    .card-img-wrap {
-  overflow: hidden;
-  position: relative;
-}
-.card-img-wrap:after {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(255,255,255,0.3);
-  opacity: 0;
-  transition: opacity .25s;
-}
-.card-img-wrap img {
-  transition: transform 2.25s;
-  width: 100%;
-}
-.card-img-wrap:hover img {
-  transform: scale(2.2);
-}
-.card-img-wrap:hover:after {
-  opacity: 1;
-}
-.card:hover{
-    cursor: pointer;
-     transform: scale(1.02);
-     box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
-
-  transition: transform 1.25s;
-  width: 100%;
-}
+  
 </style>
 <div class="container ">
-    <div style="margin-top: 70px;" class="row">
-        <div class="card-group">
-          <!-- <button (click)="remove()" type="button" class="btn btn-outline-light">SIGN UP</button> -->
-            <div class="bntStyle col-md-4" 
-                                        *ngFor="let favorite of favoritList"
-                                        id={{favorite.tradesmanId}}>
-              <button (click)="remove(favorite.tradesmanId)" 
-                      style="float: right;margin-left: -25px;z-index: 1;position: relative;border: 0px;"
-                      type="button">
-                      <i style="color: orange;font-size: 20px;" class="fa fa-window-close"></i>
-                    </button>
-                <div class="card mb-3" [routerLink]="['/tradesmen-detail',favorite.tradesmanId]"
-                target="_blank">
-                    <div class="row no-gutters">
-                      <div class="col-md-4 card-img-wrap">
-                        <img style="height: 150px; background-size: cover;background-repeat: no-repeat;" src="../../../../../assets/tradesman/{{favorite.image}}.jpg" class="card-img" alt="...">
-                      </div>
-                      <div class="col-md-8">
-                        <div class="card-body">
-                            <h3 class="card-title" style="font-weight: bold;">{{favorite.companyName}}</h3>
-                            <span style="float: left;margin-top: -3px;margin-right: -22px;color: orange;" class="material-icons">
-                                location_on
-                            </span>
-                            <p style="margin-left: 25px;" class="card-text"> 
-                                Eccles, Manchester</p>
-                            <p style="margin-left: 25px;" class="card-text">10 (11 Reviews)</p>
-                            
-                        
-                        </div>
-                      </div>
-                    </div>
-                </div>
+  <div style="margin-top: 70px;" class="row">
+    <div class="card-group">
+      <!-- <button (click)="remove()" type="button" class="btn btn-outline-light">SIGN UP</button> -->
+      <div class="bntStyle col-md-4" *ngFor="let favorite of favoritList" id={{favorite.tradesmanId}}>
+        <button (click)="remove(favorite.tradesmanId)"
+          style="float: right;margin-left: -25px;z-index: 1;position: relative;border: 0px;" type="button">
+          <i style="color: orange;font-size: 20px;" class="fa fa-window-close"></i>
+        </button>
+        <div class="card mb-3" [routerLink]="['/tradesmen-detail',favorite.tradesmanId]" target="_blank">
+          <div class="row no-gutters">
+            <div class="col-md-4 card-img-wrap">
+              <img style="height: 150px; background-size: cover;background-repeat: no-repeat;"
+                src="../../../../../assets/tradesman/{{favorite.image}}.jpg" class="card-img" alt="...">
             </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h3 class="card-title" style="font-weight: bold;">{{favorite.companyName}}</h3>
+                <span style="float: left;margin-top: -3px;margin-right: -22px;color: orange;" class="material-icons">
+                  location_on
+                </span>
+                <p style="margin-left: 25px;" class="card-text">
+                  Eccles, Manchester</p>
+                <p style="margin-left: 25px;" class="card-text">10 (11 Reviews)</p>
+              </div>
+            </div>
+          </div>
         </div>
-        
+      </div>
     </div>
+  </div>
 </div>
-

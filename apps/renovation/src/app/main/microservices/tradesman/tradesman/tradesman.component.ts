@@ -1,16 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { TradesmanModel } from '../../../model/tradesman.model';
-// import { TradesmanService } from '../../services/tradesman.service';
-
-// import { TradesmanService } from '../tradesman.service';
-
 import { TradesmanService } from '../tradesman.service';
 import { Router } from '@angular/router';
 import { SignupModalService } from '../../login/registration';
-// import { SMSService } from '../../services/sms.service';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { LoadingBarService } from '@ngx-loading-bar/core';
-
 
 @Component({
   selector: 'tvs-find-tradesmen',
@@ -23,12 +17,10 @@ export class TradesmanComponent implements OnInit {
   clickedCategory     = '';
   parentData          = [];
   chieldData          = [];
-  // Name                = '';
   fileToUpload: File  = null;
   postcode            = '';
   title               = 'appBootstrap';
   loader              = this.loadingBar.useRef();
-  
   favoriteList        : Array<TradesmanModel> = [];
   favoritList         : Array<TradesmanModel>=[];
   favoritListCount    : number;
@@ -36,13 +28,11 @@ export class TradesmanComponent implements OnInit {
   isDisplay           : boolean;
   closeResult         : string;
   uploadedFiles       : Array < File >;
-  
   data;
   selectedItemCategoryId;
   
   constructor(public tradesmanService: TradesmanService,
     private modalService2: NgbModal,
-    // private sMSService: SMSService,
     private modalService: SignupModalService,
     private loadingBar: LoadingBarService,
     private router: Router) {
@@ -62,7 +52,6 @@ export class TradesmanComponent implements OnInit {
     }
   }
 
-
 sendSms(message, mobile){
   this.tradesmanService.sendSms(message, mobile)
   .subscribe(
@@ -76,7 +65,6 @@ sendSms(message, mobile){
 }
 
 handleFileInput(files: any) {
-
   for (let i = 0; i < files.length; i++) {
     this.fileToUpload = files.item(i);
     
@@ -86,7 +74,6 @@ handleFileInput(files: any) {
     .subscribe(
       response => {
         this.tradesman =  response;
-        console.log(response);
       },
       error => {
         console.log(error);
@@ -104,8 +91,6 @@ upload() {
     //         console.log('response received is ', response);
     //     })
   }
-
-
 
   selectEvent(item) {
     this.selectedItemCategoryId = item.itemCategoryId;
@@ -226,7 +211,6 @@ upload() {
     .subscribe(
       response => {
         this.tradesman =  response;
-        console.log(response);
       },
       error => {
         console.log(error);
@@ -234,8 +218,4 @@ upload() {
     );
     
   }
-
-  // showDetail(tradesmanId):void{
-  //   this.router.navigate(['/tradesmen-detail'], { queryParams: { id: tradesmanId } });
-  // }
 }

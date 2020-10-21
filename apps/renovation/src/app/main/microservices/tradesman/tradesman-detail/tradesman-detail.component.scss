@@ -1,0 +1,30 @@
+.space{
+    line-height: 27px;
+  }
+  .lidefaule{
+    color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+  }
+  .lidefaule :hover{
+    color: #0056b3;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .company{
+      /* font-family: "Open Sans", Arial, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0em;
+  -webkit-font-smoothing: antialiased; */
+  display: inline;
+  color: rgb(102, 102, 102);
+  word-break: break-word;
+  overflow-wrap: break-word;
+  margin: 0px;
+  padding: 0px;
+  overflow: visible;
+  }

@@ -9,15 +9,10 @@ export class MiddlePaneComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onOptionsSelected(value:number){
-    
     // this.houseTypeLayoutModel = this.displayHouseTypeLayout.filter(x => x.houseTypeLayoutId === Number(value))[0]
-
-    // console.log(this.houseTypeLayoutModel);
-
   }
 
   saveData(): void{
@@ -29,7 +24,4 @@ export class MiddlePaneComponent implements OnInit {
     //   this.loader.complete();
     // });
   }
-
-  
-
 }

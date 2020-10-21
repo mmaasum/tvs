@@ -1,48 +1,45 @@
 
-<div class="row">
-    <div class="col-md-4 text-right">
-        <a class="itemlightcolor">
-            Item(s)
-        </a>
+<div class="container-fluid">
+    <div class="row">
+        <button (click)="calculateCost()" class="btn btn-success" style="font-size: 15px;padding-top: 4px;padding-bottom: 4px;background: #528400;bottom: 0px;bottom: 6px;margin-left: 20px;text-align: right;">
+            <i class="fa fa-floppy-o" aria-hidden="true"></i>
+            Calculate
+        </button>
+        <div class="col-md-4 text-right">
+            <a target="_blank" routerLink="/print-home" class="btn btn-success custombuton">
+                <i class="fa fa-print" aria-hidden="true"></i>
+                Print
+            </a>
+        </div>
     </div>
-    <div class="col-md-4 itemlightcolor">
-        Quantity
+    <div class="row">
+        <div class="col-md-4 text-right itemlightcolor">
+            <a>
+                Item(s)
+            </a>
+        </div>
+        <div class="col-md-4 itemlightcolor">
+            Quantity
+        </div>
+        <div class="col-md-4 itemlightcolor" style="text-align: right;">
+            Cost
+        </div>
     </div>
-    <div class="col-md-4 itemlightcolor">
-        Cost(Basic)
-    </div>
-</div>
-
-<div *ngFor="let basic of childMessage" class="row">
-    <div class="col-md-4 text-right">
-        <a href="https://www.buildbase.co.uk/building-materials/bricks/facing-bricks/browngrey-bricks-100010353-0000" target="_blank" style="color: #999;">
-            {{basic.item}}
-        </a>
-    </div>
-    <div class="col-md-4">
-        {{basic.quantity}} {{ basic.unit}}
-    </div>
-    <div class="col-md-4 text-right">
-        £ {{basic.cost}}
-    </div>
-</div>
-
-
-<div class="row">
-    <button (click)="calculateCost()" class="btn btn-success" style="font-size: 15px;padding-top: 4px;padding-bottom: 4px;background: #528400;bottom: 0px;bottom: 6px;margin-left: 20px;text-align: right;">
-        <i class="fa fa-floppy-o" aria-hidden="true"></i>
-        Calculate
-    </button>
-    <div class="col-md-4 text-right">
-        <a target="_blank" routerLink="/print-home" class="btn btn-success custombuton">
-            <i class="fa fa-print" aria-hidden="true"></i>
-            Print
-        </a>
-    </div>
-    <div class="col-md-4 itemlightcolor">
-        Total
-    </div>
-    <div class="col-md-4 text-right itemlightcolor">
-        £ 40,825
+    
+    <div *ngFor="let basic of childMessage" class="row">
+        <div class="col-md-4 text-right">
+            <!-- <a routerLink="/favorite-list" style="color: #999;">
+                {{basic.item}}
+            </a> -->
+            <a style="color: #999;">
+                {{basic.item}}
+            </a>
+        </div>
+        <div class="col-md-4">
+            {{basic.quantity}} {{ basic.unit}}
+        </div>
+        <div class="col-md-4 text-right">
+            £ {{basic.cost}}
+        </div>
     </div>
 </div>

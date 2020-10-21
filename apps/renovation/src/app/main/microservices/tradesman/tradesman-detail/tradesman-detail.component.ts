@@ -91,7 +91,6 @@ export class TradesmanDetailComponent implements OnInit {
       response => {
         this.tradesman =  response;
         // this.serviceDescription = response.serviceDescription;
-        console.log(this.tradesman);
       },
       error => {
         console.log(error);

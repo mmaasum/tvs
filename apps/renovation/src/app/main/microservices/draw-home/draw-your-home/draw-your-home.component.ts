@@ -1,15 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-
 import { SplitterComponent} from '@syncfusion/ej2-angular-layouts';
 import { Splitter } from '@syncfusion/ej2-layouts';
 import { HouseTypeLayoutModel } from '../../../model/house-type-layout.model';
 import { MaterialVScostModel } from '../../../model/material-vs-cost.model';
-// import { DrawHomeService } from '../../services/draw-home.service';
-
 import { DrawHomeService } from '../draw-home.service';
 import { LoadingBarService } from '@ngx-loading-bar/core';
-
 
 @Component({
   selector: 'tvs-draw-your-home',
@@ -20,12 +16,6 @@ export class DrawYourHomeComponent implements OnInit {
   loader        = this.loadingBar.useRef();
   zoomSize      = ['100%','80%','75%','50%','35%','25%'];
   selected      = [ 2, 8 ];
-  
-  normalPB: boolean;    
-
-  stripedPB: boolean;    
-
-  animatedPB: boolean; 
 
   @ViewChild('splitterInstance') splitterObj: SplitterComponent;
   houseType                                 : any;
@@ -41,6 +31,9 @@ export class DrawYourHomeComponent implements OnInit {
 
   testJson                                  : any;
   semiDetachedGableFlNo                     : number;
+  normalPB                                  : boolean;  
+  stripedPB                                 : boolean;
+  animatedPB                                : boolean; 
 
   constructor(private drawHome: DrawHomeService,
               private _formBuilder: FormBuilder,
@@ -59,7 +52,6 @@ export class DrawYourHomeComponent implements OnInit {
       }
       
   ngOnInit(): void {
-
     this.houseTypeLayoutModel         = new HouseTypeLayoutModel();
     this.drawHomeEntryForm            = this.createDrawHomeForm();
     this.materialVScostBasic          = new MaterialVScostModel();
@@ -71,10 +63,8 @@ export class DrawYourHomeComponent implements OnInit {
     });
 
     this.drawHome.getHouseTypeLayout().subscribe(data=>{
-      // console.log(data);
       this.displayHouseTypeLayout = data;
     });
-    
   }
 
   onNbFloors(){
@@ -83,45 +73,31 @@ export class DrawYourHomeComponent implements OnInit {
   }
   calculateCost():void{
     this.drawHome.getMaterialVScost().subscribe(data=>{
-
       this.materialVScostBasic    = data[0].basic;
       this.materialVScostCustom   = data[0].custom;
       this.materialVScostAdvanced = data[0].advanced;
-
       this.parentMessageBasic     = data[0].basic;
       this.parentMessageCustom    = data[0].custom;
       this.parentMessageAdvanced  = data[0].advanced;
     })
   }
 
-  
-
   onOptionsSelected(value:number){
-    
     this.houseTypeLayoutModel = this.displayHouseTypeLayout.filter(x => x.houseTypeLayoutId === Number(value))[0]
-
-    // console.log(this.houseTypeLayoutModel);
-
   }
   saveData(): void{
     this.loader.start();
     const data = this.drawHomeEntryForm.getRawValue();
     this.drawHome.saveDrawHome(data).subscribe(response => {
       this.displayHouseTypeLayout = response;
-      // console.log(this.displayHouseTypeLayout);
       this.loader.complete();
     });
   }
-  showProgressBar(value){    
-    
-        this.normalPB=false;    
-   
-        this.stripedPB=false;    
-    
-        this.animatedPB=false;    
-    
-    
-      }
+  showProgressBar(value){  
+        this.normalPB=false; 
+        this.stripedPB=false;  
+        this.animatedPB=false;  
+  }
   createDrawHomeForm(): FormGroup{
     return this._formBuilder.group({
       width                           : [this.houseTypeLayoutModel.width],
@@ -135,7 +111,5 @@ export class DrawYourHomeComponent implements OnInit {
       roofTopLength                   : [this.houseTypeLayoutModel.roofTopLength],
       roofBottomLength                : [this.houseTypeLayoutModel.roofBottomLength]
     })
-
   }
-
 }

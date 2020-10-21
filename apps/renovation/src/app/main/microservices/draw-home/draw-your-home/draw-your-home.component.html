@@ -68,28 +68,10 @@
                                     <ejs-splitter #splitterInstance id="nested-splitter" (created)='onCreated()'
                                         height='100%' width='100%'>
                                         <e-panes>
-                                            <e-pane size='33%'>
+                                            <e-pane size='100%'>
                                                 <ng-template #content>
                                                     <div class="content cost-color">
                                                         <tvs-material-cost [childMessage]="parentMessageBasic">
-                                                        </tvs-material-cost>
-                                                    </div>
-                                                </ng-template>
-                                            </e-pane>
-
-                                            <e-pane size='33%'>
-                                                <ng-template #content>
-                                                    <div class="content cost-color">
-                                                        <tvs-material-cost [childMessage]="parentMessageCustom">
-                                                        </tvs-material-cost>
-                                                    </div>
-                                                </ng-template>
-                                            </e-pane>
-
-                                            <e-pane>
-                                                <ng-template #content>
-                                                    <div class="content cost-color">
-                                                        <tvs-material-cost [childMessage]="parentMessageAdvanced">
                                                         </tvs-material-cost>
                                                     </div>
                                                 </ng-template>
@@ -104,4 +86,5 @@
             </ejs-splitter>
         </div>
     </div>
+    
 </div>

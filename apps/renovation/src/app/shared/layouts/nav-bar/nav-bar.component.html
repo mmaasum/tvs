@@ -1,5 +1,4 @@
 
-
 <section id="navbar" style="padding:0px">
     <header  id="header" class="fixed-top ">
         <div class="container d-flex align-items-center">
@@ -10,26 +9,18 @@
             </h1>
             <nav class="nav-menu d-none d-lg-block">
                 <ul>
-                    <!-- <li class="active"><a (click)="homePage2()"  routerLink="/advice-center">R & D Form</a></li> -->
                     <li class="active"><a href="http://localhost/building/test-page/sample-page/">Advice Center</a></li>
-                    <!-- <li><a class="chaildnev"><tvs-draw-home [master]="master"></tvs-draw-home></a></li> -->
-                    
-                    <li><a routerLink="/draw-your-home">Draw Your Home</a></li>
+                    <li><a (click)="homePage2()" routerLink="/draw-your-home">Draw Your Home</a></li>
                     <li><a (click)="homePage2()" routerLink="/tradesman">Search Tradesman</a></li>
-                    
-                    
                     <li><a style="color: #fff;" (click)="openModal('custom-modal-1')">{{message}}</a></li>
-                    <!-- <li><button (click)="openModal('custom-modal-1')">Open Modal 1</button></li> -->
-                    
                 </ul>
             </nav>
-            <!-- <a href="#about" class="get-started-btn scrollto">Post a job</a> -->
+
             <span *ngIf="wellcomeMessage !== 'hide'" 
                     style="padding-left: 10px;" 
                     class="chaildnev">
                     <i style="padding-right: 6px;" class="fa fa-plug"></i>Wellcome!
             </span>
-            
             
              <span (click)="showFavoriteList()"
                      style="margin-left: 10px;margin-top: 5px;cursor:pointer" 
@@ -38,7 +29,6 @@
                      <mat-icon style="color:orange;margin-right: -11px;font-size: 30px;">favorite</mat-icon>
                      <span class="badge badge-pill badge-outline-primary">{{favoritListCount}}</span>
              </span>
-             
         </div>
     </header>
 </section>
@@ -48,15 +38,9 @@
     <button style="padding: 0px;margin: 0px;width: 100%;width: 100%;border-radius: 50px;padding: 10px 30px;margin: auto;margin-bottom: 10px;font-size: 13px;background-color: #ff5776;color: white;" (click)="closeModal2('custom-modal-1');">CLOSE</button>
 </jw-modal>
 
-
-
 <tvs-jw-modal id="custom-modal-1" style="height: 200px;">
-   
     <button style="padding: 0px;margin: 0px;width: 100%;width: 100%;border-radius: 50px;padding: 10px 30px;margin: auto;margin-bottom: 10px;font-size: 13px;background-color: #ff5776;color: white;"  (click)="closeModal('custom-modal-1');">CLOSE</button>
 </tvs-jw-modal>
 
-
-
 <tvs-slider *ngIf="isDisplay"></tvs-slider>
-
 <router-outlet></router-outlet>

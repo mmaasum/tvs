@@ -21,17 +21,13 @@ export class MaterialCostComponent implements OnInit {
 
   ngOnInit(): void {
     // this.materialVScostBasic          = new MaterialVScostModel();
-
     this.drawHome.getHouseType().subscribe(data=>{
       this.houseType = data;
     });
   }
 
-
   calculateCost():void{
     this.drawHome.getMaterialVScost().subscribe(data=>{
-
-      console.log(data);
       this.childMessage       = data;
       // this.materialVScostCustom   = data[0].custom;
       // this.materialVScostAdvanced = data[0].advanced;
@@ -40,9 +36,5 @@ export class MaterialCostComponent implements OnInit {
       // this.parentMessageCustom    = data[0].custom;
       // this.parentMessageAdvanced  = data[0].advanced;
     })
-
-    console.log(this.childMessage);
   }
-
-  
 }
