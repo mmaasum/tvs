@@ -57,7 +57,7 @@
     "ngx-scrollbar": "^7.3.0",
     "path": "^0.12.7",
     "rxjs": "~6.5.4",
-    "three": "^0.120.1",
+    "three": "^0.137.0",
     "zone.js": "^0.10.2"
   },
   "devDependencies": {
