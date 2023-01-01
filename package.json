@@ -44,7 +44,7 @@
     "@ng-bootstrap/ng-bootstrap": "^6.1.0",
     "@ngx-loading-bar/core": "^5.1.0",
     "@ngx-loading-bar/router": "^5.1.0",
-    "@nrwl/angular": "9.3.0",
+    "@nrwl/angular": "15.4.2",
     "@syncfusion/ej2-angular-layouts": "^18.2.54",
     "angular-ng-autocomplete": "^2.0.1",
     "bootstrap": "^4.5.0",
@@ -61,11 +61,11 @@
     "zone.js": "^0.10.2"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "0.901.0",
+    "@angular-devkit/build-angular": "15.0.4",
     "@angular/cli": "^9.1.7",
     "@angular/compiler-cli": "^9.1.0",
     "@angular/language-service": "^9.1.0",
-    "@nrwl/cypress": "9.3.0",
+    "@nrwl/cypress": "15.4.2",
     "@nrwl/jest": "9.3.0",
     "@nrwl/workspace": "9.3.0",
     "@types/jest": "25.1.4",
